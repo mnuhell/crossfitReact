@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
 const Header = () => {
 
     return (
-        <HeaderContainer className="bg-blue-800 pt-2 pb-3 px-3">
+        <HeaderContainer className="bg-blue-700 pt-2 pb-3 px-3 fixed w-full">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="header__right flex justify-items-start">
                     <Logo />

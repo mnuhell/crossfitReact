@@ -1,7 +1,7 @@
 import React from 'react';
 import useForm from '../hooks/useForm';
 import axios from 'axios';
-import {API_BASE_URL} from '../../api/config';
+import {LOGIN} from '../../api/endpoint/config';
 
 export const Login = () => {
 
@@ -17,7 +17,7 @@ export const Login = () => {
             email: email,
             password: password
         }
-        axios.post(`${API_BASE_URL}/users/login`, {user})
+        axios.post(`${LOGIN}`, {user})
         .then( (res) => {
             console.log(res.data)
         }).catch( error => {

@@ -5,7 +5,6 @@ import {API_BASE_URL} from '../../api/config';
 
 export const Login = () => {
 
-    console.log(API_BASE_URL);
     const [ formValues, handleInputChange ] = useForm({
         email: 'm.villagordovera@gmail.com',
         password: 12345678
@@ -18,13 +17,14 @@ export const Login = () => {
             email: email,
             password: password
         }
-        axios.post(`${API_BASE_URL}user/login`, {user})
-        .then( res => {
+        axios.post(`${API_BASE_URL}/users/login`, {user})
+        .then( (res) => {
             console.log(res.data)
+        }).catch( error => {
+            console.log(error)
         })
 
     }
-
 
     return (
         <div className="flex justify-center flex-wrap h-screen content-center">

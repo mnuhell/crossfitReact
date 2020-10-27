@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import airfitLogo from '../../../src/assets/logo-login-airfit.svg';
+import airfitLogo from '../../../../src/assets/logo-login-airfit.svg';
 
 const Logo = () => {
 

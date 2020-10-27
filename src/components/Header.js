@@ -1,6 +1,8 @@
 import React from 'react';
-import Logo from './logo/Logo';
+import Logo from '../components/header/logo/Logo';
+import {MenuButton} from '../components/user/MenuButton'
 import styled from 'styled-components';
+import { ClasesPending } from './user/ClasesPending';
 
 const HeaderContainer = styled.div`
 
@@ -14,12 +16,10 @@ const Header = () => {
                 <div className="header__right flex justify-items-start">
                     <Logo />
                 </div>
-                <div className="header__left flex justify-items-end justify-center">
-                    <p className="text-blue-50">10 Clases Restantes&nbsp;</p>
-                    <span className="text-blue-50"> | </span>
-                    <p className="text-blue-50">&nbsp;Admin</p>
+                <div className="header__left flex justify-items-end justify-center overflow-hidden">
+                    <ClasesPending />
+                    <MenuButton />
                 </div>
-                
             </div>  
         </HeaderContainer>
         

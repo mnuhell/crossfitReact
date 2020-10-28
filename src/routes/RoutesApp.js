@@ -1,21 +1,31 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header'
-import { useSelector } from 'react-redux';
+import { login } from '../../src/actions/auth'
+import { useDispatch } from 'react-redux'
 import { Switch, Route } from 'react-router-dom';
 import {Home} from '../components/Home'
 import { Login } from '../components/auth/Login';
 import { Register } from '../components/auth/Register';
+import axios from 'axios';
 
 
 
 const RoutesApp = () => {
 
-    const usuario = useSelector( state => state.auth)
+    const dispatch = useDispatch();
+    
+    useEffect( () => {
+        const usuario  =  localStorage.getItem('user');
+        const { access_token } = JSON.parse(usuario);
+    
+        if(access_token){
+            const AUTH_TOKEN = access_token;
+            axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+            axios.defaults.headers.common['Authorization'] = 'Bearer';
+            dispatch( login(JSON.parse(usuario)))
+        }
 
-    useEffect(() => {
-        console.log(usuario)
-        
-    }, [usuario])
+    }, []) 
 
 
     return (

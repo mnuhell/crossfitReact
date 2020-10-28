@@ -6,6 +6,19 @@ import {axiosIntance, LOGIN} from '../../api/endpoint/config';
 
 export const Login = () => {
 
+    const userExample = {
+        access_token: 'fhdsgfruychdcbiurgbouierygbeougierbtgto_tokeExample',
+        user_id: 4,
+        url_avatar: 'default_avatar.url',
+        username: 'Manuel',
+        role: {
+            id: 4,
+            name: 'user'
+        },
+        token_type: 'Bearer',
+        expires_at: 13548100
+    }
+    
     const dispatch = useDispatch();
 
     const [ formValues, handleInputChange ] = useForm({
@@ -16,22 +29,8 @@ export const Login = () => {
 
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
-        const user = {
-            email: email,
-            password: password
-        }
-
-        await axiosIntance.post(`${LOGIN}`, user, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                },
-        }).then( user => {
-            dispatch( login(user.data) )
-            localStorage.setItem('user', user.data ) 
-        }).catch( e => {
-            console.log(e)
-        })
+        
+        localStorage.setItem('user', JSON.stringify(userExample) );
 
     }
 

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import useForm from '../hooks/useForm';
 import { login } from '../../actions/auth'
 import {axiosIntance, LOGIN} from '../../api/endpoint/config';
+import { Redirect } from 'react-router-dom';
 
 export const Login = () => {
 

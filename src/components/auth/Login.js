@@ -1,27 +1,36 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import useForm from '../hooks/useForm';
-import axios from 'axios';
-import {LOGIN} from '../../api/endpoint/config';
+import { login } from '../../actions/auth'
+import {axiosIntance, LOGIN} from '../../api/endpoint/config';
 
 export const Login = () => {
 
+    const dispatch = useDispatch();
+
     const [ formValues, handleInputChange ] = useForm({
-        email: 'm.villagordovera@gmail.com',
-        password: 12345678
+        email: 'user@teddyminds.es',
+        password: 'dev12345678'
     })
     const { email, password } = formValues;
 
-    const handleSubmitLogin = (e) => {
+    const handleSubmitLogin = async(e) => {
         e.preventDefault();
         const user = {
             email: email,
             password: password
         }
-        axios.post(`${LOGIN}`, {user})
-        .then( (res) => {
-            console.log(res.data)
-        }).catch( error => {
-            console.log(error)
+
+        await axiosIntance.post(`${LOGIN}`, user, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+        }).then( user => {
+            dispatch( login(user.data) )
+            localStorage.setItem('user', user.data ) 
+        }).catch( e => {
+            console.log(e)
         })
 
     }
@@ -35,6 +44,7 @@ export const Login = () => {
                     </label>
                     <input
                     name="email"
+                    value={email}
                     onChange={ handleInputChange }
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
                 </div>
@@ -45,6 +55,7 @@ export const Login = () => {
                     <input
                     name="password"
                     onChange={ handleInputChange }
+                    value={password}
                     className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
                 </div>
                 <div className="flex items-right justify-between">

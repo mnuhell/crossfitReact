@@ -13,7 +13,9 @@ import axios from 'axios';
 import Page from '../components/user/Page';
 
 const RoutesApp = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    let user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
+    user = (user === null) ? localStorage.setItem('user', {}) : "";
     const { access_token, role } = user;
     const [ logged, setLogged ] = useState(false);
     const [ roleName, setRoleName ] = useState('user');

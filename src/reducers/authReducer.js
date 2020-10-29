@@ -10,14 +10,14 @@ const initialState = {
         name: ''
     },
     token_type: 'Bearer',
-    expires_at: ''
+    expires_at: '',
 }
 
 export const authReducer = ( state = initialState, action) => {
 
     switch(action.type) {
         case types.login: {
-            console.log(action)
+            
             return{
                 access_token: action.payload.access_token,
                 user_id: action.payload.user_id,
@@ -28,7 +28,7 @@ export const authReducer = ( state = initialState, action) => {
                     name: action.payload.role.name
                 },
                 token_type: 'Bearer',
-                expires_at: action.payload.expires_at
+                expires_at: action.payload.expires_at,
             }
         }
         case types.logout: {

@@ -1,50 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header'
-import { login } from '../../src/actions/auth'
-import { useDispatch } from 'react-redux'
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import PublicRoute from './PublicRoute';
+import PrivateRoute from './PrivateRoute';
+import { useDispatch} from 'react-redux'
 import {Home} from '../components/Home'
 import { Login } from '../components/auth/Login';
 import { Register } from '../components/auth/Register';
+import { Dashboard } from '../components/admin/Dashboard';
+import { login } from '../../src/actions/auth';
 import axios from 'axios';
-
-
+import Page from '../components/user/Page';
 
 const RoutesApp = () => {
-
+    const user = JSON.parse(localStorage.getItem('user'));
+    const { access_token, role } = user;
+    const [ logged, setLogged ] = useState(false);
+    const [ roleName, setRoleName ] = useState('user');
     const dispatch = useDispatch();
-    
     useEffect( () => {
-        const usuario  =  localStorage.getItem('user');
-        const { access_token } = JSON.parse(usuario);
-    
-        if(access_token){
-            const AUTH_TOKEN = access_token;
-            axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-            axios.defaults.headers.common['Authorization'] = 'Bearer';
-            dispatch( login(JSON.parse(usuario)))
+        if(user) {
+            if( access_token ){
+                axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+                dispatch( login(user))
+                setLogged(true)
+                setRoleName(role.name)
+            } else{
+                axios.defaults.headers.common['Authorization'] = null;
+                setLogged(false)
+            }
         }
-
-    }, []) 
-
-
+    }, [user, dispatch, logged, access_token, role.name])
+    
     return (
         <>
         <Header />
         <Switch>
-            <Route 
-            path="/"
-            exact
-            component={Home} />
-
-            <Route
-            path="/login"
-            component={Login} />
-
-            <Route
-            path="/register"
-            component={Register} />
-
+        
+          <PublicRoute restricted={logged} roleAdmin={roleName} component={Home} path="/" exact />
+          <PublicRoute restricted={logged} roleAdmin={roleName} component={Login} path="/login" />
+          <PublicRoute restricted={logged} roleAdmin={roleName} component={Register} path="/register"  />
+          
+            <PrivateRoute isAutenticated={logged} component={Dashboard} path="/admin/dashboard" exact />
+            <PrivateRoute isAutenticated={logged} component={Page} path="/user" exact />
+        
         </Switch>
         </>
     )

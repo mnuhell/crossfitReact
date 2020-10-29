@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const axiosIntance = axios.create({
+export const AXIOSINSTANCE = axios.create({
     BASE_URL: 'http://localhost/api',
     headers: {
         'Accept': 'application/json',

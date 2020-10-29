@@ -2,23 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import useForm from '../hooks/useForm';
 import { login } from '../../actions/auth'
-import {axiosIntance, LOGIN} from '../../api/endpoint/config';
-import { Redirect } from 'react-router-dom';
+import {AXIOSINSTANCE, LOGIN} from '../../api/endpoint/config';
 
 export const Login = () => {
-
-    const userExample = {
-        access_token: 'fhdsgfruychdcbiurgbouierygbeougierbtgto_tokeExample',
-        user_id: 4,
-        url_avatar: 'default_avatar.url',
-        username: 'Manuel',
-        role: {
-            id: 4,
-            name: 'user'
-        },
-        token_type: 'Bearer',
-        expires_at: 13548100
-    }
     
     const dispatch = useDispatch();
 
@@ -30,8 +16,12 @@ export const Login = () => {
 
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
-        
-        localStorage.setItem('user', JSON.stringify(userExample) );
+
+        await AXIOSINSTANCE.post(`${LOGIN}`, formValues)
+        .then( user => {
+            dispatch( login( user.data ) )
+            localStorage.setItem('user', JSON.stringify(user.data) );
+        })
 
     }
 
@@ -56,7 +46,7 @@ export const Login = () => {
                     name="password"
                     onChange={ handleInputChange }
                     value={password}
-                    className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
                 </div>
                 <div className="flex items-right justify-between">
                 <button className="bg-blue-600 hover:bg-blue-400 text-blue-50 font-semibold py-2 px-4 border border-gray-400 rounded shadow items-end" type="submit">

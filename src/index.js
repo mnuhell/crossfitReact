@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import {store} from './store/store'
 import CrossfitApp from './CrossfitApp';
-
 import './tailwind.output.css';
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <Provider store={store}>
-    <CrossfitApp />
+    <CrossfitApp  />
     </Provider>,
   document.getElementById('root')
 );

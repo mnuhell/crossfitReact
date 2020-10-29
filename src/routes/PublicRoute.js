@@ -2,16 +2,16 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom';
 
 
-const PublicRoute = ({isAuthenticated, roleAdmin, component: Component, restricted, ...rest}) => {
-    
+const PublicRoute = ({component: Component, restricted, ...rest}) => {
+    console.log(restricted)
     return (
         // restricted = false meaning public route
         // restricted = true meaning restricted route
         <Route {...rest} render={props => (
-            (roleAdmin === 'admin' || roleAdmin === 'superadmin') ? 
-                <Redirect to="/admin/dashboard" />
+            !restricted ? 
+            <Component {...props} />
                 :
-                <Redirect to="/user/page" />
+                <Redirect to="/user" />
         )} />
     );
 };

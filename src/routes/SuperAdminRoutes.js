@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 
-const PrivateRoute = ({isAutenticated, component: Component, ...rest}) => {
+const SuperAdminRoutes = ({isAutenticated, component: Component, ...rest}) => {
     
     return (
 
@@ -15,4 +15,4 @@ const PrivateRoute = ({isAutenticated, component: Component, ...rest}) => {
     );
 };
 
-export default PrivateRoute;
+export default SuperAdminRoutes;

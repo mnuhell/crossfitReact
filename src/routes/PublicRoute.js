@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom';
 
 
-const PublicRoute = ({component: Component, restricted, ...rest}) => {
+const PublicRoute = ({component: Component, role, restricted, ...rest}) => {
     
     return (
         // restricted = false meaning public route
@@ -11,7 +11,7 @@ const PublicRoute = ({component: Component, restricted, ...rest}) => {
             !restricted ? 
             <Component {...props} />
             :
-            <Redirect to="/app" />
+            <Redirect to={`/${role}`}/>
         )} />
     );
 };

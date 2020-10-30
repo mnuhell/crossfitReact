@@ -25,11 +25,13 @@ const RoutesApp = () => {
         
         <Switch>
 
-          { (logged) ?  <Header /> : ""}  
+           
           <PublicRoute restricted={logged} component={Home} path="/" exact/>
           <PublicRoute restricted={logged} component={Login} path="/login"/>
           <PublicRoute restricted={logged} component={Register} path="/register" />
+        
 
+          { (logged) ?  <Header /> : ""} 
 
           
           <PrivateRoute isAutenticated={logged} component={Page} path="/app" exact />

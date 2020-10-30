@@ -22,15 +22,17 @@ const RoutesApp = () => {
     
     return (
         <>
-        <Header />
-        <Switch>
         
+        <Switch>
+
+          { (logged) ?  <Header /> : ""}  
           <PublicRoute restricted={logged} component={Home} path="/" exact/>
           <PublicRoute restricted={logged} component={Login} path="/login"/>
           <PublicRoute restricted={logged} component={Register} path="/register" />
+
+
           
-            <PrivateRoute isAutenticated={logged} component={Page} path="/app" exact />
-        
+          <PrivateRoute isAutenticated={logged} component={Page} path="/app" exact />
         </Switch>
         </>
     )

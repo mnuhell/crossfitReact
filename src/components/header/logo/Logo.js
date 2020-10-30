@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom'
 
 import airfitLogo from '../../../../src/assets/logo-login-airfit.svg';
 
-const Logo = () => {
+const Logo = ( {width, altTitle} ) => {
 
     return (
-        <Link to="/">
-            <img width="120" src={airfitLogo} alt="Croosfit App" />
-        </Link>
+            <img width={width} src={airfitLogo} alt={altTitle} />
         
     )
 }

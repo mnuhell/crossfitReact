@@ -8,8 +8,8 @@ import { initialUserState } from '../../helpers/initialUserState';
 
 
 export const MenuButton = () => {
-    const history = useHistory();
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -17,8 +17,8 @@ export const MenuButton = () => {
         localStorage.setItem('user', JSON.stringify(initialUserState));
         dispatch( logout(user) )
         history.push('/login')
-        
     }
+    
     return (
         <div className="rounded-full h-8 w-8 overflow-hidden">
             <button onClick={ handleLogout }>

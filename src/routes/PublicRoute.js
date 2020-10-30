@@ -11,7 +11,7 @@ const PublicRoute = ({component: Component, restricted, ...rest}) => {
             !restricted ? 
             <Component {...props} />
                 :
-                <Redirect to="/user" />
+                <Redirect to="/app" />
         )} />
     );
 };

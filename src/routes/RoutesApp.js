@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux'
 import Header from '../components/Header'
 import { Switch } from 'react-router-dom';
@@ -7,9 +7,8 @@ import PrivateRoute from './PrivateRoute';
 import {Home} from '../components/Home'
 import { Login } from '../components/auth/Login';
 import { Register } from '../components/auth/Register';
-import { Dashboard } from '../components/admin/Dashboard';
 import axios from 'axios';
-import Page from '../components/user/Page';
+import Page from '../components/admin/Page';
 import { UserStateLocal } from '../helpers/initialUserState';
 
 const RoutesApp = () => {
@@ -30,8 +29,7 @@ const RoutesApp = () => {
           <PublicRoute restricted={logged} component={Login} path="/login"/>
           <PublicRoute restricted={logged} component={Register} path="/register" />
           
-            <PrivateRoute isAutenticated={logged} component={Dashboard} path="/admin/dashboard" exact />
-            <PrivateRoute isAutenticated={logged} component={Page} path="/user" exact />
+            <PrivateRoute isAutenticated={logged} component={Page} path="/app" exact />
         
         </Switch>
         </>

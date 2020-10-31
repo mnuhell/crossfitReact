@@ -1,5 +1,6 @@
-import { useDispatch} from 'react-redux'
-import { login } from '../actions/auth';
+import {useState} from 'react';
+import { useDispatch } from 'react-redux'
+import { persistLogin } from '../actions/auth';
 
 export const initialUserState = {
         access_token: '',
@@ -17,13 +18,12 @@ export const initialUserState = {
 
 export const UserStateLocal = () => {
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('user'));
-    if( user.logged === false ) {
-        localStorage.setItem('user', JSON.stringify(initialUserState))
-        return;
-    } else {
-        dispatch( login(user))
-    }
 
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [persist, setPersist] = useState(false)
     
+    if(!persist){
+        dispatch( persistLogin(user) )
+        setPersist(true)
+    }
 }

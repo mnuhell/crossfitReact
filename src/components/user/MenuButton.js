@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { logout } from '../../actions/auth';
 import { initialUserState } from '../../helpers/initialUserState';
@@ -9,14 +9,12 @@ import { initialUserState } from '../../helpers/initialUserState';
 
 export const MenuButton = () => {
 
-    const history = useHistory();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('user'));
-
     const handleLogout = () => {
         localStorage.setItem('user', JSON.stringify(initialUserState));
-        dispatch( logout(user) )
-        history.push('/login')
+        dispatch( logout(initialUserState) )
+        return <Redirect to="/login" />
     }
     
     return (

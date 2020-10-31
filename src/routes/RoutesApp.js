@@ -1,28 +1,18 @@
-import React from 'react';
 import { useSelector } from 'react-redux'
-import Header from '../components/Header'
-import { Switch } from 'react-router-dom';
-import PublicRoute from './PublicRoute';
-
-import UserRoute from './UserRoute';
-import {Home} from '../components/Home'
-import { Login } from '../components/auth/Login';
-import { Register } from '../components/auth/Register';
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import { UserStateLocal } from '../helpers/initialUserState';
-import { User } from '../pages/user/User';
-import { Admin } from '../pages/admin/Admin';
-import { SuperAdmin } from '../pages/superadmin/SuperAdmin';
-import AdminRoute from './AdminRoute';
-import SuperAdminRoutes from './SuperAdminRoutes';
+
+import routes from '../routes/config';
 
 const RoutesApp = () => {
     
+    const userState = useSelector( state => state.auth)
+   
     UserStateLocal();
-
-    const state = useSelector( state => state.auth)
-    const { access_token, logged, role } = state;
-
+    
+    const { access_token }= userState;
+    
     (access_token ) ? axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}` : axios.defaults.headers.common['Authorization'] = null;
     
     return (
@@ -30,19 +20,25 @@ const RoutesApp = () => {
         
         <Switch>
 
-           
-          <PublicRoute restricted={logged} role={role.name} component={Home} path="/" exact/>
-          <PublicRoute restricted={logged} role={role.name} component={Login} path="/login"/>
-          <PublicRoute restricted={logged} role={role.name} component={Register} path="/register" />
-        
+            { 
+                routes.map( (route, index) => (
+                    <RouteWithSubRoutes key={index} {...route} />
+                ))
+            }
 
-            { (logged) ?  <Header /> : ""} 
-            <UserRoute isAutenticated={logged} component={User} path="/user" exact />
-            <AdminRoute isAutenticated={logged} component={Admin} path="/admin" exact />
-            <SuperAdminRoutes isAutenticated={logged} component={SuperAdmin} path="/superadmin" exact />
-          
         </Switch>
         </>
+    )
+}
+
+function RouteWithSubRoutes(route) {
+    
+    return (
+        <Route
+        path = {route.path} 
+        exact = { route.exact}
+        render = { props => <route.component routes={route.routes} {...props} />}
+        />
     )
 }
 

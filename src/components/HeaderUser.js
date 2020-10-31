@@ -1,11 +1,11 @@
 import React from 'react';
-import Logo from '../components/header/logo/Logo';
-import {MenuButton} from '../components/user/MenuButton'
+import Logo from './header/logo/Logo';
+import {MenuButton} from './user/MenuButton'
 import styled from 'styled-components';
 import { ClasesPending } from './user/ClasesPending';
 import { Link } from 'react-router-dom';
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
 
 `;
 

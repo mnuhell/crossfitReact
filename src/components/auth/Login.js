@@ -24,13 +24,16 @@ export const Login = () => {
             user.data.logged = true
             dispatch( login( user.data ) )
             localStorage.setItem('user', JSON.stringify(user.data) );
+            
+        }).catch( error => {
+            console.log(error)
         })
 
     }
 
     return (
-        <div className="flex justify-center flex-wrap h-screen content-center login bg-blue-500">
-            <div className="login__content sm:w-1/4">
+        <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
+            <div className="login__content sm:w-1/3">
                 <div className="logo flex mb-5 justify-center">
                     <Logo width="200" altTitle="Airfit App" />
                 </div>

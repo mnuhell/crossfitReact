@@ -49,6 +49,23 @@ export const authReducer = ( state = initialState, action) => {
             }
         }
 
+        case types.persistLogin: {
+
+            return{
+                access_token: action.payload.access_token,
+                user_id: action.payload.user_id,
+                url_avatar: action.payload.url_avatar,
+                username: action.payload.username,
+                role: {
+                    id: action.payload.role.id,
+                    name: action.payload.role.name
+                },
+                token_type: 'Bearer',
+                expires_at: action.payload.expires_at,
+                logged: true
+            }
+        }
+
         default: 
             return state;
     }

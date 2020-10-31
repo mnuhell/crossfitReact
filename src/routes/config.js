@@ -8,8 +8,10 @@ import { Home } from '../components/Home';
 import GuestLayout from '../layout/GuestLayout';
 import Error404 from '../pages/Error404';
 import UserLayout from '../layout/UserLayout';
-import { User } from '../pages/user/User';
 import UserClases from '../pages/user/UserClases';
+import { UserHome } from '../pages/user/UserHome';
+import SuperAdminLayout from '../layout/SuperAdminLayout';
+import { SuperAdminHome } from '../pages/superadmin/SuperAdminHome';
 
 const routes = [
 
@@ -21,7 +23,7 @@ const routes = [
         routes: [
             {
                 path: "/user",
-                component: User,
+                component: UserHome,
                 exact: true
 
             },
@@ -57,6 +59,24 @@ const routes = [
                 path: "/admin/register",
                 component: Register,
                 exact: true
+            },
+            {
+                component: Error404
+            }
+        ]
+
+    },
+
+    {
+        path: "/superadmin",
+        component: SuperAdminLayout,
+        exact: false,
+        routes: [
+            {
+                path: "/superadmin",
+                component: SuperAdminHome,
+                exact: true
+
             },
             {
                 component: Error404

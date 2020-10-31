@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export const User = () => {
+export const UserHome = () => {
 
     return (
         <div className="flex items-center h-screen justify-center">

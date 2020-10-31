@@ -1,26 +1,30 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../hooks/useForm';
 import { login } from '../../actions/auth'
 import {AXIOSINSTANCE, LOGIN} from '../../api/endpoint/config';
 import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
+import { loading } from '../../actions/loading';
+import {Loading} from '../../components/Loading';
 
 export const Login = () => {
     
     const dispatch = useDispatch();
-
+    const loadingComponent = useSelector(state => state.loading)
     const [ formValues, handleInputChange ] = useForm({
         email: 'user@teddyminds.es',
         password: 'dev12345678'
     })
     const { email, password } = formValues;
-
+    
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
+        dispatch( loading(true) )
         await AXIOSINSTANCE.post(`${LOGIN}`, formValues)
         .then( user => {
+            dispatch( loading(false) )
             user.data.logged = true
             dispatch( login( user.data ) )
             localStorage.setItem('user', JSON.stringify(user.data) );
@@ -28,10 +32,11 @@ export const Login = () => {
         }).catch( error => {
             console.log(error)
         })
-
+        
     }
 
     return (
+        loadingComponent.active ? <Loading /> : 
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
             <div className="login__content sm:w-1/3">
                 <div className="logo flex mb-5 justify-center">

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -7,7 +8,7 @@ import routes from '../routes/config';
 
 const RoutesApp = () => {
     
-    const userState = useSelector( state => state.auth)
+    const userState = useSelector( state => state.auth);
    
     UserStateLocal();
     
@@ -17,6 +18,7 @@ const RoutesApp = () => {
     
     return (
         <>
+        { 
         
         <Switch>
 
@@ -27,6 +29,8 @@ const RoutesApp = () => {
             }
 
         </Switch>
+        }
+        
         </>
     )
 }

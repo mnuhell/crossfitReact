@@ -1,10 +1,15 @@
 import axios from 'axios';
 
+const user = JSON.parse(localStorage.getItem('user'));
+const { access_token } = user;
+
+
 export const AXIOSINSTANCE = axios.create({
     BASE_URL: 'http://localhost/api',
     headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${access_token}`
     },
 })
 

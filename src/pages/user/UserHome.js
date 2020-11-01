@@ -1,10 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'; 
 import { Link } from 'react-router-dom';
 
 import clases from '../../../src/assets/clases.png';
 import configImagen from '../../../src/assets/config_imagen.png';
+import { loading } from '../../actions/loading';
 
 export const UserHome = () => {
+
+    const dispatch = useDispatch()
+
+    const handleLoading = () => {
+        dispatch( loading(true) )
+    }
 
     return (
         <div className="flex flex-wrap items-center h-screen justify-center">
@@ -12,7 +20,8 @@ export const UserHome = () => {
                 <img className="w-full" src={clases} alt="Sunset in the mountains" ></img>
                 <div className="px-6 py-4 text-center">
                     <Link to="/user/reserva">
-                        <button 
+                        <button
+                        onClick={ handleLoading } 
                         className="font-body transition-all duration-1000 ease-in-out bg-transparent hover:bg-blue-700 text-blue-500 font-semibold 
                         hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent 
                         rounded ">Reserva tu clase</button>

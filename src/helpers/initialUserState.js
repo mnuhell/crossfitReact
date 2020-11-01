@@ -27,3 +27,4 @@ export const UserStateLocal = () => {
         setPersist(true)
     }
 }
+

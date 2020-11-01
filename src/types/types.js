@@ -4,7 +4,9 @@ export const types = {
     logout: '[AUTH LOGOUT] logout',
     persistLogin: '[AUTH PERSISTLOGIN] persistLogin',
 
-    loading: '[ LOADING ] loading'
+    loading: '[ LOADING ] loading',
+
+    savedClases: '[ CLASES ] getClases'
 
 
 }

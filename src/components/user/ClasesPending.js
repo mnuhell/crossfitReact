@@ -4,7 +4,7 @@ import React from 'react';
 export const ClasesPending = () => {
 
     return (
-        <div className="rounded py-1 px-6 overflow-hidden bg-blue-50 flex items-center content-center bg-cover mr-5">
+        <div className="font-body rounded px-2 py-1 text-xs bg-green-700 text-white flex items-center justify-center mr-2">
             6 clases
         </div>
     )

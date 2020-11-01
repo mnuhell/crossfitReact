@@ -31,6 +31,9 @@ module.exports = {
           '800': '#714908',
           '900': '#4C3105',
         }
+      },
+      'fontFamily': {
+        'body': ['Courier Prime'],
       }
     },
   },

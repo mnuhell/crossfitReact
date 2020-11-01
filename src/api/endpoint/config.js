@@ -17,4 +17,6 @@ export const API_BASE_URL = `${BASE_URL}`;
 export const LOGIN = `${BASE_URL}/users/login`;
 export const REGISTER = `${BASE_URL}/users/signup`;
 
-//USERS
+//clases
+export const LESSONS = `${BASE_URL}/clases`;
+

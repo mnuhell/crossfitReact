@@ -8,10 +8,10 @@ import { Home } from '../components/Home';
 import GuestLayout from '../layout/GuestLayout';
 import Error404 from '../pages/Error404';
 import UserLayout from '../layout/UserLayout';
-import UserClases from '../pages/user/UserClases';
 import { UserHome } from '../pages/user/UserHome';
 import SuperAdminLayout from '../layout/SuperAdminLayout';
 import { SuperAdminHome } from '../pages/superadmin/SuperAdminHome';
+import UserReserva from '../pages/user/UserReserva';
 
 const routes = [
 
@@ -28,8 +28,8 @@ const routes = [
 
             },
             {
-                path: "/user/clases",
-                component: UserClases,
+                path: "/user/reserva",
+                component: UserReserva,
                 exact: true
 
             },

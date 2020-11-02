@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import clases from '../../../src/assets/clases.png';
 import configImagen from '../../../src/assets/config_imagen.png';
+import { getClases } from '../../actions/clases';
 import { loading } from '../../actions/loading';
 
 export const UserHome = () => {
@@ -12,6 +13,7 @@ export const UserHome = () => {
 
     const handleLoading = () => {
         dispatch( loading(true) )
+        dispatch( getClases() )
     }
 
     return (

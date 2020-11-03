@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import { UserStateLocal } from '../helpers/initialUserState';
 
@@ -17,6 +17,7 @@ const RoutesApp = () => {
     
     return (
         <>
+        <Router>
         { 
         
         <Switch>
@@ -29,7 +30,7 @@ const RoutesApp = () => {
 
         </Switch>
         }
-        
+        </Router>
         </>
     )
 }

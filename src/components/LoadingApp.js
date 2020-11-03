@@ -54,7 +54,7 @@ export const LoadingApp = () => {
 
     return (
         <Spinner className="flex h-screen w-full items-center justify-center">
-            <div className="spinner w-30">
+            <div className="spinner w-3/12">
                 <div className="bounce1"></div>
                 <div className="bounce2"></div>
                 <div className="bounce3"></div>

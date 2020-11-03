@@ -35,16 +35,7 @@ export const authReducer = ( state = initialState, action) => {
         }
         case types.logout: {
             return{
-                access_token: '',
-                user_id: '',
-                url_avatar: '',
-                username: '',
-                role: {
-                    id: '',
-                    name: 'guestUser'
-                },
-                token_type: 'Bearer',
-                expires_at: '',
+                ...state,
                 logged: false
             }
         }

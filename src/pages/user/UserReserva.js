@@ -10,12 +10,12 @@ const UserReserva = () => {
 
     
     const loadingState = useSelector(state => state.loading)
-    const clases = useSelector(state => state.clases[0])
+    const clases = JSON.parse(localStorage.getItem('clases'));
     
     return (
 
         loadingState.active ? <LoadingApp /> : 
-        <div className="flex justify-center content-center setting container mx-auto">
+        <div className="flex justify-center content-center flex-wrap setting container mx-auto">
         {
             clases 
             ? clases.map( clase => ( <Clase key={clase.id} {...clase} />))

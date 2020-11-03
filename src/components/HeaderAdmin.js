@@ -11,7 +11,7 @@ const HeaderContainer = styled.header`
 const Header = () => {
 
     return (
-        <HeaderContainer className="bg-blue-500 pt-2 pb-3 px-3 fixed w-full">
+        <HeaderContainer className="bg-blue-500 pt-2 pb-3 px-3 fixed w-full z-40">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="header__right flex justify-items-start">
                     <Link to="/">

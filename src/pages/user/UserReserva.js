@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Error } from '../../components/alerts/Alerts';
 
@@ -15,7 +15,7 @@ const UserReserva = () => {
     return (
 
         loadingState.active ? <LoadingApp /> : 
-        <div className="flex justify-center content-center flex-wrap setting container mx-auto">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 gap-y-6 setting pt-20 pb-16 px-6">
         {
             clases 
             ? clases.map( clase => ( <Clase key={clase.id} {...clase} />))

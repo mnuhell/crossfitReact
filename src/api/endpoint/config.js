@@ -1,19 +1,24 @@
 import axios from 'axios';
 import { initialUserState } from '../../helpers/initialUserState';
 
-const init = () => {
-    return JSON.parse(localStorage.getItem('user')) || initialUserState 
-}
 
-const { access_token } = init;
+const user = (JSON.parse(localStorage.getItem('user')) || initialUserState)
 
+const { access_token } = user;
+
+const token = (access_token) ? `Bearer ${access_token}` : ""
 
 export const AXIOSINSTANCE = axios.create({
     BASE_URL: 'http://localhost/api',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${access_token}`
+        'Authorization': token,
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        "Vary": "Accept-Encoding, Origin"
     },
 })
 

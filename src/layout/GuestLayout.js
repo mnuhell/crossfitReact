@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
 
@@ -9,8 +9,7 @@ import { UserHome } from '../pages/user/UserHome';
 const GuestLayout = ( props ) => {
 
     const { routes } = props;
-
-    const user = useSelector( state => state.auth);
+    const {user} = useContext( AuthContext );
 
     if(user.logged && user.role.name === "user") {
         return (

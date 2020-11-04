@@ -28,9 +28,8 @@ export const Login = () => {
         await AXIOSINSTANCE.post(`${LOGIN}`, formValues)
         .then( user => {
             dispatchLoading( loading(false) )
-            localStorage.setItem('user', JSON.stringify(user.data) );
-            
             dispatch( login( user.data ) )
+            localStorage.setItem('user', JSON.stringify(user.data) );
             
         }).catch( error => {
             console.log(error)

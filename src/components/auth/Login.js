@@ -28,6 +28,7 @@ export const Login = () => {
         await AXIOSINSTANCE.post(`${LOGIN}`, formValues)
         .then( user => {
             dispatchLoading( loading(false) )
+            user.data.logged = true;
             dispatch( login( user.data ) )
             localStorage.setItem('user', JSON.stringify(user.data) );
             

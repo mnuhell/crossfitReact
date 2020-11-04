@@ -19,10 +19,10 @@ export const Clase = ( clase ) => {
          </div>   
     
         <div className="clase__usuarios-registrados my-3 h-20 grid sm:grid-cols-12 md:grid-cols-14 lg:grid-cols-14 xl:grid-cols-14 gap-1 gap-y-1">
-            <img className="object-cover rounded-full h-6 h-6" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
-            <img className="object-cover rounded-full h-6 h-6" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
-            <img className="object-cover rounded-full h-6 h-6" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
-            <img className="object-cover rounded-full h-6 h-6" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+            <img className="object-cover rounded-full h-6" alt="" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+            <img className="object-cover rounded-full h-6" alt="" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+            <img className="object-cover rounded-full h-6" alt="" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+            <img className="object-cover rounded-full h-6" alt="" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
         </div>
 
             <button className="bg-orange-500 block w-full py-2 absolute bottom-0 left-0"> Apuntate </button>

@@ -1,20 +1,23 @@
-import React from 'react'
-import { Redirect } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+import React, { useContext } from 'react'
+import { useHistory } from "react-router-dom";
 import { logout } from '../../actions/auth';
 import { initialUserState } from '../../helpers/initialUserState';
+import { AuthContext } from '../../context/AuthContext';
 
 
 
 
 export const MenuButton = () => {
 
-    const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const { dispatch, user } = useContext(AuthContext);
+    const history = useHistory();
+    
     const handleLogout = () => {
+        
         localStorage.setItem('user', JSON.stringify(initialUserState));
         dispatch( logout(initialUserState) )
-        return <Redirect to="/login" />
+        history.replace('/login')
+        
     }
     
     return (

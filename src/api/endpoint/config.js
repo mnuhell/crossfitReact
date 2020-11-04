@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { initialUserState } from '../../helpers/initialUserState';
 
-const user = JSON.parse(localStorage.getItem('user'));
-const { access_token } = user;
+const init = () => {
+    return JSON.parse(localStorage.getItem('user')) || initialUserState 
+}
+
+const { access_token } = init;
 
 
 export const AXIOSINSTANCE = axios.create({

@@ -1,19 +1,8 @@
-import { useSelector } from 'react-redux'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import axios from 'axios';
-import { UserStateLocal } from '../helpers/initialUserState';
 
 import routes from '../routes/config';
 
 const RoutesApp = () => {
-    
-    const userState = useSelector( state => state.auth);
-   
-    UserStateLocal();
-    
-    const { access_token }= userState;
-    
-    (access_token ) ? axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}` : axios.defaults.headers.common['Authorization'] = null;
     
     return (
         <>

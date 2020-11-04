@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Footer from '../components/Footer';
 import HeaderUser from '../components/HeaderUser';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { Login } from '../components/auth/Login';
+import { AuthContext } from '../context/AuthContext';
 
 
 
@@ -11,7 +11,7 @@ const UserLayout = ( props ) => {
 
     const { routes } = props;
 
-    const user = useSelector( state => state.auth);
+    const { user } = useContext(AuthContext);
     
     if(!user.logged) {
         return (

@@ -1,16 +1,21 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import '../src/assets/scss/styles.scss';
 import { AuthContext } from '../src/context/AuthContext';
-import { authReducer } from './reducers/authReducer';
 import RoutesApp from './routes/RoutesApp';
+import { initialUserState } from '../src/helpers/initialUserState';
+import { authReducer } from './reducers/authReducer';
 
 const init = () => {
-    return JSON.parse(localStorage.getItem('user')) || { logged: false} 
+    return JSON.parse(localStorage.getItem('user')) || initialUserState 
 }
 
 const CrossfitApp = () => {
 
-    const [user, dispatch] = useReducer(authReducer, {}, init)
+    const [ user, dispatch ] = useReducer(authReducer, {}, init);
+    console.log(user)
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(user))
+    }, [user])
 
     return (
         <AuthContext.Provider value={{ user, dispatch }}>

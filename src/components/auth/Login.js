@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../hooks/useForm';
 import { login } from '../../actions/auth'
@@ -7,27 +7,30 @@ import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
 import { loading } from '../../actions/loading';
 import {Loading} from '../../components/Loading';
+import { AuthContext } from '../../context/AuthContext';
 
 export const Login = () => {
     
-    const dispatch = useDispatch();
+    const dispatchLoading = useDispatch();
     const loadingComponent = useSelector(state => state.loading)
     const [ formValues, handleInputChange ] = useForm({
         email: 'user@teddyminds.es',
         password: 'dev12345678'
     })
     const { email, password } = formValues;
+
+    const { dispatch } = useContext(AuthContext)
     
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
-        dispatch( loading(true) )
+        dispatchLoading( loading(true) )
         await AXIOSINSTANCE.post(`${LOGIN}`, formValues)
         .then( user => {
-            dispatch( loading(false) )
-            user.data.logged = true
-            dispatch( login( user.data ) )
+            dispatchLoading( loading(false) )
             localStorage.setItem('user', JSON.stringify(user.data) );
+            
+            dispatch( login( user.data ) )
             
         }).catch( error => {
             console.log(error)

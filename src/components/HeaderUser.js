@@ -16,12 +16,12 @@ const Header = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="header__right flex justify-items-start">
                     <Link to="/">
-                    <Logo width="120" altTitle="Airfit App" />
+                    <Logo width="160" altTitle="Airfit App" />
                     </Link>
                     
                 </div>
                 <div className="header__left flex justify-items-end justify-center overflow-hidden">
-                    <ClasesPending />
+                    <ClasesPending user="" />
                     <MenuButton />
                 </div>
             </div>  

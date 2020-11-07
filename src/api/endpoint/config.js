@@ -10,15 +10,14 @@ const token = (access_token) ? `Bearer ${access_token}` : ""
 
 export const AXIOSINSTANCE = axios.create({
     BASE_URL: 'http://localhost/api',
+    responseType: "json",
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': token,
-        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Headers" : "Content-Type, API-Key",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        "Vary": "Accept-Encoding, Origin"
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
     },
 })
 
@@ -32,5 +31,6 @@ export const LOGIN = `${BASE_URL}/users/login`;
 export const REGISTER = `${BASE_URL}/users/signup`;
 
 //clases
-export const LESSONS = `${BASE_URL}/clases`;
+export const LESSONS = `${BASE_URL}/clases/`;
+
 

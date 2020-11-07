@@ -6,7 +6,8 @@ export const types = {
 
     loading: '[ LOADING ] loading',
 
-    savedClases: '[ CLASES ] getClases'
-
+    savedClases: '[ CLASES ] getClases',
+    reserva: '[ CLASES ] reserva',
+    deleteClase: '[ CLASES ] deleteClase',
 
 }

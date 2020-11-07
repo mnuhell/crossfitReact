@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import { useSelector } from 'react-redux';
 import { Error } from '../../components/alerts/Alerts';
 
@@ -14,15 +14,18 @@ const UserReserva = () => {
     
     return (
 
-        loadingState.active ? <LoadingApp /> : 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 gap-y-6 setting pt-20 pb-16 px-6">
+        loadingState.active ? <LoadingApp /> :
+        <>
         {
-            clases 
-            ? clases.map( clase => ( <Clase key={clase.id} {...clase} />))
+            clases
+            ?   <><h2 className="text-center text-blue-900 pt-24 uppercase text-2xl">Clases disponibles</h2>
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 gap-y-6 setting pt-5 pb-16 px-6">
+                    {clases.map(clase => (<Clase key={clase.id} {...clase} />))}
+                </div></>
             : <Error header="Lo sentimos! " body=" No hay clases previstas para el dia de hoy" />
         }
-    </div>
-        
+        </>
+
     )
 }
 

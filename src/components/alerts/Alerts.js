@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export const Error = ( { header, body} ) => {
 
     return (
-        <div className="h-screen flex justify-center items-center">
+        <div className="h-screen grid justify-center items-center">
         <div>
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-center" role="alert">
                 <p className="block"><strong className="font-bold">{header}</strong></p>

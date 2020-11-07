@@ -17,8 +17,8 @@ export const UserHome = () => {
     }
 
     return (
-        <div className="flex flex-wrap items-center h-screen justify-center">
-            <div className="w-full md:w-1/4 lg:mr-5 md:mr-5 rounded overflow-hidden shadow-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 items-center gap-12 mx-auto container pt-32 h-screen justify-center">
+            <div className="rounded shadow-lg">
                 <img className="w-full" src={clases} alt="Sunset in the mountains" ></img>
                 <div className="px-6 py-4 text-center">
                     <Link to="/user/reserva">
@@ -30,8 +30,7 @@ export const UserHome = () => {
                     </Link>
                 </div>
             </div>
-
-            <div className="w-full md:w-1/4 rounded overflow-hidden shadow-lg">
+            <div className="shadow-lg">
                 <img className="w-full" src={configImagen} alt="Sunset in the mountains" ></img>
                 <div className="px-6 py-4 text-center">
                     <button 

@@ -12,6 +12,7 @@ import { UserHome } from '../pages/user/UserHome';
 import SuperAdminLayout from '../layout/SuperAdminLayout';
 import { SuperAdminHome } from '../pages/superadmin/SuperAdminHome';
 import UserReserva from '../pages/user/UserReserva';
+import UserSettings from '../pages/user/UserSettings';
 
 const routes = [
 
@@ -30,6 +31,12 @@ const routes = [
             {
                 path: "/user/reserva",
                 component: UserReserva,
+                exact: true
+
+            },
+            {
+                path: "/user/settings",
+                component: UserSettings,
                 exact: true
 
             },

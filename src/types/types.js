@@ -4,9 +4,6 @@ export const types = {
     uiCloseModal: '[ui] Close modal',
 
 
-
-
-    authChecking: '[auth] Checking login state',
     authCheckingFinish: '[auth] Finish checking login state',
     authStartLogin: '[auth] Start Login',
     authLogin: '[auth] Login',

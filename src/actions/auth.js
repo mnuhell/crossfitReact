@@ -1,11 +1,7 @@
 import React from 'react';
-import { fetchWithoutToken } from '../helpers/fetch';
+import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
-import withRseactContent from 'sweetalert2-react-content';
-import { applyMiddleware } from 'redux';
-
-const errorLogin = withRseactContent(Swal);
 
 
 // ACCION PARA EL LOGIN
@@ -73,3 +69,39 @@ export const startRegister = ( user ) => {
 		
 	}
 }	
+
+export const startCheking = () => {
+
+	return async (dispatch) => {
+		
+		
+		const resp = await fetchWithToken( 'auth/renew' );
+		const body = await resp.json();
+
+		if (body.ok) {
+			localStorage.setItem('token', body.token);
+			localStorage.setItem('token-init-date', new Date().getTime());
+
+			dispatch(login({
+				uid: body.uid,
+				name: body.name
+			}))
+			
+		} else {
+			Swal.fire({
+				title: 'Error!',
+				text: `${body.msg}`,
+				icon: 'error',
+				confirmButtonText: 'Salir'
+			});
+
+			dispatch( checkingFinish() )
+		}
+
+	}
+
+}
+
+const checkingFinish = () => ({
+	type: types.authCheckingFinish
+})

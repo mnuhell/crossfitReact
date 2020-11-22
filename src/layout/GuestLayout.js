@@ -1,15 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
+import { startCheking } from '../../src/actions/auth';
+
 
 
 
 const GuestLayout = ( props ) => {
 
     const { routes } = props;
-    const { user } = "user";
+    const { user } = "user"; 
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        
+        dispatch( startCheking() )
+        
+    }, [dispatch])
     
 
     // if(user.logged && user.role.name === "user") {

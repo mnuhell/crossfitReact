@@ -3,6 +3,7 @@ import { fetchWithoutToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
 import withRseactContent from 'sweetalert2-react-content';
+import { applyMiddleware } from 'redux';
 
 const errorLogin = withRseactContent(Swal);
 
@@ -37,9 +38,38 @@ export const startLogin = (email, password) => {
 	}	
 }
 
-const login = ( user ) => ({
+const login = (user) => ({
 
 	type: types.authLogin,
 	payload: user
 
-})
+});
+
+
+export const startRegister = ( user ) => {
+
+	return async (dispatch) => {
+
+		const resp = await fetchWithoutToken('auth/new', user, 'POST');
+		const body = await resp.json();
+
+		if (body.ok) {
+			localStorage.setItem('token', body.token);
+			localStorage.setItem('token-init-date', new Date().getTime());
+
+			dispatch(login({
+				uid: body.uid,
+				name: body.name
+			}))
+			
+		} else {
+			Swal.fire({
+				title: 'Error!',
+				text: `${body.msg}`,
+				icon: 'error',
+				confirmButtonText: 'Salir'
+			})
+		}
+		
+	}
+}	

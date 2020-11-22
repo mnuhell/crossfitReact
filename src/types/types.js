@@ -1,15 +1,17 @@
 export const types = {
 
-    login: '[AUTH LOGIN] login',
-    logout: '[AUTH LOGOUT] logout',
-    persistLogin: '[AUTH PERSISTLOGIN] persistLogin',
+    uiOpenModal: '[ui] Open modal',
+    uiCloseModal: '[ui] Close modal',
 
-    loading: '[ LOADING ] loading',
 
-    updateUser: '[ USER ] updateUser',
 
-    savedClases: '[ CLASES ] getClases',
-    reserva: '[ CLASES ] reserva',
-    deleteClase: '[ CLASES ] deleteClase',
+
+    authChecking: '[auth] Checking login state',
+    authCheckingFinish: '[auth] Finish checking login state',
+    authStartLogin: '[auth] Start Login',
+    authLogin: '[auth] Login',
+    authStartRegister: '[auth] start register',
+    authStartTokenRenew: '[auth] start register',
+    authLogout: '[auth] Logout'
 
 }

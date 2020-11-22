@@ -1,22 +1,12 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { authReducer } from '../reducers/authReducer';
-import { claseReducers } from '../reducers/clasesReducers';
-import { loadingReducers } from '../reducers/loadingReducers';
-import {userReducers} from "../reducers/userReducer";
+import { createStore, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { rootReducer } from '../reducers/rootReducer';
 
-
-const composeEnhancers = ((typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose);
-
-const reducers = combineReducers({
-    auth: authReducer,
-    loading: loadingReducers,
-    clases: claseReducers,
-    user: userReducers
-});
+const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 export const store = createStore(
-    reducers,
+    rootReducer,
     composeEnhancers(
-        applyMiddleware( thunk ),
-));
+        applyMiddleware(thunk)
+    )
+);

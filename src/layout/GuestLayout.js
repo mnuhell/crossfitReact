@@ -9,34 +9,35 @@ import { UserHome } from '../pages/user/UserHome';
 const GuestLayout = ( props ) => {
 
     const { routes } = props;
-    const {user} = useContext( AuthContext );
+    const { user } = "user";
+    
 
-    if(user.logged && user.role.name === "user") {
-        return (
-            <>
-                <Route path="/user" component={UserHome} />
-                <Redirect to="/user" />
-            </>
-        )
-    }
+    // if(user.logged && user.role.name === "user") {
+    //     return (
+    //         <>
+    //             <Route path="/user" component={UserHome} />
+    //             <Redirect to="/user" />
+    //         </>
+    //     )
+    // }
 
-    if(user.logged && user.role.name === "admin") {
-        return (
-            <>
-                <Route path="/admin" component={AdminHome} />
-                <Redirect to="/admin" />
-            </>
-        )
-    }
+    // if(user.logged && user.role.name === "admin") {
+    //     return (
+    //         <>
+    //             <Route path="/admin" component={AdminHome} />
+    //             <Redirect to="/admin" />
+    //         </>
+    //     )
+    // }
 
-    if(user.logged && user.role.name === "superadmin") {
-        return (
-            <>
-                <Route path="/superadmin" component={AdminHome} />
-                <Redirect to="/superadmin" />
-            </>
-        )
-    }
+    // if(user.logged && user.role.name === "superadmin") {
+    //     return (
+    //         <>
+    //             <Route path="/superadmin" component={AdminHome} />
+    //             <Redirect to="/superadmin" />
+    //         </>
+    //     )
+    // }
 
     return (
         <>

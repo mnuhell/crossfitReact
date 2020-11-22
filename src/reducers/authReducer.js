@@ -1,38 +1,23 @@
-import {types} from '../types/types';
+import { types } from "../types/types";
 
 const initialState = {
-    access_token: '',
-    user_id: '',
-    url_avatar: '',
-    username: '',
-    role: {
-        id: 0,
-        name: ''
-    },
-    token_type: 'Bearer',
-    expires_at: '',
-    logged: false
+    checking: true,
 }
 
-export const authReducer = ( state = initialState, action) => {
+export const authReducer = ( state = initialState, action ) => {
 
-    switch(action.type) {
-        case types.login: {
+    switch (action.type) {
 
-            return{
-                ...action.payload,
-                logged: true
+        case types.authLogin: 
+            return {
+                ...state,
+                checking: false,
+                ...action.payload
             }
-        }
-        case types.logout: {
-            return{
-                ...action.payload,
-                logged: false
-            }
-        }
-
-        default: 
+        
+        default:
             return state;
+            break;
     }
 
 }

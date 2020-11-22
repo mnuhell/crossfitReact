@@ -1,45 +1,30 @@
-import React, { useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import useForm from '../hooks/useForm';
-import { login } from '../../actions/auth'
 import {AXIOSINSTANCE, LOGIN} from '../../api/endpoint/config';
 import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
-import { loading } from '../../actions/loading';
-import {Loading} from '../../components/Loading';
-import { AuthContext } from '../../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { startLogin } from '../../actions/auth';
 
 export const Login = () => {
+
+    const dispatch = useDispatch();
     
-    const dispatchLoading = useDispatch();
-    const loadingComponent = useSelector(state => state.loading)
     const [ formValues, handleInputChange ] = useForm({
-        email: 'user@teddyminds.es',
+        email: 'superadmin@dgmail.com',
         password: 'dev12345678'
     })
     const { email, password } = formValues;
-
-    const { dispatch } = useContext(AuthContext)
     
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
-        dispatchLoading( loading(true) )
-        await AXIOSINSTANCE.post(`${LOGIN}`, formValues)
-        .then( user => {
-            dispatchLoading( loading(false) )
-            user.data.logged = true;
-            dispatch( login( user.data ) )
-            localStorage.setItem('user', JSON.stringify(user.data) );
-            
-        }).catch( error => {
-            console.log(error)
-        })
+        dispatch( startLogin(email, password) )
         
     }
 
     return (
-        loadingComponent.active ? <Loading /> : 
+         
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
             <div className="login__content sm:w-1/3">
                 <div className="logo flex mb-5 justify-center">
@@ -71,7 +56,7 @@ export const Login = () => {
                     <button className="bg-blue-50 hover:bg-blue-100 text-blue-500  py-1 px-6 border rounded shadow items-end" type="submit">
                         entrar
                     </button>
-                    <Link to="/registrar" className="bg-blue-50 hover:bg-blue-100 text-blue-500 py-1 px-6 border rounded shadow items-end" type="submit">
+                    <Link to="/register" className="bg-blue-50 hover:bg-blue-100 text-blue-500 py-1 px-6 border rounded shadow items-end" type="submit">
                         nuevo usuario
                     </Link>
                     </div>

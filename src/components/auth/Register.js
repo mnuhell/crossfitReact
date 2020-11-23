@@ -16,9 +16,9 @@ export const Register = () => {
         name: "Manuel",
         email: 'm.villa@gamil.com',
         telefono: '65034567890',
-        role: '9358u409587',
         password: 'dev12345678',
-        repeatPassword: 'dev12345678'
+        repeatPassword: 'dev12345678',
+        role: '9358u409587'
     });
 
     const { name, email, telefono, password, repeatPassword } = formValues;
@@ -32,7 +32,7 @@ export const Register = () => {
             return;
         } 
 
-        if (name.trim() === "" || email === "" || password === "" || telefono === "") {
+        if (name.trim() === "" || email.trim() === "" || password.trim() === "" || telefono.trim() === "") {
             setError(true)
             setTextError('Por favor, los campos no pueden estar vacios');
             return;

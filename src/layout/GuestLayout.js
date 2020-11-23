@@ -11,8 +11,7 @@ import { startCheking } from '../../src/actions/auth';
 
 const GuestLayout = ( props ) => {
 
-    const { routes } = props;
-    const { user } = "user"; 
+    const { routes } = props; 
 
     const dispatch = useDispatch();
 

@@ -19,7 +19,8 @@ export const startLogin = (email, password) => {
 			// Accion añadir al store
 			dispatch(login({
 				uid: body.uid,
-				name: body.name
+				name: body.name,
+				role: body.role
 			}))
 
 		} else {
@@ -55,7 +56,8 @@ export const startRegister = ( user ) => {
 
 			dispatch(login({
 				uid: body.uid,
-				name: body.name
+				name: body.name,
+				role: body.role
 			}))
 			
 		} else {
@@ -84,7 +86,8 @@ export const startCheking = () => {
 
 			dispatch(login({
 				uid: body.uid,
-				name: body.name
+				name: body.name,
+				role: body.role
 			}))
 			
 		} else {

@@ -42,7 +42,8 @@ export const Register = () => {
             name: name,
             email: email,
             telefono: telefono,
-            password: password
+            password: password,
+            
         }))
     
     }

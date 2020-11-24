@@ -9,12 +9,12 @@ import { Clase } from '../../components/clases/Clase';
 const UserReserva = () => {
 
     
-    const loadingState = useSelector(state => state.loading)
+    const { checking } = useSelector(state => state.auth)
     const clases = JSON.parse(localStorage.getItem('clases'));
     
     return (
 
-        loadingState.active ? <LoadingApp /> :
+        checking ? <LoadingApp /> :
         <>
         {
             clases

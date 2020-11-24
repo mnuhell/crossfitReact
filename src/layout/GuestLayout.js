@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
 import { startCheking } from '../../src/actions/auth';
@@ -9,45 +8,50 @@ import { startCheking } from '../../src/actions/auth';
 
 
 
-const GuestLayout = ( props ) => {
+const GuestLayout = (props) => {
 
-    const { routes } = props; 
+    const { routes } = props;
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         
-        dispatch( startCheking() )
+        dispatch(startCheking())
         
     }, [dispatch])
-    
 
-    // if(user.logged && user.role.name === "user") {
-    //     return (
-    //         <>
-    //             <Route path="/user" component={UserHome} />
-    //             <Redirect to="/user" />
-    //         </>
-    //     )
-    // }
+    const { cheking, uid, role } = useSelector(state => state.auth);
 
-    // if(user.logged && user.role.name === "admin") {
-    //     return (
-    //         <>
-    //             <Route path="/admin" component={AdminHome} />
-    //             <Redirect to="/admin" />
-    //         </>
-    //     )
-    // }
-
-    // if(user.logged && user.role.name === "superadmin") {
-    //     return (
-    //         <>
-    //             <Route path="/superadmin" component={AdminHome} />
-    //             <Redirect to="/superadmin" />
-    //         </>
-    //     )
-    // }
+    console.log(role)
+    if (!!role) {
+        if(role.name === 'user') {
+            return (
+                <>
+                    <Route path="/user" component={UserHome} />
+                    <Redirect to="/user" />
+                </>
+            )
+        }
+   
+        if(role.name === "admin") {
+            return (
+                <>
+                    <Route path="/admin" component={AdminHome} />
+                    <Redirect to="/admin" />
+                </>
+            )
+        }
+   
+        if(role.name === "superadmin") {
+            return (
+                <>
+                   <Route path="/superadmin" component={AdminHome} />
+                    <Redirect to="/superadmin" />
+               </>
+           )
+       }
+    }
+     
 
     return (
         <>

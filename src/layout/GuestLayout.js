@@ -12,17 +12,8 @@ const GuestLayout = (props) => {
 
     const { routes } = props;
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        
-        dispatch(startCheking())
-        
-    }, [dispatch])
-
     const { cheking, uid, role } = useSelector(state => state.auth);
 
-    console.log(role)
     if (!!role) {
         if(role.name === 'user') {
             return (

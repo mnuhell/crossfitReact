@@ -1,19 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'; 
 import { Link } from 'react-router-dom';
-
 import clases from '../../../src/assets/clases.png';
 import configImagen from '../../../src/assets/config_imagen.png';
-import { getClases } from '../../actions/clases';
-import { loading } from '../../actions/loading';
 
 export const UserHome = () => {
 
     const dispatch = useDispatch()
 
     const handleLoading = () => {
-        dispatch( loading(true) )
-        dispatch( getClases() )
+        console.log('Reserva de clases')
     }
 
     return (

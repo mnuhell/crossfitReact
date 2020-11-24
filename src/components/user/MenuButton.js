@@ -7,10 +7,8 @@ export const MenuButton = () => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        
-        console.log('Salimos')
-        dispatch( startLogout() );
-        
+    
+        dispatch( startLogout() );   
     }
 
     const auth = useSelector(state => state.auth)

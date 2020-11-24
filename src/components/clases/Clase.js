@@ -1,21 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'
-import { DateTime } from "luxon";
-import { reservaClase } from '../../actions/clases';
 
 
-export const Clase = ( clase ) => {
-
-    const dispatch = useDispatch()
+export const Clase = (clase) => {
+    
 
     const handleReserva = () => {
-        dispatch( reservaClase( clase ))
-    }
-
-    const getDate = ( fecha ) => {
-         const dayClasse = DateTime.fromISO(clase.inicio.replace(' ', 'T'));
-               dayClasse.setLocale('es').toFormat('yyyy LLL dd');
-        return dayClasse.toLocaleString(DateTime.DATE_MED);
+        
+        console.log('reserva de clase')
     }
 
 
@@ -25,7 +16,7 @@ export const Clase = ( clase ) => {
                 <span title="Numero máximo de alumnos por clase" className="absolute top-0 left-0 clase__usuarios-maximos py-1 px-3 bg-orange-500 text-2xl">
                     { clase.maximo_alumnos}
                 </span>
-            <h3 className="text-center rounded px-6 text-white">{ getDate(clase.incio) }</h3>
+            <h3 className="text-center rounded px-6 text-white">{  }</h3>
                 <span title="Usuarios " className="absolute top-0 right-0 clase__usuarios-count bg-green-500 py-1 px-3 text-2xl">
                     {clase.users_count}
                 </span>

@@ -25,7 +25,6 @@ export const eventStartLoading = () => {
             const body = await resp.json();
 
             const events = body.events;
-
             dispatch( eventLoaded(events) )
 
         } catch (error) {

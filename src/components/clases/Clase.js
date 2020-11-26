@@ -1,16 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { DateTime } from 'luxon';
+import { addUserClass } from '../../actions/events';
 
 
 export const Clase = (clase) => {
     
-
+    const dispatch = useDispatch();
     const handleReserva = () => {
         
-        console.log('reserva de clase')
+        dispatch( addUserClass() )
     }
-
-    console.log(clase.users.length)
 
     return (
         <div className="clase rounded bg-blue-500 text-white px-5 h-80 relative">
@@ -38,7 +38,7 @@ export const Clase = (clase) => {
                 ))
                 : 
                 <div className="clase__usuarios-registrados mb-10 py-5 grid p-1">
-                <h1>Registrate el primero hoy!</h1>
+                <h1>Se el primero en registrarte!</h1>
                 </div>
             }
             

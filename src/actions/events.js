@@ -33,6 +33,14 @@ export const eventStartLoading = () => {
     }
 }
 
+export const addUserClass = (event) => {
+
+    return async(dispatch) => {
+
+        console.log('Usuario registrado')
+    }
+}
+
 
 const eventLoaded = ( events ) => ({
 

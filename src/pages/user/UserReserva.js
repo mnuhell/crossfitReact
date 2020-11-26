@@ -22,7 +22,7 @@ const UserReserva = () => {
 
     setTimeout(() => {
         dispatch( loading(false))
-    }, 1000)
+    }, 500)
     
     return (
         

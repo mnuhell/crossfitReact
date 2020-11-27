@@ -16,7 +16,7 @@ export const startLogin = (email, password) => {
 			localStorage.setItem('token', body.token);
 			localStorage.setItem('initial-token', new Date().getTime());
 			
-			// Accion añadir al store
+			
 			dispatch(login({
 				uid: body.uid,
 				name: body.name,

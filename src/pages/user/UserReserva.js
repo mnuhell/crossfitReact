@@ -21,7 +21,8 @@ const UserReserva = () => {
     }, [dispatch]);
 
     setTimeout(() => {
-        dispatch( loading(false))
+        dispatch(loading(false))
+        dispatch( eventStartLoading() )
     }, 500)
     
     return (

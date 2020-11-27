@@ -1,5 +1,6 @@
 import { fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
+import Swal from 'sweetalert2';
 
 
 export const eventAddNew = (event) => ({
@@ -37,7 +38,23 @@ export const addUserClass = (event) => {
 
     return async(dispatch) => {
 
-        console.log('Usuario registrado')
+        try {
+            const resp = await fetchWithToken(`events/add-user/${event.id}`, event, 'PUT');
+            const body = await resp.json();
+            
+            if (body.create) {
+                Swal.fire({
+                    title: 'Apuntado',
+                    text: `${body.msg}`,
+                    icon: 'success',
+                    confirmButtonText: 'Salir'
+                })
+            }
+            
+        } catch (error) {
+            console.log(error)
+        } 
+        
     }
 }
 

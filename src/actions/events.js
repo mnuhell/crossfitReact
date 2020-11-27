@@ -58,6 +58,31 @@ export const addUserClass = (event) => {
     }
 }
 
+export const deleteUserClass = (event) => {
+    
+    return async (dispatch) => {
+        
+        try {
+            
+            const resp = await fetchWithToken(`events/delete-user/${event.id}`, event, 'PUT');
+            const body = await resp.json();
+
+            if (body.ok) {
+                Swal.fire({
+                    title: 'Airfit',
+                    text: `${body.msg}`,
+                    icon: 'delete',
+                    confirmButtonText: 'Salir'
+                })
+            }
+
+        } catch(error) {
+            console.log(error)
+        }
+    }
+   
+}
+
 
 const eventLoaded = ( events ) => ({
 

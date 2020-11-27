@@ -69,9 +69,9 @@ export const deleteUserClass = (event) => {
 
             if (body.ok) {
                 Swal.fire({
-                    title: 'Airfit',
+                    title: 'borrado',
                     text: `${body.msg}`,
-                    icon: 'delete',
+                    icon: 'success',
                     confirmButtonText: 'Salir'
                 })
             }

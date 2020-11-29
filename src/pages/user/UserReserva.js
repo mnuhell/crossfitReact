@@ -23,7 +23,7 @@ const UserReserva = () => {
 
     setTimeout(() => {
         dispatch(loading(false))
-        dispatch( eventStartLoading() )
+        
     }, 500)
 
         let endDate = DateTime.fromISO();

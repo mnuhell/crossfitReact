@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { DateTime } from 'luxon';
-import { addUserClass, deleteUserClass } from '../../actions/events';
+import { addUserClass, deleteUserClass, eventStartLoading } from '../../actions/events';
 
 
 export const Clase = (clase) => {
@@ -10,12 +10,19 @@ export const Clase = (clase) => {
 
     const handleReserva = () => {
         
-        dispatch( addUserClass( clase ) )
+        dispatch(addUserClass(clase))
+        setTimeout(function () {
+            dispatch( eventStartLoading() )
+        }, 200)
+        
     }
 
     const handleDelete = () => {
 
-        dispatch( deleteUserClass( clase ) )
+        dispatch(deleteUserClass(clase))
+        setTimeout(function () {
+            dispatch( eventStartLoading() )
+        }, 200)
     }
 
     const getColorsUsers = ( clase ) => {

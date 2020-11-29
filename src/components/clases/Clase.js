@@ -58,7 +58,7 @@ export const Clase = (clase) => {
     
                 <div className="mx-auto w-full">
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
-                    <h1 className="title uppercase text-center text-2xl">{clase.type}</h1>
+                    <h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
                     <h1 className="title uppercase text-center text-md -mt-2 mb-1">{ DateTime.fromISO(clase.start).setLocale('es').toFormat('t') } - { DateTime.fromISO(clase.end).setLocale('es').toFormat('t') }</h1>
                     <h1 className="title uppercase text-center text-xs mb-2">{DateTime.fromISO(clase.start).setLocale('es').toFormat('EEEE')} <span className="block">🗓</span></h1>
                  </div>

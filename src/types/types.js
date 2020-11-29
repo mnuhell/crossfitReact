@@ -9,6 +9,12 @@ export const types = {
     eventAddNew: '[ event ] Add new',
     eventStartLoading: '[ event ] Start Loading',
     eventAddUser: '[ event ] Add user Event',
+
+
+    bonoGetAll: '[ bono ] Get All bonos ',
+    bonoUserActive: ' [ bono ] Get Bono User Active',
+
+
     
 
 

@@ -23,14 +23,11 @@ const UserReserva = () => {
 
     setTimeout(() => {
         dispatch(loading(false))
-        
     }, 500)
 
         let endDate = DateTime.fromISO();
 
         const eventsFilterDate = events.filter(event => DateTime.fromISO(event.start).setLocale('es').ts >= endDate.ts);
-
-        console.log(eventsFilterDate)
     
     return (
     

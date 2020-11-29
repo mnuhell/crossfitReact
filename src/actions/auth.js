@@ -11,16 +11,16 @@ export const startLogin = (email, password) => {
 
 		const resp = await fetchWithoutToken('auth', { email, password }, 'POST');
 		const body = await resp.json();
-
+		
 		if (body.ok) {
 			localStorage.setItem('token', body.token);
 			localStorage.setItem('initial-token', new Date().getTime());
 			
-			
 			dispatch(login({
 				uid: body.uid,
 				name: body.name,
-				role: body.role
+				role: body.role,
+				bono: body.bono	
 			}))
 
 		} else {
@@ -68,7 +68,8 @@ export const startRegister = ( user ) => {
 			dispatch(login({
 				uid: body.uid,
 				name: body.name,
-				role: body.role
+				role: body.role,
+				bono: body.bono
 			}))
 			
 		} else {
@@ -98,7 +99,8 @@ export const startCheking = () => {
 			dispatch(login({
 				uid: body.uid,
 				name: body.name,
-				role: body.role
+				role: body.role,
+				bono: body.bono
 			}))
 			
 		} else {

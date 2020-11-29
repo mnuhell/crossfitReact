@@ -17,11 +17,12 @@ export const Register = () => {
         email: 'm.villa@gamil.com',
         telefono: '65034567890',
         password: 'dev12345678',
+        bono: true,
         repeatPassword: 'dev12345678',
         role: '9358u409587'
     });
 
-    const { name, email, telefono, password, repeatPassword } = formValues;
+    const { name, email, telefono, bono, password, repeatPassword } = formValues;
 
     const handleSubmitregister = (e) => {
         e.preventDefault();
@@ -42,6 +43,7 @@ export const Register = () => {
             name: name,
             email: email,
             telefono: telefono,
+            bono: bono,
             password: password,
             
         }))

@@ -89,12 +89,13 @@ export const Clase = (clase) => {
                 
                     <div className="clase_buttons grid w-full grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
                         
-                        <button
+                    <button
                         onClick={ handleDelete }
-                        className="bg-red-600 py-2 float-righ uppercase"> Bórrame </button>
+                        className="bg-red-600 py-2 float-righ uppercase"> Bórrame
+                    </button>
                     <button
                         onClick={ handleReserva }
-                            className=" bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Apuntame </button>
+                        className=" bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Apuntame </button>
                     </div>
             </div>
     

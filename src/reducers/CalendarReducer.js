@@ -22,7 +22,7 @@ const initialState = {
 }
 
 
-export const CalendarReducer = ( state = initialState, action ) => {
+export const calendarReducer = ( state = initialState, action ) => {
 
 
 	switch (action.type) {

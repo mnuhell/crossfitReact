@@ -73,7 +73,7 @@ export const deleteUserClass = (event) => {
                     text: `${body.msg}`,
                     icon: 'success',
                     confirmButtonText: 'Salir'
-                })
+                });
             }
 
         } catch(error) {

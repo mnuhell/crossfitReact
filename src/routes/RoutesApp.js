@@ -15,14 +15,6 @@ const RoutesApp = () => {
         
     }, [dispatch])
 
-    const { cheking, uid, role } = useSelector(state => state.auth);
-
-    if (cheking) {
-        return (
-            <h5 className="mb-20"> Espere </h5>
-        )
-    }
-
     return (
         <>
         <Router>

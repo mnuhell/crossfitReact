@@ -4,6 +4,7 @@ import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startLogin } from '../../actions/auth';
+import { loading } from '../../actions/loading';
 
 export const Login = () => {
 
@@ -18,7 +19,10 @@ export const Login = () => {
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
-        dispatch( startLogin(email, password) )
+        dispatch(startLogin(email, password))
+
+        dispatch(loading(true))
+        
         
     }
 

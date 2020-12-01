@@ -16,34 +16,45 @@ const UserReserva = () => {
     const active = useSelector(state => state.loading.active);
 
     useEffect(() => {
-        
+
         dispatch(eventStartLoading());
-        
+
     }, [dispatch]);
 
     setTimeout(() => {
         dispatch(loading(false))
-    }, 500)
+	}, 500)
 
-        let endDate = DateTime.fromISO();
+	const currentMonth = () => {
 
-        const eventsFilterDate = events.filter(event => DateTime.fromISO(event.start).setLocale('es').ts >= endDate.ts);
-    
+		return DateTime.local().setLocale('es').toFormat('MMMM');
+	}
+
+	const filterDate = () => {
+
+		let endDate = DateTime.fromISO();
+        return events.filter(event => DateTime.fromISO(event.start).setLocale('es').toMillis >= endDate.toMillis);
+	}
+
+
     return (
-    
+
         active ? <LoadingApp /> :
             <>
-    
-                { (eventsFilterDate.length != 0)
+
+                { (filterDate().length != 0)
                     ? <>
-                        <h2 className="text-center text-blue-900 pt-24 uppercase text-2xl font-extrabold border-blue-800 ">Clases disponibles</h2>
+						<h2 className="text-center text-blue-900 pt-24 uppercase text-2xl font-extrabold border-blue-800 ">
+							Clases disponibles
+							{/* <p className="-mt-3 ">{ currentMonth() }</p> */}
+							</h2>
                         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 gap-y-6 setting pt-5 pb-16 px-6">
-                            {eventsFilterDate.map(event => (<Clase key={event.id} {...event} />))}
+                            {filterDate().map(event => (<Clase key={event.id} {...event} />))}
                         </div>
                     </>
                     : <Error header="Lo sentimos! " body=" No hay clases previstas para esta semana" />
                 }
-        
+
             </>
     )
 }

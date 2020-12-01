@@ -5,16 +5,16 @@ import { addUserClass, deleteUserClass, eventStartLoading } from '../../actions/
 
 
 export const Clase = (clase) => {
-    
+
     const dispatch = useDispatch();
 
     const handleReserva = () => {
-        
+
         dispatch(addUserClass(clase))
         setTimeout(function () {
             dispatch( eventStartLoading() )
         }, 200)
-        
+
     }
 
     const handleDelete = () => {
@@ -30,7 +30,7 @@ export const Clase = (clase) => {
         let colors = 'bg-green-500';
         const totalUsers = clase.userclase;
         const userRegistrados = clase.users;
-        
+
         if ( userRegistrados <= ((totalUsers * 20) / 100)) {
             colors = 'bg-green-500';
         } else if(userRegistrados <= ((totalUsers * 50) / 100)) {
@@ -38,11 +38,11 @@ export const Clase = (clase) => {
         } else if(userRegistrados === ((totalUsers * 100) / 100)) {
             colors = 'bg-red-600';
         }
-       
+
         return colors;
 
     }
-        
+
         return (
             <div className="clase rounded bg-blue-500 text-white h-80 relative">
                 <div className="clase__usuarios block h-8">
@@ -53,7 +53,7 @@ export const Clase = (clase) => {
                                 <small className="block text-sm -mt-1">max. por clase</small>
                             </span>
                         </h3>
-                        
+
                         </div>
                 <h3 className="text-center rounded-full px-6 text-white-600">
                         <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count ${ getColorsUsers(clase)} py-1 px-5 text-2xl`}>
@@ -62,14 +62,15 @@ export const Clase = (clase) => {
                         </span>
                 </h3>
                 </div>
-    
+
                 <div className="mx-auto w-full">
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
-                    <h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
+					<h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
+					<h1 className="title uppercase text-center text-xs -mt-1 mb-1">{DateTime.fromISO(clase.start).setLocale('es').toFormat('DDD')}</h1>
                     <h1 className="title uppercase text-center text-md -mt-2 mb-1">{ DateTime.fromISO(clase.start).setLocale('es').toFormat('t') } - { DateTime.fromISO(clase.end).setLocale('es').toFormat('t') }</h1>
-                    <h1 className="title uppercase text-center text-xs mb-2">{DateTime.fromISO(clase.start).setLocale('es').toFormat('EEEE')} <span className="block">🗓</span></h1>
+
                  </div>
-    
+
                 {
                     clase.users.length > 0 ?
                     <div className="clase__usuarios-registrados py-5 px-5 grid grid-cols-8 sm:grid-cols-8 md:grid-cols-8  lg:grid-cols-6 xl:grid-cols-12 gap-1 gap-y-1">
@@ -81,25 +82,25 @@ export const Clase = (clase) => {
                             ))
                         }
                     </div>
-                    : 
+                    :
                     <div className="clase__usuarios-registrados py-5 px-5 grid">
                         <h1 className="uppercase">¡ registrate ! </h1>
                     </div>
                 }
-                
+
                     <div className="clase_buttons grid w-full grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
-                        
-                    <button
-                        onClick={ handleDelete }
-                        className="bg-red-600 py-2 float-righ uppercase"> Bórrame
-                    </button>
+
+                        <button
+                            onClick={ handleDelete }
+                            className="bg-red-600 py-2 float-righ uppercase"> Bórrame
+                        </button>
                     <button
                         onClick={ handleReserva }
                         className=" bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Apuntame </button>
                     </div>
             </div>
-    
+
         )
-    
-    
+
+
 }

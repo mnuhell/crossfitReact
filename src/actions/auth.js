@@ -11,16 +11,17 @@ export const startLogin = (email, password) => {
 
 		const resp = await fetchWithoutToken('auth', { email, password }, 'POST');
 		const body = await resp.json();
-		
+
 		if (body.ok) {
 			localStorage.setItem('token', body.token);
 			localStorage.setItem('initial-token', new Date().getTime());
-			
+
 			dispatch(login({
 				uid: body.uid,
 				name: body.name,
 				role: body.role,
-				bono: body.bono	
+				bono: body.bono,
+				bonos: body.bonos
 			}))
 
 		} else {
@@ -32,7 +33,7 @@ export const startLogin = (email, password) => {
 			})
 		}
 
-	}	
+	}
 }
 
 const login = (user) => ({
@@ -45,7 +46,7 @@ const login = (user) => ({
 export const startLogout = () => {
 
 	return (dispatch) => {
-		
+
 		localStorage.clear();
 		dispatch( logout() )
 	}
@@ -69,9 +70,9 @@ export const startRegister = ( user ) => {
 				uid: body.uid,
 				name: body.name,
 				role: body.role,
-				bono: body.bono
+				bonos: body.bonos
 			}))
-			
+
 		} else {
 			Swal.fire({
 				title: 'Error!',
@@ -80,15 +81,15 @@ export const startRegister = ( user ) => {
 				confirmButtonText: 'Salir'
 			})
 		}
-		
+
 	}
-}	
+}
 
 export const startCheking = () => {
 
 	return async (dispatch) => {
-		
-		
+
+
 		const resp = await fetchWithToken( 'auth/renew' );
 		const body = await resp.json();
 
@@ -100,9 +101,10 @@ export const startCheking = () => {
 				uid: body.uid,
 				name: body.name,
 				role: body.role,
-				bono: body.bono
+				bono: body.bono,
+				bonos: body.bonos
 			}))
-			
+
 		} else {
 			Swal.fire({
 				title: 'Error!',

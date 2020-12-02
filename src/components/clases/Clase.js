@@ -44,7 +44,7 @@ export const Clase = (clase) => {
     }
 
         return (
-            <div className="clase rounded bg-blue-500 text-white h-80 relative">
+			<div className="clase rounded bg-blue-500 text-white h-80 relative">
                 <div className="clase__usuarios block h-8">
                     <div>
                         <h3 className="text-center rounded-full h-20 px-6 text-white-600">

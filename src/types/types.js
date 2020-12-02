@@ -14,9 +14,7 @@ export const types = {
     bonoGetAll: '[ bono ] Get All bonos ',
     bonoUserActive: ' [ bono ] Get Bono User Active',
 
-
-    
-
+	classesMonth: '[ Classes ] Classes month',
 
     authCheckingFinish: '[auth] Finish checking login state',
     authStartLogin: '[auth] Start Login',
@@ -26,6 +24,6 @@ export const types = {
     authLogout: '[auth] Logout',
 
 
-    
+
 
 }

@@ -17,21 +17,21 @@ export const Register = () => {
         email: 'm.villa@gamil.com',
         telefono: '65034567890',
         password: 'dev12345678',
-        bono: true,
+		bonos:[],
         repeatPassword: 'dev12345678',
         role: '9358u409587'
     });
 
-    const { name, email, telefono, bono, password, repeatPassword } = formValues;
+    const { name, email, telefono, password, repeatPassword, bonos } = formValues;
 
     const handleSubmitregister = (e) => {
         e.preventDefault();
-        
+
         if( password !== repeatPassword) {
             setError(true)
             setTextError('las contraseñas no coinciden');
             return;
-        } 
+        }
 
         if (name.trim() === "" || email.trim() === "" || password.trim() === "" || telefono.trim() === "") {
             setError(true)
@@ -43,11 +43,11 @@ export const Register = () => {
             name: name,
             email: email,
             telefono: telefono,
-            bono: bono,
+			bonos: bonos,
             password: password,
-            
+
         }))
-    
+
     }
 
     return (
@@ -63,7 +63,7 @@ export const Register = () => {
                                 </div>
                                : ""
                     }
-                    
+
                     <div className="mb-4">
                         <label className="block text-blue-50 text-sm font-bold mb-2" htmlFor="name">
                             Nombre

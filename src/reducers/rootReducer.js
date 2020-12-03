@@ -4,11 +4,14 @@ import { authReducer } from './authReducer';
 import { calendarReducer } from './calendarReducer';
 import { loadingReducer } from './loadingReducer';
 import { userReducer } from './userReducer';
+import { clasesReducer } from './clasesReducer';
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
     auth: authReducer,
     calendar: calendarReducer,
     loading: loadingReducer,
-    user: userReducer
+	user: userReducer,
+	clases: clasesReducer
+
 })

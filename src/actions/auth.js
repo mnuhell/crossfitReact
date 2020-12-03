@@ -2,6 +2,7 @@ import React from 'react';
 import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
+import { getClasesPendingUser } from './events';
 
 
 // ACCION PARA EL LOGIN
@@ -23,6 +24,9 @@ export const startLogin = (email, password) => {
 				bono: body.bono,
 				bonos: body.bonos
 			}))
+
+
+			dispatch( getClasesPendingUser() )
 
 		} else {
 			Swal.fire({
@@ -104,6 +108,8 @@ export const startCheking = () => {
 				bono: body.bono,
 				bonos: body.bonos
 			}))
+
+			dispatch( getClasesPendingUser() )
 
 		} else {
 			Swal.fire({

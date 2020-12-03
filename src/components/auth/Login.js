@@ -5,36 +5,36 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startLogin } from '../../actions/auth';
 import { loading } from '../../actions/loading';
+import { getClasesPendingUser } from '../../actions/events';
 
 export const Login = () => {
 
     const dispatch = useDispatch();
-    
+
     const [ formValues, handleInputChange ] = useForm({
         email: 'user@gmail.com',
         password: 'dev12345678'
     })
     const { email, password } = formValues;
-    
+
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
         dispatch(startLogin(email, password))
 
-        dispatch(loading(true))
-        
-        
+		dispatch(loading(true))
+
     }
 
     return (
-         
+
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
             <div className="login__content sm:w-1/3">
                 <div className="logo flex mb-5 justify-center">
                     <Logo width="200" altTitle="Airfit App" />
                 </div>
                 <form onSubmit={ handleSubmitLogin } className="bg-blue-600 shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    
+
                     <div className="mb-4">
                         <label className="block text-blue-50 text-sm font-bold mb-2" htmlFor="email">
                             Email

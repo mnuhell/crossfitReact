@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { DateTime } from 'luxon';
-import { addUserClass, deleteUserClass, eventStartLoading } from '../../actions/events';
+import {addClass, addUserClass, deleteUserClass, descountClass, eventStartLoading} from '../../actions/events';
 
 
 export const Clase = (clase) => {
@@ -10,7 +10,8 @@ export const Clase = (clase) => {
 
     const handleReserva = () => {
 
-        dispatch(addUserClass(clase))
+        dispatch(addUserClass(clase));
+        dispatch(descountClass() )
         setTimeout(function () {
             dispatch( eventStartLoading() )
         }, 200)
@@ -20,6 +21,7 @@ export const Clase = (clase) => {
     const handleDelete = () => {
 
         dispatch(deleteUserClass(clase))
+        dispatch( addClass() );
         setTimeout(function () {
             dispatch( eventStartLoading() )
         }, 200)

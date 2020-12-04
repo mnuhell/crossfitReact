@@ -42,7 +42,7 @@ const UserReserva = () => {
         active ? <LoadingApp /> :
             <>
 
-                { (filterDate().length != 0)
+                { (filterDate().length !== 0)
                     ? <>
 						<h2 className="text-center text-blue-900 pt-24 uppercase text-2xl font-extrabold border-blue-800 ">
 							Clases disponibles

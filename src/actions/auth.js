@@ -29,7 +29,7 @@ export const startLogin = (email, password) => {
 			dispatch( getClasesPendingUser() )
 
 		} else {
-			Swal.fire({
+			await Swal.fire({
 				title: 'Error!',
 				text: `${body.msg}`,
 				icon: 'error',

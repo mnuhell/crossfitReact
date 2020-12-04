@@ -14,7 +14,11 @@ export const types = {
     bonoGetAll: '[ bono ] Get All bonos ',
     bonoUserActive: ' [ bono ] Get Bono User Active',
 
+
 	classesMonth: '[ Classes ] Classes month',
+    classesSubtractDay: '[ classes ] Classes Subtract Day ',
+    classesAddDay: '[ classes ] Classes Add Day ',
+    classesClose: '[ classes ] Classes Close ',
 
     authCheckingFinish: '[auth] Finish checking login state',
     authStartLogin: '[auth] Start Login',

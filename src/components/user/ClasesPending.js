@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 
-export const ClasesPending = ({ bonos }) => {
+export const ClasesPending = () => {
 
 	const clases = useSelector(state => state.clases);
 
@@ -12,10 +12,9 @@ export const ClasesPending = ({ bonos }) => {
 
 	return (
 
-
 		<div className={`font-body absolute -mt-2 -ml-8 rounded-full h-6 w-6 text-md ${withBono()} text-white flex items-center justify-center`}>
 			{clases.totales}
 		</div>
 
-		)
-	}
+	)
+}

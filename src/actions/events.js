@@ -126,4 +126,27 @@ const classesPending = (totales) => ({
 	type: types.bonoGetAll,
 	payload: totales
 
-})
+});
+
+
+export const descountClass = (totales) => {
+
+    return (dispatch) => {
+        console.log('restart clase')
+    }
+
+}
+export const addClass = (totales) => {
+
+    return (dispatch) => {
+
+        console.log('Add clase')
+    }
+
+
+}
+
+
+
+
+

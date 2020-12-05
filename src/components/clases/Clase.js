@@ -121,7 +121,7 @@ export const Clase = (clase) => {
                             minutes <= 30
                                     ?
                                 <button
-                                    className="bg-red-600 py-2 float-right uppercase cursor-not-allowed"> Ya no es posible borrarse
+                                    className="bg-red-600 py-2 float-right uppercase cursor-not-allowed"> Clase caducada
                                 </button>
                                     :
                                 <button
@@ -135,7 +135,7 @@ export const Clase = (clase) => {
                             userRegister()
                                 ?
                                 <button
-                                    className="bg-green-300 py-2 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Ya estas Registrado
+                                    className="bg-green-300 py-2 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Registrado
                                 </button>
                                 :
                                 <button

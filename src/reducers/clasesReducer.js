@@ -3,7 +3,8 @@ const { types } = require("../types/types")
 
 const initialState = {
 
-	totales: 0
+	totales: 0,
+	eventUser: []
 
 }
 

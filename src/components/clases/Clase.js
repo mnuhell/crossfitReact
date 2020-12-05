@@ -12,7 +12,7 @@ import {
 export const Clase = (clase) => {
 
     const dispatch = useDispatch();
-    const [ disabled, setDisabled ] = useState(false);
+    const { uid } = useSelector(state => state.auth)
 
     const handleReserva = () => {
 
@@ -20,9 +20,9 @@ export const Clase = (clase) => {
         dispatch( getClasesPendingUser() )
         setTimeout(function () {
             dispatch( eventStartLoading() )
+            dispatch( getClasesPendingUser() )
         }, 200)
 
-        setDisabled(true)
     }
 
     const handleDelete = () => {
@@ -31,9 +31,9 @@ export const Clase = (clase) => {
         dispatch( getClasesPendingUser() );
         setTimeout(function () {
             dispatch( eventStartLoading() )
+            dispatch( getClasesPendingUser() )
         }, 200)
 
-        setDisabled(false)
     }
 
     const getColorsUsers = ( clase ) => {
@@ -51,6 +51,16 @@ export const Clase = (clase) => {
         }
 
         return colors;
+
+    }
+
+    const userRegister = () => {
+
+        const usuario =  clase.users.filter( user => user._id === uid);
+
+
+
+        return usuario.length > 0
 
     }
 
@@ -105,12 +115,19 @@ export const Clase = (clase) => {
                             onClick={ handleDelete }
                             className="bg-red-600 py-2 float-right uppercase"> Bórrame
                         </button>
+                        {
+                            userRegister()
+                                ?
+                                <button
+                                    className="bg-green-300 py-2 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Registrado
+                                </button>
+                                :
+                                <button
+                                    onClick={ handleReserva }
+                                    className="bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Regístrate
+                                </button>
+                        }
 
-                        <button
-                            disabled={disabled}
-                            onClick={ handleReserva }
-                            className="bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Apuntame
-                        </button>
 
                     </div>
             </div>

@@ -42,15 +42,6 @@ export const addUserClass = (event) => {
             const resp = await fetchWithToken(`events/add-user/${event.id}`, event, 'PUT');
             const body = await resp.json();
 
-            if (body.create) {
-                Swal.fire({
-                    title: 'Apuntado',
-                    text: `${body.msg}`,
-                    icon: 'success',
-                    confirmButtonText: 'Salir'
-                })
-            }
-
         } catch (error) {
             console.log(error)
         }
@@ -66,15 +57,6 @@ export const deleteUserClass = (event) => {
 
             const resp = await fetchWithToken(`events/delete-user/${event.id}`, event, 'PUT');
             const body = await resp.json();
-
-            if (body.ok) {
-                Swal.fire({
-                    title: 'borrado',
-                    text: `${body.msg}`,
-                    icon: 'success',
-                    confirmButtonText: 'Salir'
-                });
-            }
 
         } catch(error) {
             console.log(error)
@@ -100,16 +82,6 @@ export const getClasesPendingUser = () => {
 
 			const resp = await fetchWithToken('bonos/count-classes');
 			const clases = await resp.json();
-			if (!clases.ok) {
-				Swal.fire({
-
-                    title: 'Error con los bonos',
-                    text: `${clases.msg}`,
-                    icon: 'error',
-                    confirmButtonText: 'Salir'
-                })
-
-			}
 
 			const { totales } = clases
             dispatch( classesPending(totales) )

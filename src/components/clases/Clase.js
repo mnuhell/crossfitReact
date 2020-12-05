@@ -12,7 +12,17 @@ import {
 export const Clase = (clase) => {
 
     const dispatch = useDispatch();
-    const { uid } = useSelector(state => state.auth)
+    const { uid } = useSelector(state => state.auth);
+    const [ disableButton, setDisableButton] = useState( false)
+
+    const actual = DateTime.local().setLocale('es');
+    const final =  DateTime.fromISO(clase.end).setLocale('es')
+
+    const { minutes } = final.diff(actual, 'minute')
+
+
+    //console.log(actual)
+    //console.log(final)
 
     const handleReserva = () => {
 
@@ -57,10 +67,7 @@ export const Clase = (clase) => {
     const userRegister = () => {
 
         const usuario =  clase.users.filter( user => user._id === uid);
-
-
-
-        return usuario.length > 0
+        return usuario.length > 0 || clase.userclase === clase.users.length
 
     }
 
@@ -110,16 +117,25 @@ export const Clase = (clase) => {
                 }
 
                     <div className="clase_buttons grid w-full grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
+                        {
+                            minutes <= 30
+                                    ?
+                                <button
+                                    className="bg-red-600 py-2 float-right uppercase cursor-not-allowed"> Ya no es posible borrarse
+                                </button>
+                                    :
+                                <button
+                                    onClick={ handleDelete }
+                                    className="bg-red-600 py-2 float-right uppercase"> No puedo ir
+                                </button>
 
-                        <button
-                            onClick={ handleDelete }
-                            className="bg-red-600 py-2 float-right uppercase"> Bórrame
-                        </button>
+                        }
+
                         {
                             userRegister()
                                 ?
                                 <button
-                                    className="bg-green-300 py-2 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Registrado
+                                    className="bg-green-300 py-2 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Ya estas Registrado
                                 </button>
                                 :
                                 <button

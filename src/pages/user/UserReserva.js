@@ -32,10 +32,9 @@ const UserReserva = () => {
 
 	const filterDate = () => {
 
-		let endDate = DateTime.fromISO();
-        return events.filter(event => DateTime.fromISO(event.start).setLocale('es').toMillis >= endDate.toMillis);
+		let currentDay = DateTime.local().day;
+        return events.filter(event => DateTime.fromISO(event.start).setLocale('es').day >= currentDay);
 	}
-
 
     return (
 

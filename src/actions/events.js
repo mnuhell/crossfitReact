@@ -112,8 +112,8 @@ export const getClasesPendingUser = () => {
 			}
 
 			const { totales } = clases
-			localStorage.setItem('clases', totales)
-			dispatch( classesPending(totales) )
+            dispatch( classesPending(totales) )
+
 
 		} catch (error) {
 			console.log(error)
@@ -127,24 +127,6 @@ const classesPending = (totales) => ({
 	payload: totales
 
 });
-
-
-export const descountClass = (totales) => {
-
-    return (dispatch) => {
-        console.log('restart clase')
-    }
-
-}
-export const addClass = (totales) => {
-
-    return (dispatch) => {
-
-        console.log('Add clase')
-    }
-
-
-}
 
 
 

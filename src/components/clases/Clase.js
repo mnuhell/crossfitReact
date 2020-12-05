@@ -1,30 +1,39 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import { DateTime } from 'luxon';
-import {addClass, addUserClass, deleteUserClass, descountClass, eventStartLoading} from '../../actions/events';
+import {
+    addUserClass,
+    deleteUserClass,
+    eventStartLoading,
+    getClasesPendingUser
+} from '../../actions/events';
 
 
 export const Clase = (clase) => {
 
     const dispatch = useDispatch();
+    const [ disabled, setDisabled ] = useState(false);
 
     const handleReserva = () => {
 
         dispatch(addUserClass(clase));
-        dispatch(descountClass() )
+        dispatch( getClasesPendingUser() )
         setTimeout(function () {
             dispatch( eventStartLoading() )
         }, 200)
 
+        setDisabled(true)
     }
 
     const handleDelete = () => {
 
         dispatch(deleteUserClass(clase))
-        dispatch( addClass() );
+        dispatch( getClasesPendingUser() );
         setTimeout(function () {
             dispatch( eventStartLoading() )
         }, 200)
+
+        setDisabled(false)
     }
 
     const getColorsUsers = ( clase ) => {
@@ -94,11 +103,15 @@ export const Clase = (clase) => {
 
                         <button
                             onClick={ handleDelete }
-                            className="bg-red-600 py-2 float-righ uppercase"> Bórrame
+                            className="bg-red-600 py-2 float-right uppercase"> Bórrame
                         </button>
-                    <button
-                        onClick={ handleReserva }
-                        className=" bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Apuntame </button>
+
+                        <button
+                            disabled={disabled}
+                            onClick={ handleReserva }
+                            className="bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Apuntame
+                        </button>
+
                     </div>
             </div>
 

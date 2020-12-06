@@ -13,12 +13,17 @@ export const Clase = (clase) => {
 
     const dispatch = useDispatch();
     const { uid } = useSelector(state => state.auth);
-    const [ disableButton, setDisableButton] = useState( false)
+    const { totales } = useSelector( state => state.clases)
+    const usuario =  clase.users.filter( user => user._id === uid);
 
-    const actual = DateTime.local().setLocale('es');
-    const final =  DateTime.fromISO(clase.end).setLocale('es')
+    const timeCloseClass = (time) => {
 
-    const { minutes } = final.diff(actual, 'minute')
+        const actual = DateTime.local().setLocale('es');
+        const final =  DateTime.fromISO(clase.end).setLocale('es')
+        const { minutes } = final.diff(actual, 'minute')
+
+        return minutes <= time;
+    }
 
     const handleReserva = () => {
 
@@ -60,10 +65,28 @@ export const Clase = (clase) => {
 
     }
 
+    const showButton = () => {
+
+        if(totales === -1 && usuario.length === 0) {
+            return(
+                <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
+                    renueva tu bono
+                </button>
+            )
+        }
+
+        return(
+            <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
+                Registrado
+            </button>
+        )
+
+    }
+
+
     const userRegister = () => {
 
-        const usuario =  clase.users.filter( user => user._id === uid);
-        return usuario.length > 0 || clase.userclase === clase.users.length
+        return usuario.length > 0 || clase.userclase === clase.users.length || totales === -1
 
     }
 
@@ -114,7 +137,7 @@ export const Clase = (clase) => {
 
                     <div className="clase_buttons grid w-full grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
                         {
-                            minutes <= 30
+                            timeCloseClass(30)
                                     ?
                                 <button
                                     className="bg-red-600 py-2 text-blue-100 float-right uppercase cursor-not-allowed"> Clase caducada
@@ -130,9 +153,7 @@ export const Clase = (clase) => {
                         {
                             userRegister()
                                 ?
-                                <button
-                                    className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Registrado
-                                </button>
+                                showButton()
                                 :
                                 <button
                                     onClick={ handleReserva }

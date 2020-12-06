@@ -11,7 +11,7 @@ const UserLayout = ( props ) => {
 
     const { routes } = props;
 
-    const { cheking, uid, role } = useSelector(state => state.auth);
+    const { role } = useSelector(state => state.auth);
     
     if(!role) {
         return (

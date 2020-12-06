@@ -43,7 +43,7 @@ const UserReserva = () => {
 
                 { (filterDate().length !== 0)
                     ? <>
-						<h2 className="text-center text-blue-900 pt-24 uppercase text-2xl font-extrabold border-blue-800 ">
+						<h2 className="text-center text-blue-900 pt-32 uppercase text-2xl font-extrabold border-blue-800 ">
 							Clases disponibles
 							{/* <p className="-mt-3 ">{ currentMonth() }</p> */}
 							</h2>

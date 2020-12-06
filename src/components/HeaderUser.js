@@ -18,7 +18,7 @@ const Header = () => {
     const showMessageInfo = (message) => {
         if(totales === -1) {
             return (
-                <div className="alert-header py-1 -mt-3 xs:py-4 xl:px-0 flex items-center justify-center mb-4 bg-red-500 text-xs text-blue-100 w-full">
+                <div className="alert-header py-1 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-blue-900 text-xs text-blue-100 w-full">
                     <p>{message}</p>
                 </div>
             )

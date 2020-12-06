@@ -131,7 +131,7 @@ export const Clase = (clase) => {
                     </div>
                     :
                     <div className="clase__usuarios-registrados text-blue-100 py-5 px-5 grid">
-                        <h1 className="uppercase">¡ registrate ! </h1>
+                        <h1 className="uppercase">¡ se el primero en registrate ! </h1>
                     </div>
                 }
 

@@ -20,10 +20,6 @@ export const Clase = (clase) => {
 
     const { minutes } = final.diff(actual, 'minute')
 
-
-    //console.log(actual)
-    //console.log(final)
-
     const handleReserva = () => {
 
         dispatch(addUserClass(clase));
@@ -48,12 +44,12 @@ export const Clase = (clase) => {
 
     const getColorsUsers = ( clase ) => {
 
-        let colors = 'bg-green-500';
+        let colors = 'bg-blue-500';
         const totalUsers = clase.userclase;
         const userRegistrados = clase.users;
 
         if ( userRegistrados <= ((totalUsers * 20) / 100)) {
-            colors = 'bg-green-500';
+            colors = 'bg-blue-500';
         } else if(userRegistrados <= ((totalUsers * 50) / 100)) {
             colors = 'bg-orange-500';
         } else if(userRegistrados === ((totalUsers * 100) / 100)) {
@@ -72,10 +68,10 @@ export const Clase = (clase) => {
     }
 
         return (
-			<div className="clase rounded bg-blue-500 text-white h-80 relative">
+			<div className="clase rounded bg-blue-500 h-80 relative">
                 <div className="clase__usuarios block h-8">
                     <div>
-                        <h3 className="text-center rounded-full h-20 px-6 text-white-600">
+                        <h3 className="text-center rounded-full h-20 px-6 text-blue-100">
                             <span title="Numero máximo de alumnos por clase" className="absolute top-0 left-0 clase__usuarios-maximos py-1 px-5 bg-red-600 text-2xl">
                                 {clase.userclase}
                                 <small className="block text-sm -mt-1">max. por clase</small>
@@ -83,7 +79,7 @@ export const Clase = (clase) => {
                         </h3>
 
                         </div>
-                <h3 className="text-center rounded-full px-6 text-white-600">
+                <h3 className="text-center rounded-full px-6 text-blue-100">
                         <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count ${ getColorsUsers(clase)} py-1 px-5 text-2xl`}>
                             {clase.users.length > 0 ? clase.users.length : 0}
                             <small className="block text-sm -mt-1">en clase</small>
@@ -91,7 +87,7 @@ export const Clase = (clase) => {
                 </h3>
                 </div>
 
-                <div className="mx-auto w-full">
+                <div className="mx-auto w-full text-blue-100">
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
 					<h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
 					<h1 className="title uppercase text-center text-xs -mt-1 mb-1">{DateTime.fromISO(clase.start).setLocale('es').toFormat('DDD')}</h1>
@@ -111,7 +107,7 @@ export const Clase = (clase) => {
                         }
                     </div>
                     :
-                    <div className="clase__usuarios-registrados py-5 px-5 grid">
+                    <div className="clase__usuarios-registrados text-blue-100 py-5 px-5 grid">
                         <h1 className="uppercase">¡ registrate ! </h1>
                     </div>
                 }
@@ -121,12 +117,12 @@ export const Clase = (clase) => {
                             minutes <= 30
                                     ?
                                 <button
-                                    className="bg-red-600 py-2 float-right uppercase cursor-not-allowed"> Clase caducada
+                                    className="bg-red-600 py-2 text-blue-100 float-right uppercase cursor-not-allowed"> Clase caducada
                                 </button>
                                     :
                                 <button
                                     onClick={ handleDelete }
-                                    className="bg-red-600 py-2 float-right uppercase"> No puedo ir
+                                    className="bg-red-600 py-2 text-blue-100 float-right uppercase"> No puedo ir
                                 </button>
 
                         }
@@ -135,12 +131,12 @@ export const Clase = (clase) => {
                             userRegister()
                                 ?
                                 <button
-                                    className="bg-green-300 py-2 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Registrado
+                                    className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Registrado
                                 </button>
                                 :
                                 <button
                                     onClick={ handleReserva }
-                                    className="bg-green-500 py-2 float-left focus:ring-2 focus:none uppercase"> Regístrate
+                                    className="bg-blue-500 py-2 text-blue-100 float-left focus:ring-2 focus:none uppercase"> Regístrate
                                 </button>
                         }
 

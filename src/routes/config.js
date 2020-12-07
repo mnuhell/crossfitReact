@@ -13,6 +13,7 @@ import SuperAdminLayout from '../layout/SuperAdminLayout';
 import { SuperAdminHome } from '../pages/superadmin/SuperAdminHome';
 import UserReserva from '../pages/user/UserReserva';
 import UserSettings from '../pages/user/UserSettings';
+import {CreateClass} from "../components/admin/CreateClass";
 
 const routes = [
 
@@ -56,6 +57,11 @@ const routes = [
                 component: AdminHome,
                 exact: true
 
+            },
+            {
+                path: "/admin/create-clase",
+                component: CreateClass,
+                exact: true
             },
             {
                 path: "/admin/setting",

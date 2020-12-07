@@ -13,7 +13,7 @@ const AdminLayout = ( props ) => {
 
     const user = useSelector( state => state.auth);
 
-    if(!user.logged ) {
+    if(!user.role ) {
         return (
             <>
                 <Route path="/login" component={Login} />

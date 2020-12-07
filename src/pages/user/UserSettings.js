@@ -1,35 +1,19 @@
 import React  from 'react';
-import useForm from "../../components/hooks/useForm";
-import {useDispatch} from "react-redux";
-import {updateUser} from "../../actions/user";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 const UserSettings = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const user = useSelector( state => state.auth)
 
-    const user = JSON.parse(localStorage.getItem('user'));
-    const [ formValues, handleInputChange ] = useForm({
-        name: user.username,
-        email: 'm.villagordovera@gmail.com'
-    });
+    console.log(user)
 
-    const { name, email} = formValues;
+    const handleSubmit = () => {
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const user = {
-            name: name,
-            email: email
-        }
-
-        // Hacemos la comprobación antes de enviar el usuario
-        dispatch( updateUser( user ))
-
+        console.log("Settings")
     }
-
-
 
     return(
         <div className="container mx-auto pt-24">
@@ -39,12 +23,12 @@ const UserSettings = () => {
                          className="rounded-full h-16 w-16 mx-auto object-cover mb-10" alt=""/>
                     <div className="w-full max-w-lg">
                         <label
-                            className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-1" htmlFor="name">Nombre</label>
+                            className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-1" htmlFor="name">Username</label>
                         <input
                             type="text"
-                            name="name"
-                            value={name}
-                            onChange={ handleInputChange }
+                            name="username"
+                            value={user.name}
+                            //onChange={ handleInputChange }
                             className="appearance-none block w-full bg-blue-50 text-gray-700 border border-blue-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" />
                     </div>
                     <div className="w-full max-w-lg">
@@ -53,13 +37,13 @@ const UserSettings = () => {
                         <input
                             type="email"
                             name="email"
-                            value={email}
-                            onChange={ handleInputChange }
+                            //value={email}
+                            //onChange={ handleInputChange }
                             className="appearance-none block w-full bg-blue-50 text-gray-700 border border-blue-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" />
                     </div>
                     <button
                         type="submit"
-                        className="btn bg-blue-600 hover:bg-blue-700 py-2 px-2 rounded text-white float-right transitions">
+                        className="btn bg-blue-600 hover:bg-blue-700 py-2 px-2 rounded text-white float-right transitions" disabled>
                         Guardar datos
                     </button>
                 </form>

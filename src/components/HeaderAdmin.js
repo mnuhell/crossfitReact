@@ -1,11 +1,11 @@
 import React from 'react';
 import Logo from '../components/header/logo/Logo';
-import {MenuButton} from '../components/user/MenuButton'
+import {MenuButton} from './user/MenuButton'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
-
+    
 `;
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="header__right flex justify-items-start">
                     <Link to="/">
-                    <Logo width="120" altTitle="Airfit App" />
+                    <Logo width="160" altTitle="Airfit App" />
                     </Link>
                     
                 </div>

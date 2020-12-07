@@ -24,7 +24,6 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-
                         </div>
                     </p>
                     {message}
@@ -35,13 +34,13 @@ const Header = () => {
 
     return (
         <>
-            <HeaderContainer className="bg-blue-500 pt-3 pb-10 fixed w-full z-40">
+            <HeaderContainer className="bg-blue-500 pt-3 pb-5 fixed w-full z-40">
                 { showMessageInfo("No tienes bono activo, por favor renueva tu bono para seguir reservando clases") }
                 <div className="container mx-auto flex justify-between items-center px-3">
 
                     <div className="header__right flex justify-items-start">
                         <Link to="/">
-                        <Logo width="160" altTitle="Airfit App" />
+                            <Logo width="160" altTitle="Airfit App" />
                         </Link>
 
                     </div>

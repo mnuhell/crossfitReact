@@ -79,7 +79,7 @@ export const CalendarModal = () => {
             className="modal"
             overlayClassName="modal-fondo"
         >
-            <h1 className="text-2xl uppercase text-center bg-blue-500 text-white mb-3 py-5 font-bold"> Nueva Clase </h1>
+            <h1 className="text-2xl uppercase text-center bg-blue-500 text-white mb-3 py-3 font-bold"> Nueva Clase </h1>
 
             <form className="px-5 py-5" onSubmit={ handleFormData }>
                 <div className="flex flex-col mb-4">
@@ -128,7 +128,7 @@ export const CalendarModal = () => {
 
                 <button
                     type="submit"
-                    className="mt-6 bg-blue-600 text-white text-center w-full py-3 focus:outline-none uppercase font-bold text-xl sm:text-base bg-blue-600 hover:bg-blue-600 rounded py-2 w-full transition duration-500 ease-in-out">
+                    className="mt-6 bg-green-500 text-white text-center w-full py-3 focus:outline-none uppercase font-bold text-xl sm:text-base hover:bg-green-600 rounded py-2 w-full transition duration-500 ease-in-out">
 
                     <span>
                          Guardar

@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 import { getClasesPendingUser } from './events';
 
 
-// ACCION PARA EL LOGIN
 export const startLogin = (email, password) => {
 
 	return async ( dispatch ) => {

@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Modal from 'react-modal';
 import DateTimePicker from "react-datetime-picker";
 import moment from 'moment';
+import {useDispatch, useSelector} from "react-redux";
+import {uiCloseModal, uiOpenModal} from "../../actions/ui";
 
 const customStyles = {
     content : {
@@ -22,12 +24,34 @@ const nowPlusHour = now.clone().add(1, 'hours')
 
 export const CalendarModal = () => {
 
-    const [ startDate, setStartDate ] = useState( now.toDate() )
-    const [ finish, setFinish ] = useState( nowPlusHour.toDate() )
+    const dispatch = useDispatch();
+    const [ startDate, setStartDate ] = useState( now.toDate() );
+    const [ end, setEnd ] = useState( nowPlusHour.toDate() );
+
+    const {modalOpen} = useSelector( state => state.ui);
+
+    const [ formValues, setFormValues ] = useState({
+        title: 'Funcional',
+        users: 15,
+        start: now.toDate(),
+        end: nowPlusHour.toDate()
+    });
+
+    const { title, users} = formValues;
+
+
+    const handleInputChange = ({ target }) => {
+
+        setFormValues({
+            ...formValues,
+            [target.name ]: target.value
+        })
+
+    }
 
     const closeModal = () => {
 
-        console.log('Cerramos modal')
+        dispatch( uiCloseModal() )
     }
 
     const handleStartDateChange = (e) => {
@@ -35,13 +59,19 @@ export const CalendarModal = () => {
     }
 
     const handleFinishDateChange = (e) => {
-        setFinish( e )
+        setEnd( e )
+    }
+
+    const handleFormData = (e) => {
+        e.preventDefault()
+        console.log(formValues)
+
     }
 
     return (
 
         <Modal
-            isOpen={ true }
+            isOpen={ modalOpen }
             /*onAfterOpen={afterOpenModal} */
             onRequestClose={closeModal}
             style={customStyles}
@@ -51,7 +81,7 @@ export const CalendarModal = () => {
         >
             <h1 className="text-2xl uppercase text-center bg-blue-500 text-white mb-3 py-5 font-bold"> Nueva Clase </h1>
 
-            <form className="px-5 py-5">
+            <form className="px-5 py-5" onSubmit={ handleFormData }>
                 <div className="flex flex-col mb-4">
                         <label className="font-bold text-gray-800 mb-1 block">Tipo de Clase:</label>
                         <input
@@ -59,6 +89,8 @@ export const CalendarModal = () => {
                             className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                             placeholder="Título del evento"
                             name="title"
+                            value={ title }
+                            onChange={ handleInputChange }
                             autoComplete="off"
                         />
 
@@ -69,7 +101,9 @@ export const CalendarModal = () => {
                         type="number"
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         placeholder="Usuarios en clase"
-                        name="usuarios"
+                        name="users"
+                        value={ users }
+                        onChange={ handleInputChange }
                         autoComplete="off"
                     />
                 </div>
@@ -78,7 +112,6 @@ export const CalendarModal = () => {
                     <DateTimePicker
                         onChange={handleStartDateChange}
                         value={ startDate }
-                        minDate={ startDate }
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                     />
                 </div>
@@ -87,7 +120,7 @@ export const CalendarModal = () => {
                     <label className="font-bold text-gray-800 mb-1">Fin</label>
                     <DateTimePicker
                         onChange={handleFinishDateChange}
-                        value={ finish }
+                        value={ end }
                         minDate={ startDate }
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                     />

@@ -55,3 +55,13 @@ code {
   max-width: 500px;
   outline: none;
 }
+
+.react-datetime-picker__wrapper{
+  display: flex;
+  border: none;
+}
+
+.react-datetime-picker__wrapper{
+  display: flex;
+  border: none;
+}

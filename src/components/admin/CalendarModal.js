@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
+import DateTimePicker from "react-datetime-picker";
+import moment from 'moment';
 
 const customStyles = {
     content : {
@@ -11,14 +13,29 @@ const customStyles = {
     }
 };
 
-Modal.setAppElement('#root')
+Modal.setAppElement('#root');
+
+const now = moment().minutes(0).seconds(0).add(1, 'hours');
+
+const nowPlusHour = now.clone().add(1, 'hours')
 
 
 export const CalendarModal = () => {
 
+    const [ startDate, setStartDate ] = useState( now.toDate() )
+    const [ finish, setFinish ] = useState( nowPlusHour.toDate() )
+
     const closeModal = () => {
 
         console.log('Cerramos modal')
+    }
+
+    const handleStartDateChange = (e) => {
+        setStartDate( e )
+    }
+
+    const handleFinishDateChange = (e) => {
+        setFinish( e )
     }
 
     return (
@@ -39,7 +56,7 @@ export const CalendarModal = () => {
                         <label className="font-bold text-gray-800 mb-1 block">Tipo de Clase:</label>
                         <input
                             type="text"
-                            className="border-2 border-grey-100 rounded h-10 px-3"
+                            className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                             placeholder="Título del evento"
                             name="title"
                             autoComplete="off"
@@ -50,7 +67,7 @@ export const CalendarModal = () => {
                     <label className="font-bold text-gray-800 mb-1 block">Usuarios:</label>
                     <input
                         type="number"
-                        className="border-2 border-grey-100 rounded h-10 px-3"
+                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         placeholder="Usuarios en clase"
                         name="usuarios"
                         autoComplete="off"
@@ -58,19 +75,27 @@ export const CalendarModal = () => {
                 </div>
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1">Inicio clase</label>
-                    <input className="border-2 border-grey-100 rounded h-10 px-3" type="date" placeholder="Fecha inicio" />
+                    <DateTimePicker
+                        onChange={handleStartDateChange}
+                        value={ startDate }
+                        minDate={ startDate }
+                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
+                    />
                 </div>
 
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1">Fin</label>
-                    <input type="date" className="border-2 border-grey-100 rounded h-10 px-3" placeholder="Fecha inicio" />
+                    <DateTimePicker
+                        onChange={handleFinishDateChange}
+                        value={ finish }
+                        minDate={ startDate }
+                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
+                    />
                 </div>
-
-                <hr />
 
                 <button
                     type="submit"
-                    className="bg-blue-600 text-white text-center w-full py-3 focus:outline-none uppercase font-bold text-xl sm:text-base bg-blue-600 hover:bg-blue-600 rounded py-2 w-full transition duration-500 ease-in-out">
+                    className="mt-6 bg-blue-600 text-white text-center w-full py-3 focus:outline-none uppercase font-bold text-xl sm:text-base bg-blue-600 hover:bg-blue-600 rounded py-2 w-full transition duration-500 ease-in-out">
 
                     <span>
                          Guardar

@@ -4,6 +4,7 @@ import DateTimePicker from "react-datetime-picker";
 import moment from 'moment';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal, uiOpenModal} from "../../actions/ui";
+import {eventAddNew, eventSetActive} from "../../actions/events";
 
 const customStyles = {
     content : {
@@ -27,6 +28,8 @@ export const CalendarModal = () => {
     const dispatch = useDispatch();
     const [ startDate, setStartDate ] = useState( now.toDate() );
     const [ end, setEnd ] = useState( nowPlusHour.toDate() );
+    const [ error, setError ] = useState( false );
+    const [ messageError, setMessageError ] = useState('');
 
     const {modalOpen} = useSelector( state => state.ui);
 
@@ -52,6 +55,7 @@ export const CalendarModal = () => {
     const closeModal = () => {
 
         dispatch( uiCloseModal() )
+        dispatch( eventSetActive(null))
     }
 
     const handleStartDateChange = (e) => {
@@ -64,7 +68,29 @@ export const CalendarModal = () => {
 
     const handleFormData = (e) => {
         e.preventDefault()
-        console.log(formValues)
+
+        const momentStart = moment(startDate);
+        const endDate = moment(end);
+
+        console.log(momentStart, endDate);
+
+        if(momentStart.isSameOrAfter(endDate)){
+            setMessageError('La fecha de fin no puede ser menor a la de inicio')
+            setError(true)
+
+            return false;
+        }
+
+        if(title.trim() === '') {
+
+            setMessageError('El nombre no puede estar vacío')
+            setError(true)
+
+            return false;
+        }
+
+        setError(false)
+        dispatch( eventAddNew(formValues));
 
     }
 
@@ -82,6 +108,8 @@ export const CalendarModal = () => {
             <h1 className="text-2xl uppercase text-center bg-blue-500 text-white mb-3 py-3 font-bold"> Nueva Clase </h1>
 
             <form className="px-5 py-5" onSubmit={ handleFormData }>
+                {(error) ? <p className="bg-red-500 text-white py-2 mb-5 text-center rounded-sm">{messageError}</p> : ''}
+
                 <div className="flex flex-col mb-4">
                         <label className="font-bold text-gray-800 mb-1 block">Tipo de Clase:</label>
                         <input

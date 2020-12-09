@@ -27,20 +27,21 @@ export const CalendarModal = () => {
 
     const dispatch = useDispatch();
     const [ startDate, setStartDate ] = useState( now.toDate() );
-    const [ end, setEnd ] = useState( nowPlusHour.toDate() );
+    const [ endDate, setEndDate ] = useState( nowPlusHour.toDate() );
     const [ error, setError ] = useState( false );
     const [ messageError, setMessageError ] = useState('');
 
     const {modalOpen} = useSelector( state => state.ui);
 
     const [ formValues, setFormValues ] = useState({
-        title: 'Funcional',
-        users: 15,
-        start: now.toDate(),
-        end: nowPlusHour.toDate()
+        type: '',
+        usersClase: '',
+        users: [],
+        start: '',
+        end: ''
     });
 
-    const { title, users} = formValues;
+    const { type, usersClase, start, end} = formValues;
 
 
     const handleInputChange = ({ target }) => {
@@ -52,6 +53,8 @@ export const CalendarModal = () => {
 
     }
 
+    console.log(formValues)
+
     const closeModal = () => {
 
         dispatch( uiCloseModal() )
@@ -60,28 +63,34 @@ export const CalendarModal = () => {
 
     const handleStartDateChange = (e) => {
         setStartDate( e )
+        setFormValues({
+            ...formValues,
+            start: e
+        })
     }
 
     const handleFinishDateChange = (e) => {
-        setEnd( e )
+        setEndDate( e )
+        setFormValues({
+            ...formValues,
+            end: e
+        })
     }
 
     const handleFormData = (e) => {
         e.preventDefault()
 
         const momentStart = moment(startDate);
-        const endDate = moment(end);
+        const momentEnd = moment(endDate);
 
-        console.log(momentStart, endDate);
-
-        if(momentStart.isSameOrAfter(endDate)){
+        if(momentStart.isSameOrAfter(momentEnd)){
             setMessageError('La fecha de fin no puede ser menor a la de inicio')
             setError(true)
 
             return false;
         }
 
-        if(title.trim() === '') {
+        if(type.trim() === '') {
 
             setMessageError('El nombre no puede estar vacío')
             setError(true)
@@ -116,8 +125,8 @@ export const CalendarModal = () => {
                             type="text"
                             className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                             placeholder="Título del evento"
-                            name="title"
-                            value={ title }
+                            name="type"
+                            value={ type }
                             onChange={ handleInputChange }
                             autoComplete="off"
                         />
@@ -129,8 +138,8 @@ export const CalendarModal = () => {
                         type="number"
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         placeholder="Usuarios en clase"
-                        name="users"
-                        value={ users }
+                        name="usersClase"
+                        value={ usersClase }
                         onChange={ handleInputChange }
                         autoComplete="off"
                     />
@@ -139,6 +148,7 @@ export const CalendarModal = () => {
                     <label className="font-bold text-gray-800 mb-1">Inicio clase</label>
                     <DateTimePicker
                         onChange={handleStartDateChange}
+                        name="startDate"
                         value={ startDate }
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                     />
@@ -148,7 +158,8 @@ export const CalendarModal = () => {
                     <label className="font-bold text-gray-800 mb-1">Fin</label>
                     <DateTimePicker
                         onChange={handleFinishDateChange}
-                        value={ end }
+                        name="endDate"
+                        value={ endDate }
                         minDate={ startDate }
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                     />

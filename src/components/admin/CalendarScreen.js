@@ -16,29 +16,21 @@ import {AddNewEventButton} from "../ui/AddNewEvent";
 moment.locale('es');
 const localizer = momentLocalizer(moment);
 
-const events = [{
-    title: "funcional",
-    start: moment().toDate(),
-    end: moment().add(1, 'hour').toDate(),
-    bgColor: '#000000',
-    notes: "Podemos personalizar muchas cosas"
-
-}]
 
 export const CalendarScreen = () => {
 
+    const { events } = useSelector(state => state.calendar);
     const [ lastView, setLastView ] = useState( localStorage.getItem('lastView') || 'month')
 
     const dispatch = useDispatch();
 
-    const onDoubleClick = () => {
+    const onDoubleClick = (e) => {
         dispatch( uiOpenModal())
     }
 
     const onSelectEvent = (e) => {
 
         dispatch( eventSetActive(e))
-        dispatch( uiOpenModal() )
     }
 
     const onViewChange = (e) => {
@@ -49,7 +41,7 @@ export const CalendarScreen = () => {
     const eventStyleGetter = (event, start, end, isSelected) => {
 
         const style = {
-            backgroundColor: '#367CF7',
+            backgroundColor: '#14213D',
             borderRadius: '0px',
             opacity: 0.8,
             display: 'block',
@@ -61,14 +53,13 @@ export const CalendarScreen = () => {
     }
 
     return (
-        <div className="calendar pt-32 mb-12 px-8">
+        <div className="calendar py-32 mb-12 px-8">
             <Calendar
                 selectable
                 localizer={localizer}
                 events={ events }
+                showMultiDayTimes
                 defaultView={Views.WEEK}
-                scrollToTime={new Date(1970, 1, 1, 6)}
-                defaultDate={new Date(2015, 3, 12)}
                 messages={messages}
                 eventPropGetter={ eventStyleGetter }
                 onDoubleClickEvent={ onDoubleClick }
@@ -78,8 +69,7 @@ export const CalendarScreen = () => {
                 components={ {
                     event: CalendarEvent
                 } }
-                //onSelectEvent={event => alert(event.title)}
-                //onSelectSlot={this.handleSelect}
+
             />
         <AddNewEventButton />
         <CalendarModal />

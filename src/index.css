@@ -16,6 +16,17 @@ code {
   height: 100vh;
 }
 
+.rbc-event{
+  height: auto !important;
+}
+
+.rbc-selected{
+  background-color: red !important;
+}
+.rbc-agenda-time-cell{
+  width: 20%;
+}
+
 /* Modal */
 .ReactModalPortal > div{
   opacity: 0;

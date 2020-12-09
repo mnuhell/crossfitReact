@@ -9,6 +9,8 @@ import { messages } from '../../helpers/calendar-messages-es';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {useDispatch} from "react-redux";
 import {uiOpenModal} from "../../actions/ui";
+import {eventSetActive} from "../../actions/events";
+import {AddNewEventButton} from "../ui/AddNewEvent";
 
 
 moment.locale('es');
@@ -34,7 +36,9 @@ export const CalendarScreen = () => {
     }
 
     const onSelectEvent = (e) => {
-        console.log(e)
+
+        dispatch( eventSetActive(e))
+        dispatch( uiOpenModal() )
     }
 
     const onViewChange = (e) => {
@@ -44,7 +48,6 @@ export const CalendarScreen = () => {
 
     const eventStyleGetter = (event, start, end, isSelected) => {
 
-        console.log(event, start, end, isSelected)
         const style = {
             backgroundColor: '#367CF7',
             borderRadius: '0px',
@@ -78,6 +81,7 @@ export const CalendarScreen = () => {
                 //onSelectEvent={event => alert(event.title)}
                 //onSelectSlot={this.handleSelect}
             />
+        <AddNewEventButton />
         <CalendarModal />
         </div>
     )

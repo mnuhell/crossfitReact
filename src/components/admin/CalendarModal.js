@@ -53,8 +53,6 @@ export const CalendarModal = () => {
 
     }
 
-    console.log(formValues)
-
     const closeModal = () => {
 
         dispatch( uiCloseModal() )
@@ -89,6 +87,13 @@ export const CalendarModal = () => {
 
             return false;
         }
+        /*console.log(momentStart.toString())
+        if(momentStart.toString() === "" || momentEnd.toString() === "" ) {
+            setMessageError("Las fechas no pueden estar vacÍas")
+            setError(true);
+
+            return false;
+        }*/
 
         if(type.trim() === '') {
 

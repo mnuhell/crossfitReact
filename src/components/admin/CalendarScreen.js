@@ -26,6 +26,7 @@ export const CalendarScreen = () => {
 
     const onDoubleClick = (e) => {
         dispatch( uiOpenModal())
+        dispatch( eventSetActive(e))
     }
 
     const onSelectEvent = (e) => {
@@ -61,6 +62,7 @@ export const CalendarScreen = () => {
                 showMultiDayTimes
                 defaultView={Views.WEEK}
                 messages={messages}
+                defaultView={Views.AGENDA}
                 eventPropGetter={ eventStyleGetter }
                 onDoubleClickEvent={ onDoubleClick }
                 onSelectEvent={ onSelectEvent }

@@ -121,53 +121,57 @@ export const CalendarModal = () => {
         >
             <h1 className="text-2xl uppercase text-center bg-blue-500 text-white mb-3 py-3 font-bold"> Nueva Clase </h1>
 
-            <form className="px-5 py-5" onSubmit={ handleFormData }>
-                {(error) ? <p className="bg-red-500 text-white py-2 mb-5 text-center rounded-sm">{messageError}</p> : ''}
+            <form onSubmit={ handleFormData }>
+                <div className="px-5 py-5">
 
-                <div className="flex flex-col mb-4">
-                        <label className="font-bold text-gray-800 mb-1 block">Tipo de Clase:</label>
+                    {(error) ? <p className="bg-red-500 text-white py-2 mb-5 text-center rounded-sm">{messageError}</p> : ''}
+
+                    <div className="flex flex-col mb-4">
+                            <label className="font-bold text-gray-800 mb-1 block">Tipo de Clase:</label>
+                            <input
+                                type="text"
+                                className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
+                                placeholder="Título del evento"
+                                name="type"
+                                value={ type }
+                                onChange={ handleInputChange }
+                                autoComplete="off"
+                            />
+
+                    </div>
+                    <div className="flex flex-col mb-4">
+                        <label className="font-bold text-gray-800 mb-1 block">Usuarios:</label>
                         <input
-                            type="text"
+                            type="number"
                             className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
-                            placeholder="Título del evento"
-                            name="type"
-                            value={ type }
+                            placeholder="Usuarios en clase"
+                            name="usersClase"
+                            value={ usersClase }
                             onChange={ handleInputChange }
                             autoComplete="off"
                         />
+                    </div>
+                    <div className="flex flex-col mb-4">
+                        <label className="font-bold text-gray-800 mb-1">Inicio clase</label>
+                        <DateTimePicker
+                            onChange={handleStartDateChange}
+                            name="startDate"
+                            value={ startDate }
+                            className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
+                        />
+                    </div>
 
-                </div>
-                <div className="flex flex-col mb-4">
-                    <label className="font-bold text-gray-800 mb-1 block">Usuarios:</label>
-                    <input
-                        type="number"
-                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
-                        placeholder="Usuarios en clase"
-                        name="usersClase"
-                        value={ usersClase }
-                        onChange={ handleInputChange }
-                        autoComplete="off"
-                    />
-                </div>
-                <div className="flex flex-col mb-4">
-                    <label className="font-bold text-gray-800 mb-1">Inicio clase</label>
-                    <DateTimePicker
-                        onChange={handleStartDateChange}
-                        name="startDate"
-                        value={ startDate }
-                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
-                    />
-                </div>
+                    <div className="flex flex-col mb-4">
+                        <label className="font-bold text-gray-800 mb-1">Fin</label>
+                        <DateTimePicker
+                            onChange={handleFinishDateChange}
+                            name="endDate"
+                            value={ endDate }
+                            minDate={ startDate }
+                            className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
+                        />
+                    </div>
 
-                <div className="flex flex-col mb-4">
-                    <label className="font-bold text-gray-800 mb-1">Fin</label>
-                    <DateTimePicker
-                        onChange={handleFinishDateChange}
-                        name="endDate"
-                        value={ endDate }
-                        minDate={ startDate }
-                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
-                    />
                 </div>
 
                 <button

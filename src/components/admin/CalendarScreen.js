@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux'
 import {Calendar, Views, momentLocalizer} from 'react-big-calendar';
 import {CalendarEvent} from './CalendarEvent';
@@ -9,7 +9,7 @@ import { messages } from '../../helpers/calendar-messages-es';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {useDispatch} from "react-redux";
 import {uiOpenModal} from "../../actions/ui";
-import {eventSetActive} from "../../actions/events";
+import {eventSetActive, eventStartLoading} from "../../actions/events";
 import {AddNewEventButton} from "../ui/AddNewEvent";
 
 
@@ -52,6 +52,11 @@ export const CalendarScreen = () => {
             style
         }
     }
+
+
+    useEffect( () => {
+        dispatch( eventStartLoading() )
+    },[ dispatch])
 
     return (
         <div className="calendar py-32 mb-12 px-8">

@@ -5,7 +5,7 @@ import {UserScreen} from './UserScreen';
 
 export const CalendarEvent = ({ event }) => {
 
-    const { type, usersClase, users } = event;
+    const { type, userclase:usersClase, users } = event;
     return (
         <div className="event">
             <h2>Tipo: <span className="text-white text-xl font-bold underline">{ type }</span></h2>

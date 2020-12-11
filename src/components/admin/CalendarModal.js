@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from 'react-modal';
 import DateTimePicker from "react-datetime-picker";
 import moment from 'moment';
@@ -32,16 +32,26 @@ export const CalendarModal = () => {
     const [ messageError, setMessageError ] = useState('');
 
     const {modalOpen} = useSelector( state => state.ui);
+    const {activeEvent} = useSelector( state => state.calendar);
 
     const [ formValues, setFormValues ] = useState({
         type: '',
-        usersClase: '',
+        userClase: '',
         users: [],
         start: '',
         end: ''
     });
 
-    const { type, usersClase, start, end} = formValues;
+    const { type, userclase:usersClase, start, end} = formValues;
+
+    useEffect(() => {
+
+        if( activeEvent) {
+
+           setFormValues(activeEvent)
+        }
+
+    }, [activeEvent, formValues]);
 
 
     const handleInputChange = ({ target }) => {
@@ -87,13 +97,6 @@ export const CalendarModal = () => {
 
             return false;
         }
-        /*console.log(momentStart.toString())
-        if(momentStart.toString() === "" || momentEnd.toString() === "" ) {
-            setMessageError("Las fechas no pueden estar vacÍas")
-            setError(true);
-
-            return false;
-        }*/
 
         if(type.trim() === '') {
 

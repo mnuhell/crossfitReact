@@ -1,13 +1,31 @@
 import { fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import {prepareEvents} from "../helpers/prepareEvents";
+import moment from 'moment';
 
 
 export const eventAddNew = (event) => ({
-
     type: types.eventAddNew,
     payload: event
 });
+
+export const savedNewEvent = ( event ) => {
+
+    return async( dispatch ) => {
+
+        try {
+
+            const resp = await fetchWithToken( 'events', event, 'POST');
+            const body = await resp.json();
+
+            dispatch( eventAddNew( body.events ));
+
+        } catch ( error ) {
+            console.log( error )
+        }
+
+    }
+}
 
 export const eventSetActive = (event) => ({
 
@@ -99,6 +117,7 @@ const classesPending = (totales) => ({
 	payload: totales
 
 });
+
 
 
 

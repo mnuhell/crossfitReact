@@ -4,7 +4,7 @@ import DateTimePicker from "react-datetime-picker";
 import moment from 'moment';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal, uiOpenModal} from "../../actions/ui";
-import {eventAddNew, eventSetActive} from "../../actions/events";
+import {eventAddNew, eventSetActive, savedNewEvent} from "../../actions/events";
 
 const customStyles = {
     content : {
@@ -36,19 +36,18 @@ export const CalendarModal = () => {
 
     const [ formValues, setFormValues ] = useState({
         type: '',
-        userClase: '',
+        userclase: 0,
         users: [],
         start: '',
         end: ''
     });
 
-    const { type, userclase:usersClase, start, end} = formValues;
+    const { type, userclase, start, end} = formValues;
 
     useEffect(() => {
 
         if( activeEvent) {
-
-           setFormValues(activeEvent)
+            setFormValues(activeEvent)
         }
 
     }, [activeEvent, formValues]);
@@ -107,7 +106,8 @@ export const CalendarModal = () => {
         }
 
         setError(false)
-        dispatch( eventAddNew(formValues));
+
+        dispatch( savedNewEvent(formValues));
 
     }
 
@@ -148,8 +148,8 @@ export const CalendarModal = () => {
                             type="number"
                             className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                             placeholder="Usuarios en clase"
-                            name="usersClase"
-                            value={ usersClase }
+                            name="userclase"
+                            value={ userclase }
                             onChange={ handleInputChange }
                             autoComplete="off"
                         />

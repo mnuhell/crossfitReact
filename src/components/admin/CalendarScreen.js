@@ -65,7 +65,6 @@ export const CalendarScreen = () => {
                 localizer={localizer}
                 events={ events }
                 showMultiDayTimes
-                defaultView={Views.WEEK}
                 messages={messages}
                 defaultView={Views.AGENDA}
                 eventPropGetter={ eventStyleGetter }

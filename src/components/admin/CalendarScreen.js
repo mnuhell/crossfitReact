@@ -60,6 +60,7 @@ export const CalendarScreen = () => {
 
     return (
         <div className="calendar py-32 mb-12 px-8">
+            <AddNewEventButton />
             <Calendar
                 selectable
                 localizer={localizer}
@@ -75,9 +76,7 @@ export const CalendarScreen = () => {
                 components={ {
                     event: CalendarEvent
                 } }
-
             />
-        <AddNewEventButton />
         <CalendarModal />
         </div>
     )

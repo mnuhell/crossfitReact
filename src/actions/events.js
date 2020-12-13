@@ -1,7 +1,8 @@
 import { fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import {prepareEvents} from "../helpers/prepareEvents";
-import moment from 'moment';
+import Swal from "sweetalert2";
+import {uiCloseModal} from "./ui";
 
 
 export const eventAddNew = (event) => ({
@@ -18,7 +19,17 @@ export const savedNewEvent = ( event ) => {
             const resp = await fetchWithToken( 'events', event, 'POST');
             const body = await resp.json();
 
-            dispatch( eventAddNew( body.events ));
+            if( body.ok ) {
+                dispatch( eventAddNew( body.events ));
+                dispatch( uiCloseModal())
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Clase',
+                    text: 'Clase creada con exito',
+                })
+            }
+
 
         } catch ( error ) {
             console.log( error )
@@ -59,6 +70,7 @@ export const addUserClass = (event) => {
         try {
             const resp = await fetchWithToken(`events/add-user/${event.id}`, event, 'PUT');
             const body = await resp.json();
+
 
         } catch (error) {
             console.log(error)

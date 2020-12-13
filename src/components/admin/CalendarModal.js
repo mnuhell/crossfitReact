@@ -4,7 +4,7 @@ import DateTimePicker from "react-datetime-picker";
 import moment from 'moment';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal, uiOpenModal} from "../../actions/ui";
-import {eventAddNew, eventSetActive, savedNewEvent} from "../../actions/events";
+import {eventAddNew, eventSetActive, eventStartLoading, savedNewEvent} from "../../actions/events";
 
 const customStyles = {
     content : {
@@ -105,10 +105,10 @@ export const CalendarModal = () => {
             return false;
         }
 
-        setError(false)
+        setError(false);
 
         dispatch( savedNewEvent(formValues));
-
+        dispatch( eventStartLoading())
     }
 
     return (

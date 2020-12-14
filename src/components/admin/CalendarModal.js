@@ -33,14 +33,14 @@ export const CalendarModal = () => {
 
     const {modalOpen} = useSelector( state => state.ui);
     const {activeEvent} = useSelector( state => state.calendar);
-
-    const [ formValues, setFormValues ] = useState({
+    const initialState = {
         type: '',
         userclase: 0,
         users: [],
         start: '',
         end: ''
-    });
+    }
+    const [ formValues, setFormValues ] = useState(initialState);
 
     const { type, userclase, start, end } = formValues;
 
@@ -48,6 +48,8 @@ export const CalendarModal = () => {
 
         if( activeEvent) {
             setFormValues(activeEvent)
+        } else {
+            setFormValues( initialState )
         }
 
     }, [activeEvent]);
@@ -113,10 +115,11 @@ export const CalendarModal = () => {
 
         } else {
             dispatch( savedNewEvent(formValues));
+            dispatch(eventStartLoading())
 
         }
 
-
+        dispatch(eventStartLoading())
         setError(false);
         closeModal()
     }

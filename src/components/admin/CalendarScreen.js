@@ -60,10 +60,11 @@ export const CalendarScreen = () => {
 
     return (
         <div className="calendar py-32 mb-12 px-8">
+            <div className="h-auto w-full mb-24 block">
+                { activeEvent ? <DeleteEventButton /> : ''}
+                <AddNewEventButton />
+            </div>
 
-            { activeEvent ? <DeleteEventButton /> : ''}
-
-            <AddNewEventButton />
             <Calendar
                 selectable
                 localizer={localizer}

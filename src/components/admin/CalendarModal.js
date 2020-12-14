@@ -67,6 +67,7 @@ export const CalendarModal = () => {
         dispatch( eventSetActive(null))
         dispatch( uiCloseModal() )
 
+
     }
 
     const handleStartDateChange = (e) => {
@@ -117,8 +118,6 @@ export const CalendarModal = () => {
 
 
         setError(false);
-        dispatch( eventStartLoading())
-
         closeModal()
     }
 

@@ -137,8 +137,6 @@ export const eventStartUpdated = ( event ) => {
 
         try {
 
-            console.log(event, 'evento actualizado')
-
             const resp = await fetchWithToken(`events/${event.id}`, event, 'PUT');
             const body = await resp.json();
 

@@ -3,8 +3,8 @@ import Modal from 'react-modal';
 import DateTimePicker from "react-datetime-picker";
 import moment from 'moment';
 import {useDispatch, useSelector} from "react-redux";
-import {uiCloseModal, uiOpenModal} from "../../actions/ui";
-import {eventAddNew, eventSetActive, eventStartLoading, savedNewEvent} from "../../actions/events";
+import {uiCloseModal} from "../../actions/ui";
+import {eventSetActive, eventStartLoading, eventStartUpdated, savedNewEvent} from "../../actions/events";
 
 const customStyles = {
     content : {
@@ -42,7 +42,7 @@ export const CalendarModal = () => {
         end: ''
     });
 
-    const { type, userclase, start, end} = formValues;
+    const { type, userclase, start, end } = formValues;
 
     useEffect(() => {
 
@@ -50,7 +50,7 @@ export const CalendarModal = () => {
             setFormValues(activeEvent)
         }
 
-    }, [activeEvent, formValues]);
+    }, [activeEvent]);
 
 
     const handleInputChange = ({ target }) => {
@@ -64,8 +64,9 @@ export const CalendarModal = () => {
 
     const closeModal = () => {
 
-        dispatch( uiCloseModal() )
         dispatch( eventSetActive(null))
+        dispatch( uiCloseModal() )
+
     }
 
     const handleStartDateChange = (e) => {
@@ -99,16 +100,26 @@ export const CalendarModal = () => {
 
         if(type.trim() === '') {
 
-            setMessageError('El nombre no puede estar vacío')
+            setMessageError('Los campos no pueden estar vacios')
             setError(true)
 
             return false;
         }
 
-        setError(false);
 
-        dispatch( savedNewEvent(formValues));
+        if(activeEvent) {
+            dispatch( eventStartUpdated(formValues))
+
+        } else {
+            dispatch( savedNewEvent(formValues));
+
+        }
+
+
+        setError(false);
         dispatch( eventStartLoading())
+
+        closeModal()
     }
 
     return (

@@ -8,6 +8,9 @@ export const types = {
     eventSetActive: '[ event ] Active event',
     eventAddNew: '[ event ] Add new',
     eventStartLoading: '[ event ] Start Loading',
+    eventUpdated: '[ event ] Event Update ',
+    eventDeleted: ' [ event ] Event delete ',
+    eventResetForm: ' [ event ] Event Reset ',
     eventAddUser: '[ event ] Add user Event',
     eventCreateNew: '[ event ] Create event',
 

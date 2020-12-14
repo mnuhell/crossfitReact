@@ -11,6 +11,7 @@ import {useDispatch} from "react-redux";
 import {uiOpenModal} from "../../actions/ui";
 import {eventSetActive, eventStartLoading} from "../../actions/events";
 import {AddNewEventButton} from "../ui/AddNewEvent";
+import {DeleteEventButton} from "../ui/DeleteEventButton";
 
 
 moment.locale('es');
@@ -19,14 +20,13 @@ const localizer = momentLocalizer(moment);
 
 export const CalendarScreen = () => {
 
-    const { events } = useSelector(state => state.calendar);
+    const { events, activeEvent } = useSelector(state => state.calendar);
     const [ lastView, setLastView ] = useState( localStorage.getItem('lastView') || 'month')
 
     const dispatch = useDispatch();
 
     const onDoubleClick = (e) => {
         dispatch( uiOpenModal())
-        dispatch( eventSetActive(e))
     }
 
     const onSelectEvent = (e) => {
@@ -60,6 +60,9 @@ export const CalendarScreen = () => {
 
     return (
         <div className="calendar py-32 mb-12 px-8">
+
+            { activeEvent ? <DeleteEventButton /> : ''}
+
             <AddNewEventButton />
             <Calendar
                 selectable

@@ -38,6 +38,7 @@ export const savedNewEvent = ( event ) => {
     }
 }
 
+
 export const eventSetActive = (event) => ({
 
     type: types.eventSetActive,
@@ -129,6 +130,39 @@ const classesPending = (totales) => ({
 	payload: totales
 
 });
+
+export const eventStartUpdated = ( event ) => {
+
+    return async( dispatch ) => {
+
+        try {
+
+            console.log(event, 'evento actualizado')
+
+            const resp = await fetchWithToken(`events/${event.id}`, event, 'PUT');
+            const body = await resp.json();
+
+            if( body.ok ) {
+                dispatch( eventUpdated(event))
+            } else {
+                 Swal.fire(
+                    'Error', body.msg, 'error'
+                )
+            }
+
+        } catch ( error ) {
+
+            console.log(error)
+        }
+
+    }
+
+}
+
+const eventUpdated = ( event ) => ({
+    type: types.eventUpdated,
+    payload: event
+})
 
 
 

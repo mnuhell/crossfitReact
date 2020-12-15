@@ -30,7 +30,7 @@ const UserReserva = () => {
 
 		let currentDay = moment().format();
 
-        return events.filter(event => moment(event.start).isSameOrAfter( currentDay, 'day'));
+        return events.filter(event => moment(event.start).isSame( currentDay, 'day'));
 	}
 
 

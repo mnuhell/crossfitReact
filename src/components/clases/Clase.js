@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import moment from 'moment'
 import { DateTime } from 'luxon';
 import {
     addUserClass,
@@ -8,6 +9,8 @@ import {
     getClasesPendingUser
 } from '../../actions/events';
 
+
+const localDate = moment().localeData()
 
 export const Clase = (clase) => {
 
@@ -113,8 +116,8 @@ export const Clase = (clase) => {
                 <div className="mx-auto w-full text-blue-100">
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
 					<h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
-					<h1 className="title uppercase text-center text-xs -mt-1 mb-1">{DateTime.fromISO(clase.start).setLocale('es').toFormat('DDD')}</h1>
-                    <h1 className="title uppercase text-center text-md -mt-2 mb-1">{ DateTime.fromISO(clase.start).setLocale('es').toFormat('t') } - { DateTime.fromISO(clase.end).setLocale('es').toFormat('t') }</h1>
+					<h1 className="title uppercase text-center text-xs -mt-1 mb-1">{ moment(clase.start).format('LL')}</h1>
+                    <h1 className="title uppercase text-center text-md -mt-2 mb-1">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
 
                  </div>
 

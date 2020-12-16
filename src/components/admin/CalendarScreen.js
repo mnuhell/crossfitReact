@@ -12,6 +12,8 @@ import {uiOpenModal} from "../../actions/ui";
 import {eventSetActive, eventStartLoading} from "../../actions/events";
 import {AddNewEventButton} from "../ui/AddNewEvent";
 import {DeleteEventButton} from "../ui/DeleteEventButton";
+import {loading} from "../../actions/loading";
+import {LoadingApp} from "../LoadingApp";
 
 
 moment.locale('es');
@@ -22,6 +24,7 @@ export const CalendarScreen = () => {
 
     const { events, activeEvent } = useSelector(state => state.calendar);
     const [ lastView, setLastView ] = useState( localStorage.getItem('lastView') || 'month')
+    const active = useSelector( state => state.loading.active)
 
     const dispatch = useDispatch();
 
@@ -53,12 +56,19 @@ export const CalendarScreen = () => {
         }
     }
 
+    setTimeout(function () {
+        dispatch(loading(false))
+    }, 1000)
+
 
     useEffect( () => {
         dispatch( eventStartLoading() )
     },[ dispatch])
 
     return (
+
+        ( active ) ? <LoadingApp /> :
+
         <div className="calendar py-32 mb-12 px-8">
             <div className="h-auto w-full mb-24 block">
                 { activeEvent ? <DeleteEventButton /> : ''}

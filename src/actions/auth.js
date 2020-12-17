@@ -3,7 +3,6 @@ import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
 import { getClasesPendingUser } from './events';
-import {getBonos} from "./bonos";
 
 
 export const startLogin = (email, password) => {
@@ -26,7 +25,6 @@ export const startLogin = (email, password) => {
 			}))
 
 			dispatch( getClasesPendingUser() )
-			dispatch( getBonos())
 
 		} else {
 			await Swal.fire({
@@ -110,7 +108,6 @@ export const startCheking = () => {
 			}))
 
 			dispatch( getClasesPendingUser() )
-			dispatch( getBonos())
 
 		} else {
 			Swal.fire({

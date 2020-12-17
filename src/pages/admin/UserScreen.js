@@ -5,12 +5,6 @@ import {loading} from "../../actions/loading";
 import {LoadingApp} from "../../components/LoadingApp";
 
 import MUIDataTable from 'mui-datatables';
-import {getBonos} from "../../actions/bonos";
-
-
-
-
-
 
 export const UserScreen = () => {
 
@@ -19,6 +13,8 @@ export const UserScreen = () => {
         filterType: 'checkbox',
         responsive: 'vertical',
     };
+
+
 
     const dispatch = useDispatch();
     const active = useSelector(state => state.loading.active);
@@ -31,6 +27,7 @@ export const UserScreen = () => {
 
     useEffect( () => {
         dispatch( getAllUsers() )
+
     },[ dispatch])
 
 

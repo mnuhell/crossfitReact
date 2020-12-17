@@ -12,12 +12,8 @@ export const getBonos = () => {
             const body = await resp.json();
 
             if( body.ok ) {
-                localStorage.setItem('bonos', JSON.stringify(body.bonos));
+                dispatch(getBonosState(body.bonos))
             }
-            const bonos = JSON.parse(localStorage.getItem('bonos'));
-
-            dispatch( getBonosState(bonos))
-
 
         } catch (error) {
 
@@ -28,7 +24,7 @@ export const getBonos = () => {
 }
 
 
-const getBonosState = ( bonos ) => ({
+export const getBonosState = ( bonos ) => ({
 
     type: types.bonoGetAll,
     payload: bonos

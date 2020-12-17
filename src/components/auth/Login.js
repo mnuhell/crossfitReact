@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startLogin } from '../../actions/auth';
 import { loading } from '../../actions/loading';
-import {getBonos} from "../../actions/bonos";
+import {getBonosState} from "../../actions/bonos";
 
 export const Login = () => {
 
@@ -16,13 +16,15 @@ export const Login = () => {
         password: 'dev12345678'
     })
     const { email, password } = formValues;
-
+    const bonos = localStorage.getItem('bonos');
+    console.log(JSON.parse(bonos))
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
         dispatch(startLogin(email, password))
-        dispatch(getBonos())
+
 		dispatch(loading(true))
+        dispatch( getBonosState( JSON.parse(bonos) ))
 
 
     }

@@ -4,14 +4,15 @@ import { useDispatch } from 'react-redux';
 import { startCheking } from '../actions/auth';
 
 import routes from '../routes/config';
+import {getBonos} from "../actions/bonos";
 
 const RoutesApp = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
-        dispatch(startCheking())
+        dispatch( getBonos())
+        dispatch(startCheking());
         
     }, [dispatch])
 

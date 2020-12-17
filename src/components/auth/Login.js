@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startLogin } from '../../actions/auth';
 import { loading } from '../../actions/loading';
-import { getClasesPendingUser } from '../../actions/events';
+import {getBonos} from "../../actions/bonos";
 
 export const Login = () => {
 
@@ -21,8 +21,9 @@ export const Login = () => {
         e.preventDefault();
 
         dispatch(startLogin(email, password))
-
+        dispatch(getBonos())
 		dispatch(loading(true))
+
 
     }
 

@@ -5,6 +5,7 @@ import { calendarReducer } from './calendarReducer';
 import { loadingReducer } from './loadingReducer';
 import { userReducer } from './userReducer';
 import { clasesReducer } from './clasesReducer';
+import { bonosReducer } from './bonosReducer';
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
     calendar: calendarReducer,
     loading: loadingReducer,
 	user: userReducer,
-	clases: clasesReducer
+	clases: clasesReducer,
+    bonos: bonosReducer,
 
 })

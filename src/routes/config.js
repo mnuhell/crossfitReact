@@ -14,7 +14,7 @@ import { SuperAdminHome } from '../pages/superadmin/SuperAdminHome';
 import UserReserva from '../pages/user/UserReserva';
 import UserSettings from '../pages/user/UserSettings';
 import { CalendarScreen } from "../components/admin/CalendarScreen";
-import {UserScreen} from "../pages/admin/UserScreen";
+import {UsersScreen} from "../pages/admin/UsersScreen";
 
 const routes = [
 
@@ -61,7 +61,7 @@ const routes = [
             },
             {
               path: "/admin/users",
-              component: UserScreen,
+              component: UsersScreen,
               exact: true
             },
             {

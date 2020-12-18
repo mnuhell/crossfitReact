@@ -2,7 +2,7 @@ import { types } from "../types/types";
 
 
 const initialState = {
-	usersFilter: [
+	users: [
 		{
 			name: 'Manuel',
 			username: 'manufit',
@@ -30,7 +30,7 @@ export const userReducer = (state = initialState, action) => {
 		case types.usersGetAll:
 			return {
 				...state,
-				usersFilter: [
+				users: [
 					...action.payload
 				]
 			}

@@ -14,7 +14,6 @@ export const updateUser = ( user ) => {
     return ( dispatch ) => {
         console.log('Enviamos al usuario')
         dispatch( userActionUpdate(user))
-        //console.log(user);
     }
 
 }
@@ -24,13 +23,10 @@ export const getAllUsers = () => {
     return async( dispatch ) => {
 
         try{
-            const resp = await fetchWithToken('users');
+            const resp = await fetchWithToken('users/get-users-bono');
             const body = await resp.json();
-            console.log(body)
 
-            dispatch( getUsers( body.usersFilter ) )
-
-
+            dispatch( getUsers( body.users ) )
 
         } catch (error) {
 
@@ -40,9 +36,9 @@ export const getAllUsers = () => {
     }
 }
 
-const getUsers = (usersFilter) => ({
+const getUsers = (users) => ({
 
     type: types.usersGetAll,
-    payload: usersFilter
+    payload: users
 
 })

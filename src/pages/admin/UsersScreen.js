@@ -27,14 +27,17 @@ export const UsersScreen = () => {
         ( active ) ? <LoadingApp /> :
 
         <section className="w-full px-3 pt-32 font-body">
-            <h1 className="text-2xl font-bold w-full flex justify-center uppercase mb-10">Usuarios</h1>
+            <h1 className="text-2xl font-bold w-full flex justify-center uppercase mb-5">Usuarios</h1>
+            <div className="search container mx-auto xl:min-h-full focus:outline-none focus:shadow-none mb-5">
+                <input className="h-10 text-xl w-full" type="text" placeholder="Buscar..." />
+            </div>
             <div className="container mx-auto flex-col items-center table-container py-3">
-                <div className="grid shadow-2xl lg:grid-cols-5 sm:grid-cols-1 sm:hidden md:grid table__header justify-between bg-blue-500 text-white uppercase rounded px-2 py-3">
+                <div className="grid shadow-2xl table__header justify-between bg-blue-500 text-white uppercase rounded px-5 py-5">
+                    <span>Imagen</span>
                     <span>Nombre</span>
                     <span>Email</span>
                     <span>Telefono</span>
                     <span className="px-2"> Bonos activos</span>
-                    <span className="px-2"> Acciones</span>
                 </div>
                 {
                     users.map( user => <UserScreen key={user._id} { ...user } />)

@@ -76,3 +76,8 @@ code {
   display: flex;
   border: none;
 }
+
+.table__header{
+  display: grid;
+  grid-template-columns: 10% 20% 30% 20% 20%;
+}

@@ -19,6 +19,8 @@ export const types = {
     bonoUserActive: ' [ bono ] Get Bono User Active',
 
     usersGetAll: ' [ Users ] Get all Users ',
+    userActive: ' [ USERS ] User active',
+    userActiveReset: '[ USERS ] User reset',
 
 
 	classesMonth: '[ Classes ] Classes month',

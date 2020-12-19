@@ -36,6 +36,19 @@ export const getAllUsers = () => {
     }
 }
 
+export const userActive = ( user ) => {
+
+    return async ( dispatch ) => {
+        dispatch( userActiveState( user ))
+    }
+}
+
+const userActiveState = ( user ) => ({
+
+    type: types.userActive,
+    payload: user
+})
+
 const getUsers = (users) => ({
 
     type: types.usersGetAll,

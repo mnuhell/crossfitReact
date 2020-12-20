@@ -2,6 +2,7 @@ import React from 'react'
 import {BonoScreen} from "./BonoScreen";
 import {useDispatch} from "react-redux";
 import {userActive} from "../../actions/user";
+import {uiOpenModal} from "../../actions/ui";
 
 
 export const UserScreen = ( user ) => {
@@ -10,8 +11,9 @@ export const UserScreen = ( user ) => {
     const { name, email, telefono, bonos } = user;
 
     const handleSelectUser = () => {
-
+        console.log(user)
         dispatch( userActive( user ))
+        dispatch( uiOpenModal())
     }
 
 

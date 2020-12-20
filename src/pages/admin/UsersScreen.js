@@ -5,6 +5,7 @@ import {loading} from "../../actions/loading";
 import {LoadingApp} from "../../components/LoadingApp";
 
 import {UserScreen} from "./UserScreen";
+import {UserModal} from "./UserModal";
 
 export const UsersScreen = () => {
 
@@ -26,7 +27,7 @@ export const UsersScreen = () => {
 
         ( active ) ? <LoadingApp /> :
 
-        <section className="w-full px-3 pt-32 font-body">
+        <section className="w-full px-3 pt-32 font-body pb-32 ">
             <h1 className="text-2xl font-bold w-full flex justify-center uppercase mb-5">Usuarios</h1>
             <div className="search container mx-auto xl:min-h-full focus:outline-none focus:shadow-none mb-5">
                 <input className="h-10 text-xl w-full" type="text" placeholder="Buscar..." />
@@ -43,6 +44,9 @@ export const UsersScreen = () => {
                     users.map( user => <UserScreen key={user._id} { ...user } />)
                 }
             </div>
+
+        <UserModal />
+
         </section>
 
     )

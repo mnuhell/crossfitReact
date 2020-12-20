@@ -19,11 +19,10 @@ export const bonosReducer = (state = initialState, action) => {
 
         case types.bonoGetAll:
             return {
+                ...state.bonos,
+                bonos:
+                    [...action.payload]
 
-                bonos: {
-                    ...state.bonos,
-                    ...action.payload
-                }
             }
 
         default:

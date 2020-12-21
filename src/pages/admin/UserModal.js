@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreen} from "./BonoScreen";
-import {addBonoToUser, getAllUsers} from "../../actions/user";
+import {addBonoToUser, setUserActive} from "../../actions/user";
 
 const customStyles = {
     content : {
@@ -24,8 +24,8 @@ export const UserModal = () => {
     const {modalOpen} = useSelector( state => state.ui);
     const userActive = useSelector( state => state.user.userActive);
     const [ formValues, setFormValues ] = useState(userActive);
-    const bonosSelect = useSelector( state => state.bonos.bonos);
-    const { name, username, telefono, email, role, bonos } = formValues || '';
+    const bonosSelect = useSelector( state => state.bonos.bonos) || [];
+    const { name, username, telefono, email, role, bonos } = formValues;
 
     const closeModal = () => {
         dispatch( uiCloseModal() )
@@ -35,11 +35,9 @@ export const UserModal = () => {
 
         if( userActive ) {
             setFormValues(userActive)
-        } else {
-            setFormValues( {} )
         }
 
-    }, [userActive]);
+    }, [dispatch, userActive]);
 
     const handleInputChange = ({ target }) =>{
 
@@ -77,6 +75,7 @@ export const UserModal = () => {
         }
 
         dispatch( addBonoToUser( user ))
+
         closeModal()
 
     }

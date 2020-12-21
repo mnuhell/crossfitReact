@@ -39,6 +39,7 @@ export const UsersScreen = () => {
                     <span>Email</span>
                     <span>Telefono</span>
                     <span className="px-2"> Bonos activos</span>
+                    <span className="px-2"> Precios</span>
                 </div>
                 {
                     users.map( user => <UserScreen key={user._id} { ...user } />)

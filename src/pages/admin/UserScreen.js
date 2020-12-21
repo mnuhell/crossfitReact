@@ -1,7 +1,7 @@
 import React from 'react'
 import {BonoScreen} from "./BonoScreen";
 import {useDispatch} from "react-redux";
-import {userActive} from "../../actions/user";
+import {setUserActive} from "../../actions/user";
 import {uiOpenModal} from "../../actions/ui";
 
 
@@ -10,11 +10,24 @@ export const UserScreen = ( user ) => {
     const dispatch = useDispatch()
     const { name, email, telefono, bonos } = user;
 
+    const totalPagar = () => {
+
+        let total = 0
+        if(bonos.length > 0 ) {
+            bonos.map( bono => total = total + bono.precio)
+        } else {
+            total = 0;
+        }
+
+        return total + '€';
+    }
+
     const handleSelectUser = () => {
 
-        dispatch( userActive( user ))
+        dispatch( setUserActive( user ))
         dispatch( uiOpenModal())
     }
+
 
 
     return (
@@ -31,7 +44,16 @@ export const UserScreen = ( user ) => {
                             key={bono._id} {...bono} />) : "Sin bonos activos"
                     }
                 </div>
+                <div className="flex flex-col mb-4">
+                    <span className="text-xl font-bold">
 
+                        {
+                            totalPagar()
+                        }
+
+                    </span>
+
+                </div>
             </div>
 
         </div>

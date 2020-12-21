@@ -79,5 +79,5 @@ code {
 
 .table__header{
   display: grid;
-  grid-template-columns: 10% 20% 30% 20% 20%;
+  grid-template-columns: 10% 20% 20% 20% 20% 10%;
 }

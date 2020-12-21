@@ -11,8 +11,6 @@ export const ClasesPending = () => {
 		return (clases.totales > 0) ? 'bg-green-700' : 'bg-red-700';
 	}
 
-	console.log( clases )
-
 	return (
 
 		<div className={`font-body absolute -mt-2 -ml-8 rounded-full h-6 w-6 text-md ${withBono()} text-white flex items-center justify-center`}>

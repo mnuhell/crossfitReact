@@ -45,6 +45,16 @@ export const addBonoToUser = ( user ) => {
             const resp = await fetchWithToken(`users/add-bono-user/${user.userActive._id}/${user.bono}`, user, 'PUT');
             const body = await resp.json();
 
+
+
+            if( !body.ok ) {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Bono',
+                    text: body.msg,
+                })
+            }
+
             Swal.fire({
                 icon: 'success',
                 title: 'Bono',
@@ -53,7 +63,7 @@ export const addBonoToUser = ( user ) => {
 
             dispatch( getAllUsers())
               setTimeout( function() {
-                  dispatch( userActive( body.userActive ))
+                  dispatch( setUserActive( body.userActive ))
               }, 500)
 
         } catch ( error ) {
@@ -70,10 +80,10 @@ const refreshActiveUser = (userActive) => ({
 
 })
 
-export const userActive = ( user ) => {
+export const setUserActive = ( user ) => {
 
     return async ( dispatch ) => {
-        dispatch( userActiveState( user ))
+        dispatch(  userActiveState( user ))
     }
 }
 

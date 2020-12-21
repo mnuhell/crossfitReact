@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreen} from "./BonoScreen";
+import {addBonoToUser, getAllUsers} from "../../actions/user";
 
 const customStyles = {
     content : {
@@ -24,7 +25,6 @@ export const UserModal = () => {
     const userActive = useSelector( state => state.user.userActive);
     const [ formValues, setFormValues ] = useState(userActive);
     const bonosSelect = useSelector( state => state.bonos.bonos);
-
     const { name, username, telefono, email, role, bonos } = formValues || '';
 
     const closeModal = () => {
@@ -54,6 +54,30 @@ export const UserModal = () => {
         e.preventDefault()
 
         console.log('Updated')
+
+    }
+
+    const totalPagar = () => {
+
+        let total = 0
+        if(bonos.length > 0 ) {
+            bonos.map( bono => total = total + bono.precio)
+        } else {
+            total = 0;
+        }
+
+        return total + '€';
+    }
+
+    const handleChangeSelect = ( { target } ) => {
+
+        const user = {
+            userActive,
+            bono: target.value
+        }
+
+        dispatch( addBonoToUser( user ))
+        closeModal()
 
     }
 
@@ -125,24 +149,36 @@ export const UserModal = () => {
                     />
 
                 </div>
+                <div className="form-control grid lg:grid-cols-2 gap-4">
+                    <div className="flex flex-col mb-4">
+                        <label className="font-bold text-gray-800 mb-1 block">Bonos Activos</label>
+                        {
+                            ( bonos.length > 0 ) ?
+                                <div className="flex items-center z-30">{ bonos.map( bono => <BonoScreen key={ bono._id} { ...bono } />) }</div>
+                                : <small>no tiene bonos activos</small>
+                        }
 
-            <div className="flex flex-col mb-4">
-                <label className="font-bold text-gray-800 mb-1 block">Bonos Activos</label>
-                {
-                    ( bonos.length > 0 ) ?
-                        <div className="flex items-center z-30">{ bonos.map( bono => <BonoScreen key={ bono._id} { ...bono } />) }</div>
-                        : <small>no tiene bonos activos</small>
-                }
 
+                    </div>
+                    <div className="flex flex-col mb-4">
+                        <label className="font-bold text-gray-800 mb-1 block">Precio de los bonos</label>
+                        <span className="text-xl font-bold">
 
-            </div>
+                            {
+                                totalPagar()
+                            }
 
+                        </span>
+
+                    </div>
+                </div>
             <div className="flex flex-col mb-4">
                 <label className="font-bold text-gray-800 mb-1 block">Bonos disponibles</label>
 
-                <select className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none" name="bonos-select" id="bonos-select">
+                <select onChange={handleChangeSelect} className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none" name="bono" id="bonos-select">
+                    <option value="">Elija un bono</option>
                     {
-                        bonosSelect.map( bono => <option key={ bono._id} id={bono._id}> {bono.name} --- { bono.precio}€ </option>)
+                        bonosSelect.map( bono => <option value={ bono._id } key={ bono._id } id="bono__id"> {bono.name} </option>)
                     }
                 </select>
 

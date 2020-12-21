@@ -115,6 +115,8 @@ export const getClasesPendingUser = () => {
 			const clases = await resp.json();
 
 			const { totales } = clases
+
+
             dispatch( classesPending(totales) )
 
 

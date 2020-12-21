@@ -46,11 +46,23 @@ export const userReducer = (state = initialState, action) => {
 		case types.userActive:
 			return {
 				...state,
-				userActive: { ...action.payload }
+				userActive: {
+					...action.payload
+				}
 			}
 		case types.userActiveReset:
 			return {
 				userActive: {}
+			}
+		case types.bonoAddUserActive:
+			return {
+				...state.userActive,
+				userActive: action.payload
+			}
+		case types.userRefreshUserActive:
+			return {
+				...state,
+				userActive: {...action.payload}
 			}
 
 		default:

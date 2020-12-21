@@ -16,15 +16,21 @@ export const Login = () => {
         password: 'dev12345678'
     })
     const { email, password } = formValues;
-    const bonos = localStorage.getItem('bonos');
-    console.log(JSON.parse(bonos))
+
+    const bonos = localStorage.getItem('bonos') ;
+
     const handleSubmitLogin = async(e) => {
         e.preventDefault();
 
         dispatch(startLogin(email, password))
 
 		dispatch(loading(true))
-        dispatch( getBonosState( JSON.parse(bonos) ))
+        if( bonos ) {
+            dispatch( getBonosState( JSON.parse(bonos) ))
+        } else {
+            localStorage.setItem('bonos', [])
+        }
+
 
 
     }

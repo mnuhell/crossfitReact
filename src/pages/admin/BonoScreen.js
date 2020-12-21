@@ -13,7 +13,7 @@ export const BonoScreen = ( bono ) => {
 
     return (
         <>
-            <span className="flex bg-blue-500 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
+            <span className="flex bg-green-500 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
                 <span className="bono-name mr-3 text-sm flex items-center"> { bono.name } </span>
                 <span className="delete-bono cursor-pointer flex items-center" onClick={handleDeleteBono}>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"

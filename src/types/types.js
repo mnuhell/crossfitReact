@@ -16,12 +16,16 @@ export const types = {
 
 
     bonoGetAll: '[ bono ] Get All bonos ',
-    bonoUserActive: ' [ bono ] Get Bono User Active',
+    bonoGetAllState: '[ bono ] Get All state ',
+    bonoAddUserActive: ' [ bono ] Get Bono User Active',
 
-    usersGetAll: ' [ Users ] Get all Users ',
-    userActive: ' [ USERS ] User active',
+    usersGetAll: '[ Users ] Get all Users',
+    userActive: '[ USERS ] User active',
     userActiveReset: '[ USERS ] User reset',
-
+    userRefreshUserActive: ' [ USERS ] User refresh User active',
+    userAddActiveBono: '[ USER  ] User add bono',
+    userDeleteBono: '[ USER  ] User delete bono',
+    userResetBonos: '[ USER  ] User reset bonos',
 
 	classesMonth: '[ Classes ] Classes month',
     classesSubtractDay: '[ classes ] Classes Subtract Day ',

@@ -11,7 +11,7 @@ export const UserScreen = ( user ) => {
     const { name, email, telefono, bonos } = user;
 
     const handleSelectUser = () => {
-        console.log(user)
+
         dispatch( userActive( user ))
         dispatch( uiOpenModal())
     }
@@ -25,7 +25,13 @@ export const UserScreen = ( user ) => {
                 <p className="flex items-center uppercase" >{ name }</p>
                 <p className="flex items-center">{ email }</p>
                 <p className="flex items-center">{ telefono }</p>
-                <div className="flex items-center z-30">{ bonos.map( bono => <BonoScreen key={ bono._id} { ...bono } />) }</div>
+                <div className="flex items-center">
+                    {
+                        ( bonos.length > 0) ? bonos.map(bono => <BonoScreen
+                            key={bono._id} {...bono} />) : "Sin bonos activos"
+                    }
+                </div>
+
             </div>
 
         </div>

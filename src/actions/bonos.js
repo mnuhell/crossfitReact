@@ -12,6 +12,7 @@ export const getBonos = () => {
             const body = await resp.json();
 
             if( body.ok ) {
+
                 dispatch(getBonosState(body.bonos))
             }
 
@@ -26,7 +27,7 @@ export const getBonos = () => {
 
 export const getBonosState = ( bonos ) => ({
 
-    type: types.bonoGetAll,
+    type: types.bonoGetAllState,
     payload: bonos
 
 

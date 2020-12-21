@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
 
 
 
@@ -11,6 +10,8 @@ export const ClasesPending = () => {
 	const withBono = () => {
 		return (clases.totales > 0) ? 'bg-green-700' : 'bg-red-700';
 	}
+
+	console.log( clases )
 
 	return (
 

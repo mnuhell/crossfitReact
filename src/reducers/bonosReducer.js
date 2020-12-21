@@ -1,28 +1,26 @@
 import {types} from "../types/types";
 
 
-const initialState = {
+const initialState = [
 
-    bonos: [{
+        {
             users: [],
             name: '12 días',
             days: 12,
             precio: 25
-        }]
+        }
 
-}
+]
 
 
 export const bonosReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case types.bonoGetAll:
+        case types.bonoGetAllState:
             return {
-                ...state.bonos,
-                bonos:
-                    [...action.payload]
 
+                bonos: [ ...action.payload ]
             }
 
         default:

@@ -1,5 +1,6 @@
 import { types } from '../types/types';
 import {fetchWithToken} from "../helpers/fetch";
+import Swal from "sweetalert2";
 
 
 export const userActionUpdate = ( user ) => ({
@@ -35,6 +36,39 @@ export const getAllUsers = () => {
 
     }
 }
+
+export const addBonoToUser = ( user ) => {
+
+    return async( dispatch ) => {
+
+        try {
+            const resp = await fetchWithToken(`users/add-bono-user/${user.userActive._id}/${user.bono}`, user, 'PUT');
+            const body = await resp.json();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Bono',
+                text: body.msg,
+            })
+
+            dispatch( getAllUsers())
+              setTimeout( function() {
+                  dispatch( userActive( body.userActive ))
+              }, 500)
+
+        } catch ( error ) {
+            console.log( error )
+        }
+
+    }
+}
+
+const refreshActiveUser = (userActive) => ({
+
+    type: types.userRefreshUserActive,
+    payload: userActive
+
+})
 
 export const userActive = ( user ) => {
 

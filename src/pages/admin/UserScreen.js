@@ -44,7 +44,7 @@ export const UserScreen = ( user ) => {
                             key={bono._id} {...bono} />) : "Sin bonos activos"
                     }
                 </div>
-                <div className="flex flex-col mb-4">
+                <div className="flex flex-col mb-4 items-center">
                     <span className="text-xl font-bold">
 
                         {

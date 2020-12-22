@@ -15,6 +15,7 @@ import UserReserva from '../pages/user/UserReserva';
 import UserSettings from '../pages/user/UserSettings';
 import { CalendarScreen } from "../components/admin/CalendarScreen";
 import {UsersScreen} from "../pages/admin/UsersScreen";
+import {BonosScreen} from "../pages/admin/BonosScreen";
 
 const routes = [
 
@@ -63,6 +64,11 @@ const routes = [
               path: "/admin/users",
               component: UsersScreen,
               exact: true
+            },
+            {
+                path: "/admin/bonos",
+                component: BonosScreen,
+                exact: true
             },
             {
                 path: "/admin/create-clase",

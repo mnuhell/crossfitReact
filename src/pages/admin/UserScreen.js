@@ -1,5 +1,5 @@
 import React from 'react'
-import {BonoScreen} from "./BonoScreen";
+import {BonoScreenUser} from "./BonoScreenUser";
 import {useDispatch} from "react-redux";
 import {setUserActive} from "../../actions/user";
 import {uiOpenModal} from "../../actions/ui";
@@ -40,7 +40,7 @@ export const UserScreen = ( user ) => {
                 <p className="flex items-center">{ telefono }</p>
                 <div className="flex items-center">
                     {
-                        ( bonos.length > 0) ? bonos.map(bono => <BonoScreen
+                        ( bonos.length > 0) ? bonos.map(bono => <BonoScreenUser
                             key={bono._id} {...user} {...bono} />) : "Sin bonos activos"
                     }
                 </div>

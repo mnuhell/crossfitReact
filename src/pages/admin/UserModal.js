@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
-import {BonoScreen} from "./BonoScreen";
+import {BonoScreenUser} from "./BonoScreenUser";
 import {addBonoToUser, setUserActive} from "../../actions/user";
 
 const customStyles = {
@@ -153,7 +153,7 @@ export const UserModal = () => {
                         <label className="font-bold text-gray-800 mb-1 block">Bonos Activos</label>
                         {
                             ( bonos.length > 0 ) ?
-                                <div className="flex items-center z-30">{ bonos.map( bono => <BonoScreen key={ bono._id} { ...bono } />) }</div>
+                                <div className="flex items-center z-30">{ bonos.map( bono => <BonoScreenUser key={ bono._id} { ...bono } />) }</div>
                                 : <small>no tiene bonos activos</small>
                         }
 

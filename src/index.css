@@ -82,3 +82,8 @@ code {
   grid-template-columns: 10% 20% 20% 20% 20% 10%;
 }
 
+.table__header--bonos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+

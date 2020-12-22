@@ -32,10 +32,15 @@ const Header = () => {
                     
                 </div>
                 <div className="header__left flex justify-items-end justify-center overflow-hidden">
+                    <Link onClick={ handleLoading } to={{   pathname: "/admin/bonos" }}
+                          className="text-white text-xs hover:bg-blue-400 duration-500 transition-all ease-in-out flex items-center justify-items-center bg-blue-800 mr-4 rounded py-1 px-3 uppercase">
+                        Bonos
+                    </Link>
                     <Link onClick={ handleLoading } to={{   pathname: "/admin/users" }}
                           className="text-white text-xs hover:bg-blue-400 duration-500 transition-all ease-in-out flex items-center justify-items-center bg-blue-800 mr-4 rounded py-1 px-3 uppercase">
                         Usuarios
                     </Link>
+
                     <MenuButton />
                 </div>
             </div>  

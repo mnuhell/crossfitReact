@@ -20,6 +20,8 @@ export const types = {
     bonoAddUserActive: ' [ bono ] Get Bono User Active',
     bonoSaved: '[ bono ] Bono Saved',
     bonoActive: '[ bono ] Bono Active',
+    bonoDelete: ' [ bono ] Bono Delete ',
+    bonoEdit: ' [ bono ] Bono Edit',
 
     usersGetAll: '[ Users ] Get all Users',
     userActive: '[ USERS ] User active',

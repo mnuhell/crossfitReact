@@ -1,5 +1,6 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
+import {bonoDeleted} from "../../actions/bonos";
 
 
 
@@ -10,7 +11,7 @@ export const BonoScreen = (bono) => {
 
     const handleDeleteBono = () => {
 
-        console.log( " Delete bono ")
+       dispatch( bonoDeleted(bono))
 
     }
 

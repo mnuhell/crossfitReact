@@ -1,5 +1,6 @@
 import {fetchWithToken} from "../helpers/fetch";
 import {types} from "../types/types";
+import Swal from "sweetalert2";
 
 
 export const getBonos = () => {
@@ -36,11 +37,67 @@ export const bonoSaved = ( bono ) => {
 
     return async( dispatch ) => {
 
-        const resp = await fetchWithToken('bonos', bono, 'POST');
-        const body = await resp.json();
+        try {
+            const resp = await fetchWithToken('bonos', bono, 'POST');
+            const body = await resp.json();
 
-        dispatch( getBonos())
+            if( !body.ok) {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Bono',
+                    text: body.msg,
+                })
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Bono Creado',
+                text: body.msg,
+            })
+
+            dispatch( getBonos())
+        } catch ( error ) {
+
+            console.log(error)
+        }
+
+
 
     }
+}
 
+export const bonoDeleted = ( bono ) => {
+
+    return async( dispatch ) => {
+
+        try {
+            console.log( bono )
+
+            const resp = await fetchWithToken(`bonos/${bono._id}`, bono, 'DELETE');
+            const body = await resp.json();
+
+            console.log( body )
+
+            if( !body.ok ) {
+                return Swal.fire({
+                    icon: 'error',
+                    text: body.msg,
+                })
+            }
+
+            Swal.fire({
+                icon: 'success',
+                text: body.msg,
+            })
+
+            dispatch( getBonos())
+
+        } catch (error) {
+
+            console.log( error)
+        }
+
+
+
+    }
 }

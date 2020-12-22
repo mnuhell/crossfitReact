@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
+import {bonoSaved, getBonos} from "../../actions/bonos";
 
 const customStyles = {
     content : {
@@ -47,6 +48,8 @@ export const BonoModal = () => {
 
     const handleSubmitForm = ( e ) => {
         e.preventDefault()
+
+        dispatch( bonoSaved(formValues))
 
     }
 

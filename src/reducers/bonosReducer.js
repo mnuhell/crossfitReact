@@ -19,7 +19,6 @@ export const bonosReducer = (state = initialState, action) => {
 
         case types.bonoGetAllState:
             return {
-
                 bonos: [ ...action.payload ]
             }
 

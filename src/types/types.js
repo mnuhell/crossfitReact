@@ -18,6 +18,8 @@ export const types = {
     bonoGetAll: '[ bono ] Get All bonos ',
     bonoGetAllState: '[ bono ] Get All state ',
     bonoAddUserActive: ' [ bono ] Get Bono User Active',
+    bonoSaved: '[ bono ] Bono Saved',
+    bonoActive: '[ bono ] Bono Active',
 
     usersGetAll: '[ Users ] Get all Users',
     userActive: '[ USERS ] User active',

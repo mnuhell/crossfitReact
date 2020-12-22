@@ -54,15 +54,12 @@ export const userReducer = (state = initialState, action) => {
 			return {
 				userActive: {}
 			}
-		case types.bonoAddUserActive:
-			return {
-				...state.userActive,
-				userActive: action.payload
-			}
-		case types.userRefreshUserActive:
+		case types.userDeleteBono:
 			return {
 				...state,
-				userActive: {...action.payload}
+				userActive: {
+					...action.payload
+				}
 			}
 
 		default:

@@ -1,21 +1,33 @@
 import React, {useState} from 'react'
+import {useDispatch, useSelector} from "react-redux";
+import {deleteBonoUserModal, getAllUsers, setUserActive} from "../../actions/user";
+import {uiCloseModal } from "../../actions/ui";
 
 
 
 
-export const BonoScreen = ( bono ) => {
+export const BonoScreen = (bono) => {
 
-    const [showButtonDelete, setShowButtonDelete] = useState( false)
+    const [showButtonDelete, setShowButtonDelete] = useState( false);
+    const user = useSelector( state => state.user.userActive)
+    const dispatch = useDispatch()
 
     const handleDeleteBono = () => {
 
-        console.log( bono._id )
+        const data = {
+            user,
+            bonoId: bono._id
+        }
+
+        dispatch( deleteBonoUserModal( data ))
+        dispatch( uiCloseModal())
+
+
     }
 
     const hiddenButtonDeleteFunc = () => {
 
         setShowButtonDelete( false )
-        console.log( showButtonDelete )
     }
 
     const showButtonDeleteFunc = () => {
@@ -23,13 +35,11 @@ export const BonoScreen = ( bono ) => {
         setShowButtonDelete( true )
     }
 
-
-
     return (
         <>
-            <span onMouseEnter={ showButtonDeleteFunc }  onMouseLeave={ hiddenButtonDeleteFunc } className="bookmark flex bg-green-500  hover:bg-red-600 transition-all duration-500 ease-in-out hover:-z10 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
+            <span onClick={handleDeleteBono} onMouseEnter={ showButtonDeleteFunc }  onMouseLeave={ hiddenButtonDeleteFunc } className="bookmark flex bg-green-500  hover:bg-red-600 transition-all duration-500 ease-in-out hover:-z10 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
                 <span className="bono-name mr-3 text-sm flex items-center"> { bono.name } </span>
-                <span className="delete-bono cursor-pointer flex items-center" onClick={handleDeleteBono}>
+                <span className="delete-bono cursor-pointer flex items-center" >
                     { (!showButtonDelete) ?
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">

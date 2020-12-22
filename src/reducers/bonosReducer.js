@@ -23,6 +23,7 @@ export const bonosReducer = (state = initialState, action) => {
                 bonos: [ ...action.payload ]
             }
 
+
         default:
             return state
 

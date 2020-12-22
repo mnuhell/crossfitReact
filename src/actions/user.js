@@ -99,3 +99,47 @@ const getUsers = (users) => ({
     payload: users
 
 })
+
+export const deleteBonoUserModal = ( user ) => {
+
+    return async( dispatch ) => {
+
+        try {
+
+            const resp = await fetchWithToken(`users/delete-bono-user/${user.user._id}/${user.bonoId}`, user, 'PUT');
+            const body = await resp.json();
+
+            if( !body.ok ) {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Bono',
+                    text: body.msg,
+                })
+
+
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Bono',
+                text: body.msg,
+            })
+
+            dispatch( deleteBonoUserModalState( body.user ))
+            dispatch( getAllUsers())
+
+
+
+
+        } catch ( error ) {
+            console.log( error )
+        }
+
+    }
+
+}
+
+const deleteBonoUserModalState = ( user ) => ({
+    type: types.userDeleteBono,
+    payload: user
+})

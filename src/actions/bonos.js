@@ -71,12 +71,9 @@ export const bonoDeleted = ( bono ) => {
     return async( dispatch ) => {
 
         try {
-            console.log( bono )
 
             const resp = await fetchWithToken(`bonos/${bono._id}`, bono, 'DELETE');
             const body = await resp.json();
-
-            console.log( body )
 
             if( !body.ok ) {
                 return Swal.fire({
@@ -104,10 +101,22 @@ export const bonoEdited = ( bono ) => {
 
     return async ( dispatch ) => {
 
-        //CREAMOS LA EDICIONM
+        const resp = await fetchWithToken(`bonos/${bono._id}`, bono, 'PUT');
+        const body = await resp.json();
 
+        if( !body.ok ) {
+            return Swal.fire({
+                icon: 'error',
+                text: body.msg,
+            })
+        }
 
-        //Reseteamos cuando se edite
+        Swal.fire({
+            icon: 'success',
+            text: body.msg,
+        })
+
+        dispatch( getBonos())
 
     }
 }

@@ -25,7 +25,8 @@ const initialState = {
 export const BonoModal = () => {
 
     const dispatch = useDispatch();
-
+    const [ error, setError ] = useState(false);
+    const [ msgError, setMsgError ] = useState('')
     const  { modalOpen } = useSelector( state => state.ui);
     const bonoActive = useSelector(state => state.bonos.bonoActive);
     const [ formValues, setFormValues ] = useState( initialState );
@@ -34,8 +35,10 @@ export const BonoModal = () => {
     useEffect(() => {
         if( bonoActive ) {
             setFormValues(bonoActive)
+            setError( false )
         } else {
             setFormValues(initialState)
+            setError( false )
         }
     }, [bonoActive]);
 
@@ -56,14 +59,23 @@ export const BonoModal = () => {
     const handleSubmitForm = ( e ) => {
         e.preventDefault()
         if( _id ) {
+
+            if( name.trim() === '' || precio === '' || days === '') {
+
+                setError( true);
+                setMsgError(' Revisa los campos, no pueden estar vacios')
+                return;
+            }
+
             dispatch( bonoEdited(formValues))
             dispatch( uiCloseModal())
+            setError( false )
+
+
         } else {
             dispatch( bonoSaved(formValues))
 
         }
-
-
 
     }
 
@@ -82,7 +94,7 @@ export const BonoModal = () => {
 
         <form onSubmit={ handleSubmitForm }>
             <div className="container px-4">
-
+                {(error) ? <p className="bg-red-500 py-1 grid mb-5 items-center justify-items-center text-white "> {msgError} </p> : ''}
             <div className="form-control grid lg:grid-cols-2 gap-4">
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1 block">Nombre</label>

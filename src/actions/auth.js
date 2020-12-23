@@ -54,12 +54,14 @@ export const startLogout = () => {
 	}
 }
 
-const logout = () => ( { type: types.authLogout })
+const  logout = () => ( { type: types.authLogout })
 
 
 export const startRegister = ( user ) => {
 
 	return async (dispatch) => {
+
+		try {
 
 		const resp = await fetchWithoutToken('auth/new', user, 'POST');
 		const body = await resp.json();
@@ -75,13 +77,10 @@ export const startRegister = ( user ) => {
 				bonos: body.bonos
 			}))
 
-		} else {
-			Swal.fire({
-				title: 'Error!',
-				text: `${body.msg}`,
-				icon: 'error',
-				confirmButtonText: 'Salir'
-			})
+		}
+
+		} catch ( error ) {
+			console.log( error )
 		}
 
 	}
@@ -91,33 +90,30 @@ export const startCheking = () => {
 
 	return async (dispatch) => {
 
+		try {
+			const resp = await fetchWithToken( 'auth/renew' );
+			const body = await resp.json();
 
-		const resp = await fetchWithToken( 'auth/renew' );
-		const body = await resp.json();
+			if (body.ok) {
+				localStorage.setItem('token', body.token);
+				localStorage.setItem('token-init-date', new Date().getTime());
 
-		if (body.ok) {
-			localStorage.setItem('token', body.token);
-			localStorage.setItem('token-init-date', new Date().getTime());
+				dispatch(login({
+					uid: body.uid,
+					name: body.name,
+					role: body.role,
+					bono: body.bono,
+					bonos: body.bonos
+				}))
 
-			dispatch(login({
-				uid: body.uid,
-				name: body.name,
-				role: body.role,
-				bono: body.bono,
-				bonos: body.bonos
-			}))
+				dispatch( getClasesPendingUser() )
 
-			dispatch( getClasesPendingUser() )
+			}
 
-		} else {
-			Swal.fire({
-				title: 'Error!',
-				text: `${body.msg}`,
-				icon: 'error',
-				confirmButtonText: 'Salir'
-			});
+			dispatch( checkingFinish())
 
-			dispatch( checkingFinish() )
+		} catch ( error ) {
+			console.log( error )
 		}
 
 	}

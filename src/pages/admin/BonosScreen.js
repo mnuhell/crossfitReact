@@ -30,7 +30,7 @@ export const BonosScreen = () => {
         <section className="container mx-auto bono font-body">
             <h1 className="pt-32 grid items-center font-bold text-2xl w-full justify-items-center uppercase "> Bonos </h1>
             <hr />
-            <div className="bono__button flex items-center float-right mt-10 bg-blue-500 rounded">
+            <div className="bono__button flex mx-3 items-center float-right mt-10 bg-blue-500 rounded">
                 <button onClick={ handleNewBono } className="px-2 grid
                 text-white py-2 uppercase font-bold">
                     Nuevo bono

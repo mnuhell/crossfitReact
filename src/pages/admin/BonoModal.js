@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
-import {bonoSaved, getBonos} from "../../actions/bonos";
+import {bonoEdited, bonoReset, bonoSaved, getBonos} from "../../actions/bonos";
 
 const customStyles = {
     content : {
@@ -27,14 +27,21 @@ export const BonoModal = () => {
     const dispatch = useDispatch();
 
     const  { modalOpen } = useSelector( state => state.ui);
-    const userActive = useSelector( state => state.user.userActive);
+    const bonoActive = useSelector(state => state.bonos.bonoActive);
+    const [ formValues, setFormValues ] = useState( initialState );
+    const { _id, name, days, precio } = formValues;
 
-    const[ formValues, setFormValues ] = useState( initialState )
-
-    const { name, days, precio } = formValues;
+    useEffect(() => {
+        if( bonoActive ) {
+            setFormValues(bonoActive)
+        } else {
+            setFormValues(initialState)
+        }
+    }, [bonoActive]);
 
     const closeModal = () => {
         dispatch( uiCloseModal() )
+        dispatch( bonoReset())
     }
 
     const handleInputChange = ({ target }) => {
@@ -48,8 +55,15 @@ export const BonoModal = () => {
 
     const handleSubmitForm = ( e ) => {
         e.preventDefault()
+        if( _id ) {
+            dispatch( bonoEdited(formValues))
+            dispatch( uiCloseModal())
+        } else {
+            dispatch( bonoSaved(formValues))
 
-        dispatch( bonoSaved(formValues))
+        }
+
+
 
     }
 
@@ -85,7 +99,7 @@ export const BonoModal = () => {
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1 block">Días</label>
                     <input
-                        type="text"
+                        type="number"
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         name="days"
                         value={ days }
@@ -99,7 +113,7 @@ export const BonoModal = () => {
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1 block">Precio</label>
                     <input
-                        type="text"
+                        type="number"
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         name="precio"
                         value={ precio }
@@ -109,8 +123,11 @@ export const BonoModal = () => {
 
                 </div>
             </div>
+            {
+                (_id) ? <button className="btn block text-center bg-blue-500 w-full py-3 text-white uppercase mt-10">Editar</button>
+                    :   <button className="btn block text-center bg-blue-500 w-full py-3 text-white uppercase mt-10">Guardar</button>
+            }
 
-            <button className="btn block text-center bg-blue-500 w-full py-3 text-white uppercase mt-10">Guardar</button>
 
         </form>
 

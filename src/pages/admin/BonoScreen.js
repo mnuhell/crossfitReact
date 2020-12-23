@@ -1,6 +1,8 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
-import {bonoDeleted} from "../../actions/bonos";
+import {bonoActive, bonoDeleted, bonoEdited} from "../../actions/bonos";
+import {BonoModal} from "./BonoModal";
+import {uiCloseModal, uiOpenModal} from "../../actions/ui";
 
 
 
@@ -12,12 +14,15 @@ export const BonoScreen = (bono) => {
     const handleDeleteBono = () => {
 
        dispatch( bonoDeleted(bono))
+       dispatch( uiCloseModal())
 
     }
 
     const handleEditBono = () => {
 
-        console.log( "Edit bono")
+        dispatch( bonoActive( bono ))
+        //dispatch( bonoEdited( bono ))
+        dispatch( uiOpenModal())
     }
 
     return (
@@ -44,7 +49,6 @@ export const BonoScreen = (bono) => {
                         </span>
                     </div>
                 </div>
-
             </div>
         </>
     )

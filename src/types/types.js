@@ -22,6 +22,7 @@ export const types = {
     bonoActive: '[ bono ] Bono Active',
     bonoDelete: ' [ bono ] Bono Delete ',
     bonoEdit: ' [ bono ] Bono Edit',
+    bonoReset: ' [ bono ] Bono Reset',
 
     usersGetAll: '[ Users ] Get all Users',
     userActive: '[ USERS ] User active',

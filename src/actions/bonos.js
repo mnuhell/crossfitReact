@@ -97,7 +97,29 @@ export const bonoDeleted = ( bono ) => {
             console.log( error)
         }
 
+    }
+}
 
+export const bonoEdited = ( bono ) => {
+
+    return async ( dispatch ) => {
+
+        //CREAMOS LA EDICIONM
+
+
+        //Reseteamos cuando se edite
 
     }
 }
+
+export const bonoReset = () => ({
+
+    type: types.bonoReset
+})
+
+export const bonoActive = ( bono ) => ({
+
+    type: types.bonoActive,
+    payload: bono
+
+})

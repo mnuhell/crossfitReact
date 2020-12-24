@@ -15,17 +15,15 @@ const localDate = moment().localeData()
 export const Clase = (clase) => {
 
     const dispatch = useDispatch();
+    const [ close, setClose ] = useState( false )
     const { uid } = useSelector(state => state.auth);
     const { totales } = useSelector( state => state.clases)
     const usuario =  clase.users.filter( user => user._id === uid);
 
-    const timeCloseClass = (time) => {
-
-        const actual = DateTime.local().setLocale('es');
-        const final =  DateTime.fromISO(clase.end).setLocale('es')
-        const { minutes } = final.diff(actual, 'minute')
-
-        return minutes <= time;
+    const timeCloseClass = () => {
+        const now = moment();
+        const classeTime = moment(clase.end).add('-45', "minutes");
+        return now >= classeTime;
     }
 
     const handleReserva = () => {
@@ -79,7 +77,7 @@ export const Clase = (clase) => {
         }
 
         return(
-            <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
+            <button className="bg-green-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                 Registrado
             </button>
         )
@@ -94,7 +92,7 @@ export const Clase = (clase) => {
     }
 
         return (
-			<div className="clase rounded bg-blue-500 h-80 relative">
+			<div className="clase rounded bg-blue-500 h-80 relative font-body">
                 <div className="clase__usuarios block h-8">
                     <div>
                         <h3 className="text-center rounded-full h-20 px-6 text-blue-100">
@@ -140,10 +138,10 @@ export const Clase = (clase) => {
 
                     <div className="clase_buttons grid w-full grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
                         {
-                            timeCloseClass(30)
+                            timeCloseClass()
                                     ?
                                 <button
-                                    className="bg-red-600 py-2 text-blue-100 float-right uppercase cursor-not-allowed"> Clase caducada
+                                    className="bg-red-600 py-2 font-bold text-blue-100 float-right uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
                                 <button
@@ -154,10 +152,15 @@ export const Clase = (clase) => {
                         }
 
                         {
-                            userRegister()
-                                ?
+                            timeCloseClass() ?
+                                <button
+                                    className="bg-red-600 py-2 font-bold text-blue-100 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Clase cerrada
+                                </button>
+                                    :
+                                userRegister()
+                                    ?
                                 showButton()
-                                :
+                                    :
                                 <button
                                     onClick={ handleReserva }
                                     className="bg-blue-500 py-2 text-blue-100 float-left focus:ring-2 focus:none uppercase"> Regístrate

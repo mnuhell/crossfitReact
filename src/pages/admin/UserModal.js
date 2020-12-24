@@ -78,14 +78,16 @@ export const UserModal = () => {
             bono
         }
 
+        const now = moment();
+        const endDate = now.clone().endOf('month').add('1', 'day');
         const userHistyory = {
             bono: bono,
             user: userActive._id,
-            start: moment(),
-            end: moment()
+            start: now,
+            end: endDate
         }
 
-        //dispatch( addBonoToUser( user ))
+        dispatch( addBonoToUser( user ))
         dispatch( historyGetBonos( userHistyory ))
 
         closeModal()

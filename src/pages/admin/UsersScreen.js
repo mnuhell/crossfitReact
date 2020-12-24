@@ -26,7 +26,7 @@ export const UsersScreen = () => {
     return (
 
         ( active ) ? <LoadingApp /> :
-
+        <>
         <section className="w-full px-3 pt-32 font-body pb-32 ">
             <h1 className="text-2xl font-bold w-full flex justify-center uppercase mb-5">Usuarios</h1>
             <div className="search container mx-auto xl:min-h-full focus:outline-none focus:shadow-none mb-5">
@@ -49,7 +49,7 @@ export const UsersScreen = () => {
         <UserModal />
 
         </section>
-
+        </>
     )
 
 }

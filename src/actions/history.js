@@ -8,7 +8,7 @@ export const historyGetBonos = ( data ) => {
         try {
 
         console.log( data)
-        const resp = await fetchWithToken('/history/bono', data, 'POST');
+        const resp = await fetchWithToken('history/bono', data, 'POST');
         const body = await resp.json();
 
         console.log( body )

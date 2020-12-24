@@ -22,7 +22,8 @@ export const Clase = (clase) => {
 
     const timeCloseClass = () => {
         const now = moment();
-        const classeTime = moment(clase.end).add('-45', "minutes");
+        const classeTime = moment(clase.start).add('-45', "minutes");
+        console.log( classeTime)
         return now >= classeTime;
     }
 
@@ -92,6 +93,7 @@ export const Clase = (clase) => {
     }
 
         return (
+            <>
 			<div className="clase rounded bg-blue-500 h-80 relative font-body">
                 <div className="clase__usuarios block h-8">
                     <div>
@@ -170,6 +172,8 @@ export const Clase = (clase) => {
 
                     </div>
             </div>
+
+                </>
 
         )
 

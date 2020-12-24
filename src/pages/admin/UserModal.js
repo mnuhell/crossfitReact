@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
+import moment from 'moment';
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
 import {addBonoToUser, setUserActive} from "../../actions/user";
+import {historyGetBonos} from "../../actions/history";
 
 const customStyles = {
     content : {
@@ -69,12 +71,22 @@ export const UserModal = () => {
 
     const handleChangeSelect = ( { target } ) => {
 
+        const bono = target.value
+
         const user = {
             userActive,
-            bono: target.value
+            bono
         }
 
-        dispatch( addBonoToUser( user ))
+        const userHistyory = {
+            bono: bono,
+            user: userActive._id,
+            start: moment(),
+            end: moment()
+        }
+
+        //dispatch( addBonoToUser( user ))
+        dispatch( historyGetBonos( userHistyory ))
 
         closeModal()
 

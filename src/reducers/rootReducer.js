@@ -6,6 +6,7 @@ import { loadingReducer } from './loadingReducer';
 import { userReducer } from './userReducer';
 import { clasesReducer } from './clasesReducer';
 import { bonosReducer } from './bonosReducer';
+import { historyReducer } from './historyReducer'
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
@@ -15,5 +16,6 @@ export const rootReducer = combineReducers({
 	user: userReducer,
 	clases: clasesReducer,
     bonos: bonosReducer,
+    history: historyReducer,
 
 })

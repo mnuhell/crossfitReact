@@ -23,7 +23,6 @@ export const Clase = (clase) => {
     const timeCloseClass = () => {
         const now = moment();
         const classeTime = moment(clase.start).add('-45', "minutes");
-        console.log( classeTime)
         return now >= classeTime;
     }
 

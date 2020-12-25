@@ -71,13 +71,6 @@ export const addBonoToUser = ( user ) => {
     }
 }
 
-const refreshActiveUser = (userActive) => ({
-
-    type: types.userRefreshUserActive,
-    payload: userActive
-
-})
-
 export const setUserActive = ( user ) => {
 
     return async ( dispatch ) => {
@@ -125,9 +118,6 @@ export const deleteBonoUserModal = ( user ) => {
 
             dispatch( deleteBonoUserModalState( body.user ))
             dispatch( getAllUsers())
-
-
-
 
         } catch ( error ) {
             console.log( error )

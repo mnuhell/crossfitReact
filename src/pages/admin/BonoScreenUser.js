@@ -39,7 +39,7 @@ export const BonoScreenUser = (bono) => {
     }
 
 
-       const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono)
+       const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono) || '';
 
     return (
         <>

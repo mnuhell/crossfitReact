@@ -1,18 +1,24 @@
 import {fetchWithToken} from "../helpers/fetch";
+import {addBonoToUser} from "./user";
 
 
-export const historyGetBonos = ( data ) => {
+export const savedHistoryBono = ( data ) => {
 
     return async ( dispatch ) => {
 
         try {
 
-        console.log( data)
         const resp = await fetchWithToken('history/bono', data, 'POST');
         const body = await resp.json();
 
-        console.log( body )
+        if( body.ok ) {
+            const data = {
+                bonoIdHistory: body.bonoSavedHistory._id,
+                userId: body.bonoSavedHistory.user
+            }
 
+         dispatch( addBonoToUser( data ))
+        }
 
         } catch ( error ) {
 
@@ -20,6 +26,27 @@ export const historyGetBonos = ( data ) => {
         }
 
     }
+
+}
+
+export const deleteHistoryBono = ( data ) => {
+
+    return async( dispatch ) => {
+
+        try {
+
+            console.log( data )
+
+            const resp = await fetchWithToken( `history/bono/${data.user._id}`, data , 'DELETE');
+            const body = await resp.json();
+
+        } catch (e) {
+            console.log(e)
+        }
+
+
+    }
+
 
 
 }

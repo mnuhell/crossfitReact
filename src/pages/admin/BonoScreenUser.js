@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {deleteBonoUserModal, getAllUsers, setUserActive} from "../../actions/user";
 import {uiCloseModal } from "../../actions/ui";
+import { deleteHistoryBono } from '../../actions/history'
 
 
 
@@ -9,8 +10,11 @@ import {uiCloseModal } from "../../actions/ui";
 export const BonoScreenUser = (bono) => {
 
     const [showButtonDelete, setShowButtonDelete] = useState( false);
-    const user = useSelector( state => state.user.userActive)
-    const dispatch = useDispatch()
+    const user = useSelector( state => state.user.userActive);
+    const bonosState = useSelector( state => state.bonos.bonos)
+    const dispatch = useDispatch();
+
+    const { bono:name } = bono;
 
     const handleDeleteBono = () => {
 
@@ -20,6 +24,7 @@ export const BonoScreenUser = (bono) => {
         }
 
         dispatch( deleteBonoUserModal( data ))
+        dispatch( deleteHistoryBono(data))
         dispatch( uiCloseModal())
     }
 
@@ -33,10 +38,13 @@ export const BonoScreenUser = (bono) => {
         setShowButtonDelete( true )
     }
 
+
+       const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono)
+
     return (
         <>
             <span onClick={handleDeleteBono} onMouseEnter={ showButtonDeleteFunc }  onMouseLeave={ hiddenButtonDeleteFunc } className="bookmark flex bg-green-500  hover:bg-red-600 transition-all duration-500 ease-in-out hover:-z10 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
-                <span className="bono-name mr-3 text-sm flex items-center"> { bono.name } </span>
+                <span className="bono-name mr-3 text-sm flex items-center"> {  bonoCorrect.name } </span>
                 <span className="delete-bono cursor-pointer flex items-center" >
                     { (!showButtonDelete) ?
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"

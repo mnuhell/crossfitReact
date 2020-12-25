@@ -1,20 +1,28 @@
 import React from 'react'
 import {BonoScreenUser} from "./BonoScreenUser";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setUserActive} from "../../actions/user";
 import {uiOpenModal} from "../../actions/ui";
 
 
 export const UserScreen = ( user ) => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
     const { name, email, telefono, bonos } = user;
+    const bonosState = useSelector( state => state.bonos.bonos)
 
     const totalPagar = () => {
 
         let total = 0
+        let bonosTotal = []
         if(bonos.length > 0 ) {
-            bonos.map( bono => total = total + bono.precio)
+
+            bonos.map( bono => {
+                bonosTotal.push(bonosState.find( bonoState => bonoState._id === bono.bono))
+            })
+
+            bonosTotal.map( bono => total = total + bono.precio)
         } else {
             total = 0;
         }
@@ -28,10 +36,8 @@ export const UserScreen = ( user ) => {
         dispatch( uiOpenModal())
     }
 
-
-
     return (
-
+        <>
         <div onClick={handleSelectUser} className="border-blue-50 border-b-2 table-flex min-h-full hover:bg-blue-200 hover:text-white transition-all ease-in-out duration-200 rounded px-2 cursor-pointer">
             <div className="grid table__header sm:justify-start container mx-auto py-5">
                 <p><img className="object-cover rounded-full h-12" alt={name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" /></p>
@@ -58,7 +64,7 @@ export const UserScreen = ( user ) => {
 
         </div>
 
-
+        </>
     )
 
 

@@ -5,7 +5,7 @@ import moment from 'moment';
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
 import {addBonoToUser, setUserActive} from "../../actions/user";
-import {historyGetBonos} from "../../actions/history";
+import { savedHistoryBono } from "../../actions/history";
 
 const customStyles = {
     content : {
@@ -73,29 +73,23 @@ export const UserModal = () => {
 
         const bono = target.value
 
-        const user = {
-            userActive,
-            bono
-        }
-
         const now = moment();
-        const endDate = now.clone().endOf('month').add('1', 'day');
-        const userHistyory = {
+        //const endDate = now.clone().endOf('month').add('1', 'day');
+        const userHistory = {
             bono: bono,
             user: userActive._id,
             start: now,
-            end: endDate
+            end: null
         }
 
-        dispatch( addBonoToUser( user ))
-        dispatch( historyGetBonos( userHistyory ))
+        dispatch( savedHistoryBono( userHistory ))
 
         closeModal()
 
     }
 
     return (
-
+        <>
         <Modal
             isOpen={ modalOpen }
             /*onAfterOpen={afterOpenModal} */
@@ -203,5 +197,6 @@ export const UserModal = () => {
         </form>
 
         </Modal>
+            </>
     )
 }

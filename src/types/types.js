@@ -24,7 +24,8 @@ export const types = {
     bonoEdit: ' [ bono ] Bono Edit',
     bonoReset: ' [ bono ] Bono Reset',
 
-    history: ' [ history ] history get bonos',
+    historySaved: ' [ history ] history saved bonos',
+    historyDelete: ' [ history ] history deleted bonos',
 
     usersGetAll: '[ Users ] Get all Users',
     userActive: '[ USERS ] User active',

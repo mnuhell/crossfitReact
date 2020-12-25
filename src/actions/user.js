@@ -42,10 +42,8 @@ export const addBonoToUser = ( user ) => {
     return async( dispatch ) => {
 
         try {
-            const resp = await fetchWithToken(`users/add-bono-user/${user.userActive._id}/${user.bono}`, user, 'PUT');
+            const resp = await fetchWithToken(`users/add-bono-user/${user.userId}/${user.bonoIdHistory}`, user, 'PUT');
             const body = await resp.json();
-
-
 
             if( !body.ok ) {
                 return Swal.fire({

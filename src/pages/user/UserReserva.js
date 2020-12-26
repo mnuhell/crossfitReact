@@ -38,8 +38,8 @@ const UserReserva = () => {
     return (
 
         active ? <LoadingApp /> :
-            <>
 
+            <>
                 { (filterDate().length !== 0)
                     ? <>
 						<h2 className="text-center text-blue-900 pt-32 uppercase text-2xl font-extrabold border-blue-800 ">
@@ -52,8 +52,7 @@ const UserReserva = () => {
                     </>
                     : <Error header="Lo sentimos! " body=" No hay clases previstas para esta semana" />
                 }
-
-            </>
+        </>
     )
 }
 

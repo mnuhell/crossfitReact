@@ -68,7 +68,7 @@ export const Clase = (clase) => {
 
     const showButton = () => {
 
-        console.log( "En clase ", usuario.length )
+        console.log( "En clase ", clase )
         console.log( "Totales", totales)
 
         if(totales === -1 ) {
@@ -85,6 +85,17 @@ export const Clase = (clase) => {
                 </button>
             )
         }
+
+        if( clase.userclase === clase.users.length) {
+            return(
+                <button className="bg-red-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                    Completa
+                </button>
+            )
+        }
+
+
+
         return(
             <button
                 onClick={ handleReserva }

@@ -68,9 +68,6 @@ export const Clase = (clase) => {
 
     const showButton = () => {
 
-        console.log( "En clase ", clase )
-        console.log( "Totales", totales)
-
         if(totales === -1 ) {
             return(
                 <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
@@ -105,6 +102,23 @@ export const Clase = (clase) => {
             )
 
 
+    }
+
+    const showButtonleft = () => {
+
+        if( clase.userclase === clase.users.length && !usuario  ) {
+            return (
+                <button
+                    className="bg-red-600 py-2 text-blue-100 float-right uppercase"> completa
+                </button>
+            )
+        }
+        return (
+            <button
+                onClick={ handleDelete }
+                className="bg-red-600 py-2 text-blue-100 float-right uppercase"> No puedo ir
+            </button>
+        )
     }
 
 
@@ -168,10 +182,8 @@ export const Clase = (clase) => {
                                     className="bg-red-600 py-2 font-bold text-blue-100 float-right uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
-                                <button
-                                    onClick={ handleDelete }
-                                    className="bg-red-600 py-2 text-blue-100 float-right uppercase"> No puedo ir
-                                </button>
+                                showButtonleft()
+
 
                         }
 

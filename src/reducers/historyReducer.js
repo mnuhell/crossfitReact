@@ -1,4 +1,4 @@
-
+import {types} from "../types/types";
 
 
 const initialState = {
@@ -13,6 +13,12 @@ const initialState = {
 export const historyReducer = ( state = initialState, action) => {
 
     switch ( action.type) {
+
+        case types.historyBonoReset:
+            return {
+                ...state,
+                end: action.payload
+            }
 
         default:
             return state

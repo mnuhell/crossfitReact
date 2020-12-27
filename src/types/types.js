@@ -26,6 +26,7 @@ export const types = {
 
     historySaved: ' [ history ] history saved bonos',
     historyDelete: ' [ history ] history deleted bonos',
+    historyBonoReset: ' [ hsitory ] history bono reset ',
 
     usersGetAll: '[ Users ] Get all Users',
     userActive: '[ USERS ] User active',

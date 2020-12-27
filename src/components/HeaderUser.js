@@ -16,7 +16,7 @@ const Header = () => {
     const { totales } = useSelector(state => state.clases);
 
     const showMessageInfo = (message) => {
-        if(totales === -1) {
+        if(totales <= 0) {
             return (
                 <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-blue-900 text-xs text-blue-100">
                     <p> 

@@ -38,8 +38,7 @@ export const BonoScreenUser = (bono) => {
         setShowButtonDelete( true )
     }
 
-
-       const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono) || '';
+    const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono) || '';
 
     return (
         <>

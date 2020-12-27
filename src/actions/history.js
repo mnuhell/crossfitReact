@@ -35,9 +35,7 @@ export const deleteHistoryBono = ( data ) => {
 
         try {
 
-            console.log( data )
-
-            const resp = await fetchWithToken( `history/bono/${data.user._id}`, data , 'DELETE');
+            const resp = await fetchWithToken( `history/bono/${data.bonoId}`, data , 'DELETE');
             const body = await resp.json();
 
         } catch (e) {
@@ -47,6 +45,21 @@ export const deleteHistoryBono = ( data ) => {
 
     }
 
+}
 
+export const resetHistoryBono = () => {
+
+    return async( dispatch ) => {
+
+        try {
+
+
+
+
+
+        } catch (e) {
+            console.log( e )
+        }
+    }
 
 }

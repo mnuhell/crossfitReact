@@ -18,7 +18,7 @@ export const Clase = (clase) => {
     const [ close, setClose ] = useState( false )
     const { uid } = useSelector(state => state.auth);
     const { totales } = useSelector( state => state.clases)
-    const usuario =  clase.users.filter( user => user._id === uid);
+    const usuario =  clase.users.filter( user => user._id === uid );
 
     const timeCloseClass = () => {
         const now = moment();
@@ -68,26 +68,38 @@ export const Clase = (clase) => {
 
     const showButton = () => {
 
-        if(totales === -1 && usuario.length === 0) {
+        console.log( "En clase ", usuario.length )
+        console.log( "Totales", totales)
+
+        if(totales === -1 ) {
             return(
                 <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
                     renueva tu bono
                 </button>
             )
         }
-
+        if( usuario.length ) {
+            return(
+                <button className="bg-green-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                    Registrado
+                </button>
+            )
+        }
         return(
-            <button className="bg-green-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
-                Registrado
+            <button
+                onClick={ handleReserva }
+                className="bg-blue-500 py-2 text-blue-100 float-left focus:ring-2 focus:none uppercase"> Regístrate
             </button>
-        )
+
+            )
+
 
     }
 
 
     const userRegister = () => {
 
-        return usuario.length > 0 || clase.userclase === clase.users.length || totales === -1
+        return usuario.length >= 0 || clase.userclase === clase.users.length || totales === 0
 
     }
 
@@ -158,14 +170,8 @@ export const Clase = (clase) => {
                                     className="bg-red-600 py-2 font-bold text-blue-100 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
-                                userRegister()
-                                    ?
                                 showButton()
-                                    :
-                                <button
-                                    onClick={ handleReserva }
-                                    className="bg-blue-500 py-2 text-blue-100 float-left focus:ring-2 focus:none uppercase"> Regístrate
-                                </button>
+
                         }
 
 

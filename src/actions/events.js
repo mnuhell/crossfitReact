@@ -85,7 +85,6 @@ export const deleteUserClass = (event) => {
     return async (dispatch) => {
 
         try {
-
             const resp = await fetchWithToken(`events/delete-user/${event.id}`, event, 'PUT');
             const body = await resp.json();
 
@@ -115,7 +114,6 @@ export const getClasesPendingUser = () => {
 			const clases = await resp.json();
 
 			const { totales } = clases
-
 
             dispatch( classesPending(totales) )
 

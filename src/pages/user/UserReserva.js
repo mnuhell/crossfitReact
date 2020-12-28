@@ -28,13 +28,11 @@ const UserReserva = () => {
 
 	const filterDate = () => {
 
-		let currentDay = moment().format();
+		let currentDay = moment().add('8', 'hours');
 
-        return events.filter(event => moment(event.start).isSame( currentDay, 'day'));
+        return events.filter(event => moment(event.start).isSameOrAfter( currentDay, 'day'));
 	}
-
-
-
+	
     return (
 
         active ? <LoadingApp /> :

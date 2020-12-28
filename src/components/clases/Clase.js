@@ -68,13 +68,14 @@ export const Clase = (clase) => {
 
     const showButton = () => {
 
-        if(totales === -1 ) {
+        if(totales === -1 && !usuario.length  ) {
             return(
                 <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
                     renueva tu bono
                 </button>
             )
         }
+
         if( usuario.length ) {
             return(
                 <button className="bg-green-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
@@ -85,7 +86,7 @@ export const Clase = (clase) => {
 
         if( clase.userclase === clase.users.length) {
             return(
-                <button className="bg-red-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button title="Debes de esperar a que algún usuario deje su plaza" className="bg-red-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Completa
                 </button>
             )
@@ -106,10 +107,11 @@ export const Clase = (clase) => {
 
     const showButtonleft = () => {
 
-        if( clase.userclase === clase.users.length && !usuario  ) {
+        if( clase.userclase === clase.users.length && !usuario.length  ) {
             return (
                 <button
-                    className="bg-red-600 py-2 text-blue-100 float-right uppercase"> completa
+                    className="bg-red-400 py-2 text-blue-100 float-right uppercase cursor-not-allowed"
+                    disabled> Completa
                 </button>
             )
         }

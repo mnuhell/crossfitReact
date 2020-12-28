@@ -13,25 +13,25 @@ const RoutesApp = () => {
     useEffect(() => {
         dispatch( getBonos())
         dispatch(startCheking());
-        
+
     }, [dispatch])
 
     return (
         <>
-        <Router>
-        { 
-        
-        <Switch>
+            <Router>
+            {
 
-            { 
-                routes.map( (route, index) => (
-                    <RouteWithSubRoutes key={index} {...route} />
-                ))
+            <Switch>
+
+                {
+                    routes.map( (route, index) => (
+                        <RouteWithSubRoutes key={index} {...route} />
+                    ))
+                }
+
+            </Switch>
             }
-
-        </Switch>
-        }
-        </Router>
+            </Router>
         </>
     )
     

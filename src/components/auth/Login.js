@@ -2,15 +2,15 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { startLogin } from '../../actions/auth';
 import { loading } from '../../actions/loading';
 import {getBonosState} from "../../actions/bonos";
+import {LoadingApp} from "../LoadingApp";
 
 export const Login = () => {
 
     const dispatch = useDispatch();
-
     const [ formValues, handleInputChange ] = useForm({
         email: 'user@gmail.com',
         password: 'dev12345678'
@@ -23,20 +23,17 @@ export const Login = () => {
         e.preventDefault();
 
         dispatch(startLogin(email, password))
-
-		dispatch(loading(true))
         if( bonos ) {
             dispatch( getBonosState( JSON.parse(bonos) ))
         } else {
             localStorage.setItem('bonos', [])
         }
 
-
-
     }
 
     return (
 
+        <>
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
             <div className="login__content sm:w-1/3">
                 <div className="logo flex mb-5 justify-center">
@@ -75,5 +72,6 @@ export const Login = () => {
                 </form>
             </div>
         </div>
+            </>
     )
 }

@@ -13,7 +13,7 @@ const Header = () => {
     const showMessageInfo = (message) => {
         if(totales <= 0) {
             return (
-                <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-red-500 text-xs text-blue-100">
+                <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-blue-900 text-xs text-blue-100">
                     <p> 
                         <div className="w-5 float-left justify-center mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

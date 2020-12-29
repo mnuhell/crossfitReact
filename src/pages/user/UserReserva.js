@@ -27,8 +27,7 @@ const UserReserva = () => {
 
 	const filterDate = () => {
 
-		let currentDay = moment().add('8', 'hours');
-
+		let currentDay = moment().add('-8', 'hours');
         return events.filter(event => moment(event.start).isSameOrAfter( currentDay, 'day'));
 	}
 	

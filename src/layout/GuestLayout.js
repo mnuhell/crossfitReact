@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React  from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
-import { startCheking } from '../../src/actions/auth';
+import {LoadingApp} from "../components/LoadingApp";
 
 
 
@@ -41,16 +41,24 @@ const GuestLayout = (props) => {
                </>
            )
        }
+
+        return (
+            <>
+                <div className="guest-layout">
+                    <LoadRoutes routes={ routes } />
+                </div>
+            </>
+        )
     }
-     
 
     return (
         <>
-            <div className="guest-layout">
-                <LoadRoutes routes={ routes } />
-            </div>
+            <LoadingApp />
         </>
     )
+     
+
+
 } 
 
 function LoadRoutes({routes}) {

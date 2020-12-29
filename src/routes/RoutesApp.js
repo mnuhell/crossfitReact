@@ -13,6 +13,7 @@ const RoutesApp = () => {
     useEffect(() => {
         dispatch( getBonos())
         dispatch(startCheking());
+        console.log( "Compruebo cada mes ")
 
     }, [dispatch])
 

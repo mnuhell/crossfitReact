@@ -27,13 +27,13 @@ export const MenuButton = ( { name } ) => {
     
     return (
 
-       
+       <>
         <div className="rounded-full h-8 w-8 overflow-hidden ">
             <button onClick={ handleLogout }>
                 <img className=" bg-cover" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg"
                     alt={name} title={name} />
             </button>
         </div>
-        
+        </>
     )
 }

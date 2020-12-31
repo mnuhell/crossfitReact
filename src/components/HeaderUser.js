@@ -13,16 +13,19 @@ const Header = () => {
     const showMessageInfo = (message) => {
         if(totales <= 0) {
             return (
+
                 <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-blue-900 text-xs text-blue-100">
-                    <p> 
+                    <div>
                         <div className="w-5 float-left justify-center mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
-                    </p>
-                    {message}
+                        {message}
+                    </div>
+
                 </div>
+
             )
         }
     }

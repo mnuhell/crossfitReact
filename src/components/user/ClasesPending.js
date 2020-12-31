@@ -12,10 +12,10 @@ export const ClasesPending = () => {
 	}
 
 	return (
-
+		<>
 		<div className={`font-body absolute -mt-2 -ml-8 rounded-full h-6 w-6 text-md ${withBono()} text-white flex items-center justify-center`}>
 			{ (clases.totales <= -1 ) ? 0 : clases.totales  }
 		</div>
-
+		</>
 	)
 }

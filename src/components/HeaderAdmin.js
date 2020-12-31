@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 import {useDispatch} from "react-redux";
 import {loading} from "../actions/loading";
-import {getAllUsers} from "../actions/user";
 
 const HeaderContainer = styled.header`
     

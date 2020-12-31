@@ -42,18 +42,14 @@ const GuestLayout = (props) => {
            )
        }
 
-        return (
-            <>
-                <div className="guest-layout">
-                    <LoadRoutes routes={ routes } />
-                </div>
-            </>
-        )
+
     }
 
     return (
         <>
-            <LoadingApp />
+            <div className="guest-layout">
+                <LoadRoutes routes={ routes } />
+            </div>
         </>
     )
      

@@ -23,6 +23,7 @@ export const Login = () => {
         e.preventDefault();
 
         dispatch(startLogin(email, password))
+
         if( bonos ) {
             dispatch( getBonosState( JSON.parse(bonos) ))
         } else {

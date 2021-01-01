@@ -11,9 +11,10 @@ const UserLayout = ( props ) => {
 
     const { routes } = props;
 
-    const { role } = useSelector(state => state.auth);
-    
-    if(!role) {
+    const { checking } = useSelector(state => state.auth);
+
+    if(!checking) {
+
         return (
             <>
                 <Route path="/login" component={Login} />

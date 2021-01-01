@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
-import {LoadingApp} from "../components/LoadingApp";
 
 
 
@@ -12,9 +11,10 @@ const GuestLayout = (props) => {
 
     const { routes } = props;
 
-    const { cheking, uid, role } = useSelector(state => state.auth);
+    const { role } = useSelector(state => state.auth);
 
     if (!!role) {
+
         if(role.name === 'user') {
             return (
                 <>

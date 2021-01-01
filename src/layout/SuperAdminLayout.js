@@ -11,9 +11,9 @@ const SuperAdminLayout = ( props ) => {
 
     const { routes } = props;
 
-    const user = useSelector( state => state.auth);
+    const { checking } = useSelector( state => state.auth);
 
-    if(!user.logged ) {
+    if(!checking ) {
         return (
             <>
                 <Route path="/login" component={Login} />

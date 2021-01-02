@@ -11,25 +11,33 @@ const AdminLayout = ( props ) => {
 
     const { routes } = props;
 
-    const {checking } = useSelector( state => state.auth);
+    const { checking, checkingFinish } = useSelector(state => state.auth);
 
-    if(!checking ) {
-        return (
-            <>
-                <Route path="/login" component={Login} />
-                <Redirect to="/login" />
-            </>
-        )
+    if( checkingFinish ) {
+
+        if(!checking) {
+
+            return (
+                <>
+                    <Route path="/" component={Login} />
+                    <Redirect to="/" />
+                </>
+            )
+        }
+
+
     }
+
     return (
         <>
-        <HeaderAdmin />
-        <div className="admin-layout">
-            <LoadRoutes routes={ routes } />
-        </div>
-        <Footer />
+            <HeaderAdmin />
+            <div className="admin-layout">
+                <LoadRoutes routes={ routes } />
+            </div>
+            <Footer />
         </>
     )
+
 } 
 
 function LoadRoutes({routes}) {

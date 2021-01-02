@@ -11,11 +11,11 @@ const GuestLayout = (props) => {
 
     const { routes } = props;
 
-    const { role } = useSelector(state => state.auth);
+    const { role, uid } = useSelector(state => state.auth);
 
     if (!!role) {
 
-        if(role.name === 'user') {
+        if(role.name === 'user' ) {
             return (
                 <>
                     <Route path="/user" component={UserHome} />

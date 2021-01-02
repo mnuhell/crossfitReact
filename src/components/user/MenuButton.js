@@ -10,7 +10,7 @@ export const MenuButton = ( { name } ) => {
     const handleLogout = () => {
 
         Swal.fire({
-            title: '¿Quieres salir de la aplicación?',
+            title: '¿Salir de la aplicación?',
             showDenyButton: true,
             showconfirmButton: true,
             confirmButtonText: '<button class="confirm mr-3 bg-blue-500 flex text-white px-8 py-2 uppercase rounded">!Adios! 😢</button>',

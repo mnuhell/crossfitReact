@@ -15,14 +15,13 @@ export const UserHome = () => {
         dispatch( loading( true ) )
     }
 
-    setTimeout(function () {
+    /*setTimeout(function () {
         dispatch(loading(false))
-    }, 1000)
+    }, 1000)*/
 
     return (
 
 
-        active ? <LoadingApp /> :
         <>
             {
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-20 items-center mx-auto container pt-32 h-screen justify-center">

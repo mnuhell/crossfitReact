@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { startCheking } from '../actions/auth';
 
 import routes from '../routes/config';
@@ -9,6 +9,7 @@ import {getBonos} from "../actions/bonos";
 const RoutesApp = () => {
 
     const dispatch = useDispatch();
+    const { checking } = useSelector( state => state.auth)
 
     useEffect(() => {
         dispatch( getBonos())

@@ -4,6 +4,8 @@ import Footer from '../components/Footer';
 import HeaderUser from '../components/HeaderUser';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Login } from '../components/auth/Login';
+import {LoadingApp} from "../components/LoadingApp";
+import {UserHome} from "../pages/user/UserHome";
 
 
 
@@ -11,27 +13,48 @@ const UserLayout = ( props ) => {
 
     const { routes } = props;
 
-    const { checking } = useSelector(state => state.auth);
+    const { checking, checkingFinish, role } = useSelector(state => state.auth);
 
-    if(!checking) {
+    if( checkingFinish ) {
 
-        return (
-            <>
-                <Route path="/login" component={Login} />
-                <Redirect to="/login" />
-            </>
-        )
+        if(!checking) {
+
+            return (
+                <>
+                    <Route path="/" component={Login} />
+                    <Redirect to="/" />
+                </>
+            )
+        }
+
+        if( role.name === 'user') {
+            return (
+                <>
+                    <HeaderUser />
+                    <div className="user-layout pt-5">
+                        <LoadRoutes routes={ routes } />
+                    </div>
+                    <Footer />
+                </>
+            )
+        }
     }
-    
+
+
     return (
         <>
-        <HeaderUser />
-            <div className="user-layout pt-5">
-                <LoadRoutes routes={ routes } />
-            </div>
-        <Footer />
+            <>
+                <HeaderUser />
+                <div className="user-layout pt-5">
+                    <LoadRoutes routes={ routes } />
+                </div>
+                <Footer />
+            </>
         </>
     )
+
+
+
     
 } 
 

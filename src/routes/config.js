@@ -24,6 +24,7 @@ const routes = [
         path: "/user",
         component: UserLayout,
         exact: false,
+        role: 'user',
         routes: [
             {
                 path: "/user",
@@ -53,6 +54,7 @@ const routes = [
         path: "/admin",
         component: AdminLayout,
         exact: false,
+        role: 'admin',
         routes: [
             {
                 path: "/admin",
@@ -96,6 +98,7 @@ const routes = [
         path: "/superadmin",
         component: SuperAdminLayout,
         exact: false,
+        role: 'superadmin',
         routes: [
             {
                 path: "/superadmin",
@@ -114,23 +117,27 @@ const routes = [
         path: "/",
         component: GuestLayout,
         exact: false,
+        role: 'guest',
         routes: [
             {
                 path: "/",
                 component: Home,
-                exact: true
+                exact: true,
+                role: 'guest',
 
             },
             {
                 path: "/login",
                 component: Login,
-                exact: true
+                exact: true,
+                role: 'guest',
 
             },
             {
                 path: "/register",
                 component: Register,
-                exact: true
+                exact: true,
+                role: 'guest',
             },
             {
                 component: Error404

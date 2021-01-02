@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
+import {LoadingApp} from "../components/LoadingApp";
 
 
 
@@ -12,44 +13,57 @@ const GuestLayout = (props) => {
     const { routes } = props;
 
     const { role, uid } = useSelector(state => state.auth);
+    const logged = JSON.stringify(localStorage.getItem('login'))
 
-    if (!!role) {
+        if( logged !== 'null' ) {
+            if(role.name === 'user' ) {
+                return (
+                    <>
+                        <Route path="/user" component={UserHome} role={ role.name } />
+                        <Redirect to="/user" />
+                    </>
+                )
+            }
 
-        if(role.name === 'user' ) {
+            if(role.name === "admin") {
+                return (
+                    <>
+                        <Route path="/admin" component={AdminHome} role={ role.name} />
+                        <Redirect to="/admin" />
+                    </>
+                )
+            }
+
+            if(role.name === "superadmin") {
+                return (
+                    <>
+                        <Route path="/superadmin" component={AdminHome} role={ role.name} />
+                        <Redirect to="/superadmin" />
+                    </>
+                )
+            }
+
             return (
                 <>
-                    <Route path="/user" component={UserHome} />
-                    <Redirect to="/user" />
+                    <div className="guest-layout">
+                        <LoadRoutes routes={ routes } />
+                    </div>
                 </>
             )
         }
-   
-        if(role.name === "admin") {
-            return (
-                <>
-                    <Route path="/admin" component={AdminHome} />
-                    <Redirect to="/admin" />
-                </>
-            )
-        }
-   
-        if(role.name === "superadmin") {
-            return (
-                <>
-                   <Route path="/superadmin" component={AdminHome} />
-                    <Redirect to="/superadmin" />
-               </>
-           )
-       }
 
-
+    if( logged === 'null'){
+        return (
+            <>
+                <div className="guest-layout">
+                    <LoadRoutes routes={ routes } />
+                </div>
+            </>
+        )
     }
-
     return (
         <>
-            <div className="guest-layout">
-                <LoadRoutes routes={ routes } />
-            </div>
+            <LoadingApp />
         </>
     )
      

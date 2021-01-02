@@ -40,16 +40,18 @@ const AdminLayout = ( props ) => {
             )
         }
 
+        if( role.name !== 'admin') {
+            return (
+                <>
+                    <Route path="/user" component={Login} />
+                    <Redirect to="/user" />
+                </>
+            )
+        }
+
     }
 
-    if( !uid ) {
-        return (
-            <>
-                <Route path="/user" component={UserHome} />
-                <Redirect to="/user" />
-            </>
-        )
-    }
+
     return (
 
         <>

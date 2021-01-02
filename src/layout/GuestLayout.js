@@ -16,32 +16,35 @@ const GuestLayout = (props) => {
     const logged = JSON.stringify(localStorage.getItem('login'))
 
         if( logged !== 'null' ) {
-            if(role.name === 'user' ) {
-                return (
-                    <>
-                        <Route path="/user" component={UserHome} role={ role.name } />
-                        <Redirect to="/user" />
-                    </>
-                )
+            if( !!role ) {
+                if(role.name === 'user' ) {
+                    return (
+                        <>
+                            <Route path="/user" component={UserHome} role={ role.name } />
+                            <Redirect to="/user" />
+                        </>
+                    )
+                }
+
+                if(role.name === "admin") {
+                    return (
+                        <>
+                            <Route path="/admin" component={AdminHome} role={ role.name} />
+                            <Redirect to="/admin" />
+                        </>
+                    )
+                }
+
+                if(role.name === "superadmin") {
+                    return (
+                        <>
+                            <Route path="/superadmin" component={AdminHome} role={ role.name} />
+                            <Redirect to="/superadmin" />
+                        </>
+                    )
+                }
             }
 
-            if(role.name === "admin") {
-                return (
-                    <>
-                        <Route path="/admin" component={AdminHome} role={ role.name} />
-                        <Redirect to="/admin" />
-                    </>
-                )
-            }
-
-            if(role.name === "superadmin") {
-                return (
-                    <>
-                        <Route path="/superadmin" component={AdminHome} role={ role.name} />
-                        <Redirect to="/superadmin" />
-                    </>
-                )
-            }
 
             return (
                 <>

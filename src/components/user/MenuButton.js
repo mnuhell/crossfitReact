@@ -16,8 +16,6 @@ export const MenuButton = ( { name, uid } ) => {
 
     }
 
-
-
     return (
 
        <>

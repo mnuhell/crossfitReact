@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Logo from './header/logo/Logo';
 import {MenuButton} from './user/MenuButton'
-import { ClasesPending } from './user/ClasesPending';
 import { Link } from 'react-router-dom';
-import {useToggle} from "../helpers/toggle";
-import {startLogout} from "../actions/auth";
-import {MenuDrop} from "../helpers/MenuDrop";
-
 const Header = () => {
 
     const dispatch = useDispatch();
@@ -36,9 +31,9 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-blue-500 pt-3 pb-5 fixed w-full z-40 relative">
+            <header className="bg-blue-500 pt-3 pb-5 fixed w-full z-40">
                 { showMessageInfo("No tienes bono activo, por favor renueva tu bono para seguir reservando clases") }
-                <div className="container mx-auto flex justify-between items-center px-3">
+                <div className="container mx-auto flex justify-between items-center px-3 -z-50">
 
                     <div className="header__right flex justify-items-start">
                         <Link to="/">

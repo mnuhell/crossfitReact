@@ -38,12 +38,14 @@ const UserReserva = () => {
             <>
                 { (filterDate().length !== 0)
                     ? <>
-						<h2 className="text-center text-blue-900 pt-32 uppercase text-2xl font-extrabold border-blue-800 ">
-							Clases disponibles
-							<p className="-mt-3 ">{ moment().format('LL') }</p>
-							</h2>
-                        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 gap-y-3 setting pt-5 pb-16 px-3">
-                            {filterDate().map(event => (<Clase key={event.id} {...event} />))}
+                        <div className="reservas pt-12">
+                            <h2 className="text-center text-blue-900 pt-32 uppercase text-2xl font-extrabold border-blue-800 ">
+                                Clases disponibles
+                                <p className="-mt-2 text-sm">{ moment().format('LL') }</p>
+                            </h2>
+                            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 gap-y-3 setting pt-5 pb-16 px-3">
+                                {filterDate().map(event => (<Clase key={event.id} {...event} />))}
+                            </div>
                         </div>
                     </>
                     : <Error header="Lo sentimos! " body=" No hay clases previstas para esta semana" />

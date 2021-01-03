@@ -40,6 +40,11 @@ const Header = () => {
                         Usuarios
                     </Link>
 
+                    <Link onClick={ handleLoading } to={{   pathname: "/admin/create-clase" }}
+                          className="text-white text-xs hover:bg-blue-400 duration-500 transition-all ease-in-out flex items-center justify-items-center bg-blue-800 mr-4 rounded py-1 px-3 uppercase">
+                        Clases
+                    </Link>
+
                     <MenuButton />
                 </div>
             </div>  

@@ -43,7 +43,6 @@ const Header = () => {
 
                     </div>
                     <div className="header__left flex justify-items-end justify-center overflow-hidden">
-                        <ClasesPending {...user } />
                         <MenuButton { ...user } />
                     </div>
                 </div>

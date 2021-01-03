@@ -102,3 +102,8 @@ code {
 button:active {outline: 0 !important;}
 button:focus {outline:0 !important;}
 
+.uid-menu{
+  font-size: .6em;
+  margin-top: -5px;
+}
+

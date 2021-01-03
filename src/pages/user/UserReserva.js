@@ -42,7 +42,7 @@ const UserReserva = () => {
 							Clases disponibles
 							<p className="-mt-3 ">{ moment().format('LL') }</p>
 							</h2>
-                        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 gap-y-6 setting pt-5 pb-16 px-6">
+                        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 gap-y-3 setting pt-5 pb-16 px-3">
                             {filterDate().map(event => (<Clase key={event.id} {...event} />))}
                         </div>
                     </>

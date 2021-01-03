@@ -1,46 +1,64 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { startLogout } from '../../actions/auth';
-import Swal from 'sweetalert2';
 import {ClasesPending} from "./ClasesPending";
+import {useToggle} from "../../helpers/toggle";
+import {Link} from "react-router-dom";
 
 export const MenuButton = ( { name, uid } ) => {
-    
+
     const dispatch = useDispatch();
 
+    const [ value, showMenu ] = useToggle()
+
     const handleLogout = () => {
+        dispatch( startLogout() );
 
-        Swal.fire({
-            title: '¿Salir de la aplicación?',
-            showDenyButton: true,
-            showconfirmButton: true,
-            confirmButtonText: '<button class="confirm mr-3 bg-blue-500 flex text-white px-8 py-2 uppercase rounded">!Adios! 😢</button>',
-            denyButtonText: '<button class="denny bg-red-500 flex text-white px-8 py-2 uppercase rounded">!Me quedo! 😜</button>',
-        }).then((result) => {
-
-            if (result.isConfirmed) {
-                dispatch( startLogout() );
-            } else if (result.isDenied) {
-                return null
-            }
-        })
     }
-    
+
+
+
     return (
 
        <>
-           <div className="relative flex justify-center flex-col mr-3 text-right">
-               <span className="mr-2 flex items-end uppercase text-xs">{name} </span>
+           <div className="relative flex justify-center flex-col mr-3 text-right text-white">
+               <span className="uppercase text-xs">{name} </span>
                <span className="uid-menu">{uid}</span>
            </div>
 
-        <div className="rounded-full h-8 w-8 overflow-hidden ">
+        <div className="rounded-full h-8 w-8 overflow-hidden">
             <ClasesPending />
-            <button onClick={ handleLogout }>
+            <button onClick={ showMenu }>
                 <img className=" bg-cover" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg"
                     alt={name} title={name} />
             </button>
         </div>
+
+           { (!value) ?
+
+               <nav className="nav-menu dropdown-menu absolute bg-blue-500 text-blue-50 text-left">
+                   <ul>
+                       <li className="py-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
+                           <button onClick={handleLogout}>
+                               Salir de la cuenta
+                           </button>
+                       </li>
+                       <li className="py-2 pb-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
+
+                           <Link to="">
+                               Configura tu cuenta
+                           </Link>
+                       </li>
+
+                   </ul>
+               </nav>
+
+               :
+               null
+           }
+
+
+
         </>
     )
 }

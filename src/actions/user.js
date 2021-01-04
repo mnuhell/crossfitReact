@@ -59,10 +59,8 @@ export const addBonoToUser = ( user ) => {
                 text: body.msg,
             })
 
+            dispatch( userActiveState( body.userActive ))
             dispatch( getAllUsers())
-              setTimeout( function() {
-                  dispatch( setUserActive( body.userActive ))
-              }, 500)
 
         } catch ( error ) {
             console.log( error )

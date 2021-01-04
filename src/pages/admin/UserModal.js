@@ -51,7 +51,7 @@ export const UserModal = () => {
 
     }
 
-    let total = totalBonosPagar(bonosState, bonos)
+    const total = totalBonosPagar(bonosState, bonos)
 
     const handleSubmitForm = (e) => {
         e.preventDefault()

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteBonoUserModal, getAllUsers, setUserActive} from "../../actions/user";
 import {uiCloseModal } from "../../actions/ui";
 import { deleteHistoryBono } from '../../actions/history'
+import {LoadingApp} from "../../components/LoadingApp";
 
 
 
@@ -38,9 +39,11 @@ export const BonoScreenUser = (bono) => {
         setShowButtonDelete( true )
     }
 
-    const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono) || '';
+
+    const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono);
 
     return (
+
         <>
             <span onClick={handleDeleteBono} onMouseEnter={ showButtonDeleteFunc }  onMouseLeave={ hiddenButtonDeleteFunc } className="bookmark flex bg-green-500  hover:bg-red-600 transition-all duration-500 ease-in-out hover:-z10 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
                 <span className="bono-name mr-3 text-sm flex items-center"> {  bonoCorrect.name } </span>

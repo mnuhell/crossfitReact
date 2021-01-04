@@ -1,8 +1,5 @@
-import React, {useState} from 'react'
-import {useDispatch, useSelector} from "react-redux";
-import {deleteBonoUserModal, getAllUsers, setUserActive} from "../../actions/user";
-import {uiCloseModal } from "../../actions/ui";
-import { deleteHistoryBono } from '../../actions/history'
+import React from 'react'
+import {useSelector} from "react-redux";
 
 
 
@@ -11,7 +8,7 @@ export const BonoScreenUserView = (bono) => {
 
     const bonosState = useSelector( state => state.bonos.bonos)
 
-    const bonos = bonosState.find( bonoState => bonoState._id === bono.bono) || '';
+    const bonos = bonosState.find( bonoState => bonoState._id === bono.bono);
 
     return (
         <>

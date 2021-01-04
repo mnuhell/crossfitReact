@@ -32,7 +32,7 @@ export const UserScreen = ( user ) => {
                 <div className="flex items-center">
                     {
                         ( bonos.length > 0) ? bonos.map(bono => <BonoScreenUserView
-                            key={bono.bono} {...user} {...bono} />) : "Sin bonos activos"
+                            key={bono._id} {...user} {...bono} />) : "Sin bonos activos"
                     }
                 </div>
                 <div className="flex flex-col mb-4 items-center">

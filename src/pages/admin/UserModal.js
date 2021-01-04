@@ -6,6 +6,7 @@ import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
 import {addBonoToUser, setUserActive} from "../../actions/user";
 import { savedHistoryBono } from "../../actions/history";
+import {totalBonosPagar} from "../../helpers/totalBonosPagar";
 
 const customStyles = {
     content : {
@@ -26,8 +27,8 @@ export const UserModal = () => {
     const {modalOpen} = useSelector( state => state.ui);
     const userActive = useSelector( state => state.user.userActive);
     const [ formValues, setFormValues ] = useState(userActive);
-    const bonosSelect = useSelector( state => state.bonos.bonos) || [];
-    const { name, username, telefono, email, role, bonos } = formValues;
+    const bonosState = useSelector( state => state.bonos.bonos) || [];
+    const { name, username, telefono, email, bonos } = formValues;
 
     const closeModal = () => {
         dispatch( uiCloseModal() )
@@ -50,23 +51,13 @@ export const UserModal = () => {
 
     }
 
+    let total = totalBonosPagar(bonosState, bonos)
+
     const handleSubmitForm = (e) => {
         e.preventDefault()
 
         console.log('Updated')
 
-    }
-
-    const totalPagar = () => {
-
-        let total = 0
-        if(bonos.length > 0 ) {
-            bonos.map( bono => total = total + bono.precio)
-        } else {
-            total = 0;
-        }
-
-        return total + '€';
     }
 
     const handleChangeSelect = ( { target } ) => {
@@ -172,7 +163,7 @@ export const UserModal = () => {
                         <span className="text-xl font-bold">
 
                             {
-                                totalPagar()
+                                total
                             }
 
                         </span>
@@ -185,7 +176,7 @@ export const UserModal = () => {
                 <select onChange={handleChangeSelect} className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none" name="bono" id="bonos-select">
                     <option value="">Elija un bono</option>
                     {
-                        bonosSelect.map( bono => <option value={ bono._id } key={ bono._id } id="bono__id"> {bono.name} </option>)
+                        bonosState.map( bono => <option value={ bono._id } key={ bono._id } id="bono__id"> {bono.name} </option>)
                     }
                 </select>
 

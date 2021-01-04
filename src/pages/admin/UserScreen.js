@@ -1,8 +1,9 @@
 import React from 'react'
-import {BonoScreenUser} from "./BonoScreenUser";
+import {BonoScreenUserView} from "./BonoScreenUserView";
 import {useDispatch, useSelector} from "react-redux";
 import {setUserActive} from "../../actions/user";
 import {uiOpenModal} from "../../actions/ui";
+import {totalBonosPagar} from "../../helpers/totalBonosPagar";
 
 
 export const UserScreen = ( user ) => {
@@ -12,23 +13,7 @@ export const UserScreen = ( user ) => {
     const { name, email, telefono, bonos } = user;
     const bonosState = useSelector( state => state.bonos.bonos)
 
-    const totalPagar = () => {
-
-        let total = 0
-        let bonosTotal = []
-        if(bonos.length > 0 ) {
-
-            bonos.map( bono => {
-                bonosTotal.push(bonosState.find( bonoState => bonoState._id === bono.bono))
-            })
-
-            bonosTotal.map( bono => total = total + bono.precio)
-        } else {
-            total = 0;
-        }
-
-        return total + '€';
-    }
+    let total = totalBonosPagar(bonosState, bonos)
 
     const handleSelectUser = () => {
 
@@ -46,7 +31,7 @@ export const UserScreen = ( user ) => {
                 <p className="flex items-center">{ telefono }</p>
                 <div className="flex items-center">
                     {
-                        ( bonos.length > 0) ? bonos.map(bono => <BonoScreenUser
+                        ( bonos.length > 0) ? bonos.map(bono => <BonoScreenUserView
                             key={bono.bono} {...user} {...bono} />) : "Sin bonos activos"
                     }
                 </div>
@@ -54,7 +39,7 @@ export const UserScreen = ( user ) => {
                     <span className="text-xl font-bold">
 
                         {
-                            totalPagar()
+                            total
                         }
 
                     </span>

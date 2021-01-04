@@ -87,18 +87,6 @@ code {
   grid-template-columns: repeat(4, 1fr);
 }
 
-.swal2-styled{
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  outline: none;
-
-}
-
-.swal2-styled:focus {
-  outline: none 0;
-}
-
 button:active {outline: 0 !important;}
 button:focus {outline:0 !important;}
 

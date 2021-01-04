@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import {useSelector} from 'react-redux';
 import Logo from './header/logo/Logo';
 import {MenuButton} from './user/MenuButton'
 import { Link } from 'react-router-dom';
 const Header = () => {
 
-    const dispatch = useDispatch();
     const user = useSelector(state => state.auth)
     const { totales } = useSelector(state => state.clases);
 
@@ -13,7 +12,7 @@ const Header = () => {
         if(totales <= 0) {
             return (
 
-                <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-blue-900 text-xs text-blue-100">
+                <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-red-400 text-xs text-blue-100">
                     <div>
                         <div className="w-5 float-left justify-center mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

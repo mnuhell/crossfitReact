@@ -36,7 +36,7 @@ export const MenuButton = ( { name, uid } ) => {
 
            { (!value) ?
 
-               <nav className="nav-menu dropdown-menu absolute bg-blue-500 text-blue-50 text-left">
+               <nav className="nav-menu dropdown-menu absolute bg-blue-700 text-blue-50 text-left">
                    <ul>
                        <li className="py-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
                            <button onClick={handleLogout}>

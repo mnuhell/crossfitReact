@@ -70,7 +70,7 @@ export const Clase = (clase) => {
 
         if(totales === -1 && !usuario.length  ) {
             return(
-                <button className="bg-blue-100 py-2 text-blue-300 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button className="bg-blue-100 py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
                     renueva tu bono
                 </button>
             )
@@ -78,7 +78,7 @@ export const Clase = (clase) => {
 
         if( usuario.length ) {
             return(
-                <button className="bg-green-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button className="bg-green-500 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Registrado
                 </button>
             )

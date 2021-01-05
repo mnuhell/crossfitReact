@@ -38,12 +38,12 @@ const UserReserva = () => {
             <>
                 { (filterDate().length !== 0)
                     ? <>
-                        <div className="reservas pt-32 text-white container mx-auto">
-                            <h2 className="pb-2 uppercase text-2xl font-extrabold pl-6 pb-12">
+                        <div className="reservas pt-40 text-white container mx-auto lg:px-4">
+                            <h2 className="uppercase text-2xl font-extrabold pb-6">
                                 Clases disponibles
                                 <p className="-mt-2 text-sm">{ moment().format('LL') }</p>
                             </h2>
-                            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 sm:gap-y-6 px-6 setting pb-24">
+                            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 sm:gap-y-6 setting pb-24">
                                 {filterDate().map(event => (<Clase key={event.id} {...event} />))}
                             </div>
                         </div>

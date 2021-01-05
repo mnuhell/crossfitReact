@@ -12,14 +12,17 @@ const Header = () => {
         if(totales <= 0) {
             return (
 
-                <div className="alert-header py-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-red-400 text-xs text-blue-100">
+                <div className="alert-header font-body py-1 px-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-yellow-500 text-blue-900">
                     <div>
-                        <div className="w-5 float-left justify-center mr-2">
+                        <div className="w-4 float-left justify-center mr-2 xs:py-5 xs:h-12 lg:h-6 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
-                        {message}
+                        <div className="flex items-center xs:h-12 lg:h-6">
+                            {message}
+                        </div>
+
                     </div>
 
                 </div>
@@ -31,7 +34,7 @@ const Header = () => {
     return (
         <>
             <header className="bg-blue-700 pt-3 pb-5 fixed w-full z-40">
-                { showMessageInfo("No tienes bono activo, por favor renueva tu bono para seguir reservando clases") }
+                { showMessageInfo("Tu bono esta agotado. tienes una clase más que se descontará del siguiente bono. No olvides renovar tu bono en el box") }
                 <div className="container mx-auto flex justify-between items-center px-3 -z-50">
 
                     <div className="header__right flex justify-items-start">

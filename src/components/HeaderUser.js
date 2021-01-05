@@ -30,7 +30,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-blue-500 pt-3 pb-5 fixed w-full z-40">
+            <header className="bg-blue-700 pt-3 pb-5 fixed w-full z-40">
                 { showMessageInfo("No tienes bono activo, por favor renueva tu bono para seguir reservando clases") }
                 <div className="container mx-auto flex justify-between items-center px-3 -z-50">
 

@@ -50,12 +50,12 @@ export const Clase = (clase) => {
 
     const getColorsUsers = ( clase ) => {
 
-        let colors = 'bg-blue-500';
+        let colors = 'bg-green-500';
         const totalUsers = clase.userclase;
         const userRegistrados = clase.users;
 
         if ( userRegistrados <= ((totalUsers * 20) / 100)) {
-            colors = 'bg-blue-500';
+            colors = 'bg-green-500';
         } else if(userRegistrados <= ((totalUsers * 50) / 100)) {
             colors = 'bg-orange-500';
         } else if(userRegistrados === ((totalUsers * 100) / 100)) {
@@ -132,7 +132,7 @@ export const Clase = (clase) => {
 
         return (
             <>
-			<div className="clase rounded bg-blue-500 h-80 relative font-body">
+			<div className="clase rounded bg-blue-700 h-80 relative font-body">
                 <div className="clase__usuarios block h-8">
                     <div>
                         <h3 className="text-center rounded-full h-20 px-6 text-blue-100">
@@ -144,7 +144,7 @@ export const Clase = (clase) => {
 
                         </div>
                 <h3 className="text-center rounded-full px-6 text-blue-100">
-                        <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count ${ getColorsUsers(clase)} py-1 px-5 text-2xl`}>
+                        <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count ${ getColorsUsers(clase)} py-1 px-5 text-2xl bg-green-500`}>
                             {clase.users.length > 0 ? clase.users.length : 0}
                             <small className="block text-sm -mt-1">en clase</small>
                         </span>
@@ -155,7 +155,7 @@ export const Clase = (clase) => {
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
 					<h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
 					<h1 className="title uppercase text-center text-xs -mt-1 mb-1">{ moment(clase.start).format('LL')}</h1>
-                    <h1 className="hours uppercase grid text-center text-md mb-1 text-3xl font-bold text-red-600 mx-2 my-1 ">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
+                    <h1 className="hours uppercase grid text-center text-md mb-1 text-3xl font-bold text-white mx-2 my-1">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
 
                  </div>
 

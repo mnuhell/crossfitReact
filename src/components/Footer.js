@@ -5,7 +5,7 @@ const Footer = () => {
 
     return (
         <>
-        <footer className="flex fixed items-center justify-center w-full pt-2 pb-3 px-3 bg-blue-500 bottom-0">
+        <footer className="flex fixed items-center justify-center w-full pt-2 pb-3 px-3 bg-blue-700 bottom-0">
             {/*<p className="icon block">🚀 </p>*/}
             <div className="text-center">
                 {/*<p className="text-blue-50 text-xs ">Power by React and Node</p>*/}

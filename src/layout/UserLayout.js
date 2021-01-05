@@ -31,7 +31,7 @@ const UserLayout = ( props ) => {
             return (
                 <>
                     <HeaderUser />
-                    <div className="user-layout">
+                    <div className="user-layout bg-blue-500 text-white">
                         <LoadRoutes routes={ routes } />
                     </div>
                     <Footer />

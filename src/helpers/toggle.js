@@ -6,7 +6,7 @@ export const useToggle = ( initialState = true ) => {
     const [ value, setValue ] = useState( true )
 
     const showMenu = () => {
-        setValue( v => !value)
+        setValue( v => !v)
     }
 
     return [ value, showMenu ]

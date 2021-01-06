@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ClasesPending} from "./ClasesPending";
 import {uiShowMenu} from "../../actions/ui";
+import {MenuDrop} from "../../helpers/MenuDrop";
 
 export const MenuButton = ( { name, uid } ) => {
 
@@ -15,18 +16,22 @@ export const MenuButton = ( { name, uid } ) => {
     return (
 
        <>
+
            <div className="relative flex justify-center flex-col mr-3 text-right text-white">
                <span className="uppercase text-xs">{name} </span>
                <span className="uid-menu">{uid}</span>
            </div>
 
-        <div className="rounded-full h-8 w-8 overflow-hidden">
-            <ClasesPending />
-            <button onClick={ showMenu }>
-                <img className=" bg-cover" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg"
-                    alt={name} title={name} />
-            </button>
-        </div>
+            <div className="rounded-full h-8 w-8 overflow-hidden">
+                <ClasesPending />
+                <button onClick={ showMenu }>
+                    <img className=" bg-cover" src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg"
+                        alt={name} title={name} />
+                </button>
+            </div>
+               <MenuDrop
+                   value={ value }
+               />
 
         </>
     )

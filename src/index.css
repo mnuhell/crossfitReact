@@ -99,6 +99,20 @@ button:focus {outline:0 !important;}
   top: 5em;
 }
 
+.dropdown-menu a {
+  font-size: .7em;
+  text-transform: uppercase;
+}
+
+.dropdown-menu button {
+  font-size: .7em;
+  text-transform: uppercase;
+}
+
+.dropdown-menu hr {
+  border-top: 1px solid #5B6477;
+}
+
 .alert-header {
 
   font-size: .8em;

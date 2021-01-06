@@ -12,9 +12,37 @@ export const userActionUpdate = ( user ) => ({
 
 export const updateUser = ( user ) => {
 
-    return ( dispatch ) => {
-        console.log('Enviamos al usuario')
-        dispatch( userActionUpdate(user))
+    return async( dispatch ) => {
+
+        try{
+            const resp = await fetchWithToken( `users/update-user/${user._id}`, user, 'PUT')
+            const body = await resp.json();
+
+            if( !body.ok ) {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Usuarios',
+                    text: body.msg,
+                })
+            }
+
+            if( body.ok ) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuarios',
+                    text: body.msg,
+                })
+
+                dispatch( getAllUsers())
+            }
+
+
+
+        } catch ( error ) {
+
+            console.log( error )
+        }
+
     }
 
 }

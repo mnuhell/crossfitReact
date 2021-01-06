@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import moment from 'moment';
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
-import {addBonoToUser, setUserActive} from "../../actions/user";
+import {addBonoToUser, getAllUsers, setUserActive, updateUser} from "../../actions/user";
 import { savedHistoryBono } from "../../actions/history";
 import {totalBonosPagar} from "../../helpers/totalBonosPagar";
 
@@ -53,10 +53,18 @@ export const UserModal = () => {
 
     const total = totalBonosPagar(bonosState, bonos)
 
-    const handleSubmitForm = (e) => {
-        e.preventDefault()
+    const handleSubmitForm = ( e ) => {
 
-        console.log('Updated')
+        e.preventDefault();
+
+        setFormValues( {
+            ...formValues,
+            [e.target.name]: e.target.value
+        })
+
+        dispatch(updateUser(formValues))
+
+        closeModal();
 
     }
 
@@ -125,7 +133,7 @@ export const UserModal = () => {
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1 block">Teléfono</label>
                     <input
-                        type="text"
+                        type="number"
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         name="telefono"
                         value={ telefono }
@@ -138,7 +146,7 @@ export const UserModal = () => {
                 <div className="flex flex-col mb-4">
                     <label className="font-bold text-gray-800 mb-1 block">Email</label>
                     <input
-                        type="text"
+                        type="email"
                         className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         name="email"
                         value={ email }

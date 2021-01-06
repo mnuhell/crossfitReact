@@ -1,22 +1,16 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
-import { startLogout } from '../../actions/auth';
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {ClasesPending} from "./ClasesPending";
-import {useToggle} from "../../helpers/toggle";
-import {Link} from "react-router-dom";
+import {uiShowMenu} from "../../actions/ui";
 
 export const MenuButton = ( { name, uid } ) => {
 
     const dispatch = useDispatch();
+    const value = useSelector( state => state.ui.showMenu)
 
-    const [ value, showMenu ] = useToggle()
-
-    const handleLogout = () => {
-        dispatch( startLogout() );
-
+    const showMenu = () => {
+        ( value ) ? dispatch( uiShowMenu( false ) ) : dispatch( uiShowMenu( true ));
     }
-
-
 
     return (
 
@@ -33,31 +27,6 @@ export const MenuButton = ( { name, uid } ) => {
                     alt={name} title={name} />
             </button>
         </div>
-
-           { (!value) ?
-
-               <nav className="nav-menu dropdown-menu absolute bg-blue-700 text-blue-50 text-left">
-                   <ul>
-                       <li className="py-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
-                           <button onClick={handleLogout}>
-                               Salir de la cuenta
-                           </button>
-                       </li>
-                       <li className="py-2 pb-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
-
-                           <Link to="">
-                               Configura tu cuenta
-                           </Link>
-                       </li>
-
-                   </ul>
-               </nav>
-
-               :
-               null
-           }
-
-
 
         </>
     )

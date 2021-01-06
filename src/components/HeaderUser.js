@@ -3,10 +3,15 @@ import {useSelector} from 'react-redux';
 import Logo from './header/logo/Logo';
 import {MenuButton} from './user/MenuButton'
 import { Link } from 'react-router-dom';
+import {MenuDrop} from "../helpers/MenuDrop";
+import {useToggle} from "../helpers/toggle";
 const Header = () => {
 
     const user = useSelector(state => state.auth)
     const { totales } = useSelector(state => state.clases);
+
+    const value  = useSelector( state => state.ui.showMenu);
+
 
     const showMessageInfo = (message) => {
         if(totales <= 0) {
@@ -35,7 +40,7 @@ const Header = () => {
         <>
             <header className="bg-blue-700 pt-3 pb-5 fixed w-full z-40">
                 { showMessageInfo("Tu bono esta agotado. tienes una clase más que se descontará del siguiente bono. No olvides renovar tu bono en el box") }
-                <div className="container mx-auto flex justify-between items-center px-3 -z-50">
+                <div className="container mx-auto flex justify-between items-center px-3 -z-50 relative">
 
                     <div className="header__right flex justify-items-start">
                         <Link to="/">
@@ -46,7 +51,11 @@ const Header = () => {
                     <div className="header__left flex justify-items-end justify-center overflow-hidden">
                         <MenuButton { ...user } />
                     </div>
+                    <MenuDrop
+                        value={ value }
+                    />
                 </div>
+
             </header>
         </>
 

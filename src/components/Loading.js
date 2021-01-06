@@ -15,7 +15,7 @@ height: 100vh;
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #333;
+  background-color: #090F1B;
   opacity: .3;
 
   border-radius: 100%;

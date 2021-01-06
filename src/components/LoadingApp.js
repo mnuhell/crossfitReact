@@ -2,6 +2,9 @@ import styled from "styled-components"
 
 const Spinner = styled.div`
 
+background-color: #121E37;
+opacity: .8;
+
 position: absolute;
 width: 100vw;
 height: 100vh;
@@ -15,8 +18,7 @@ height: 100vh;
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #333;
-  opacity: .3;
+ 
 
   border-radius: 100%;
   display: inline-block;
@@ -59,7 +61,7 @@ export const LoadingApp = () => {
                 <div className="bounce1"></div>
                 <div className="bounce2"></div>
                 <div className="bounce3"></div>
-                <p className="text-center ">Cargando los datos solicitados...</p>
+                <p className="text-center text-white">Cargando los datos solicitados...</p>
             </div>
         </Spinner>
     )

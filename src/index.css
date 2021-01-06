@@ -20,11 +20,57 @@ code {
   height: auto !important;
 }
 
+.rbc-header{
+  height: 2em;
+}
+
+.rbc-header.rbc-today {
+  background-color: #5B6477;
+}
+
+.rbc-day-bg{
+  background-color: #5B6477;
+}
+
 .rbc-selected{
-  background-color: red !important;
+  background-color: green !important;
 }
 .rbc-agenda-time-cell{
   width: 20%;
+}
+
+.rbc-toolbar-label{
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rbc-btn-group button {
+  color: white;
+  font-weight: bold;
+}
+
+.rbc-btn-group .rbc-active{
+  color: black;
+}
+
+.rbc-agenda-empty{
+  color: white;
+  font-size: 1em;
+  text-align: center;
+}
+
+.rbc-time-slot .rbc-label{
+  color: white;
+  font-size: 1em;
+}
+
+.rbc-header{
+  font-size: 1em;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Modal */
@@ -39,7 +85,9 @@ code {
   transition: opacity .5s ease-in-out;
   z-index: 999;
 }
-
+.rbc-events-container, .rbc-row{
+  background-color: #121E37;
+}
 .modal-fondo {
   background-color: rgba(0, 0, 0, 0.3);
   bottom: 0;

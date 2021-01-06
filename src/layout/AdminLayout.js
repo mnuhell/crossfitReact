@@ -4,9 +4,7 @@ import HeaderAdmin from '../components/HeaderAdmin';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Login } from '../components/auth/Login';
-import HeaderUser from "../components/HeaderUser";
 import {LoadingApp} from "../components/LoadingApp";
-import {UserHome} from "../pages/user/UserHome";
 
 
 
@@ -32,7 +30,7 @@ const AdminLayout = ( props ) => {
             return (
                 <>
                     <HeaderAdmin />
-                    <div className="admin-layout">
+                    <div className="admin-layout bg-blue-500">
                         <LoadRoutes routes={ routes } />
                     </div>
                     <Footer />

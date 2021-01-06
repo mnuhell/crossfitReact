@@ -37,7 +37,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-blue-700 pt-3 pb-5 fixed w-full z-40">
+            <header className="bg-blue-700 pt-3 pb-5 fixed px-5 w-full z-40">
                 { showMessageInfo("Tu bono esta agotado. tienes una clase más que se descontará del siguiente bono. No olvides renovar tu bono en el box") }
                 <div className="container mx-auto flex justify-between items-center px-3 -z-50 relative">
 

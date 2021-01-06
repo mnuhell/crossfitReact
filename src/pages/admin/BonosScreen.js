@@ -28,8 +28,7 @@ export const BonosScreen = () => {
     return (
         (active) ? <LoadingApp /> :
         <section className="container mx-auto bono font-body">
-            <h1 className="pt-32 grid items-center font-bold text-2xl w-full justify-items-center uppercase "> Bonos </h1>
-            <hr />
+            <h1 className="pt-32 grid items-center text-white font-bold text-3xl w-full justify-items-center uppercase "> Bonos </h1>
             <div className="bono__button flex mx-3 items-center float-right mt-10 bg-blue-500 rounded">
                 <button onClick={ handleNewBono } className="px-2 grid
                 text-white py-2 uppercase font-bold">
@@ -43,9 +42,9 @@ export const BonosScreen = () => {
                 </span>
             </div>
 
-            <section className="w-full px-3 pt-32 font-body pb-32 ">
+            <section className="w-full px-3 pt-20 font-body pb-32 ">
                 <div className="container mx-auto flex-col items-center table-container py-3">
-                    <div className="grid shadow-2xl table__header--bonos justify-between bg-blue-500 text-white uppercase rounded px-5 py-5">
+                    <div className="grid shadow-2xl table__header--bonos justify-between bg-blue-700 text-white uppercase px-5 py-5">
                         <span>nombre</span>
                         <span>días</span>
                         <span>Precio</span>

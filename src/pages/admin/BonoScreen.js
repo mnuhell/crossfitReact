@@ -27,7 +27,7 @@ export const BonoScreen = (bono) => {
 
     return (
         <>
-            <div className="border-blue-50 border-b-2 table-flex min-h-full hover:bg-blue-200 hover:text-white transition-all ease-in-out duration-200 rounded px-2 cursor-pointer">
+            <div className="table-flex min-h-full bg-blue-500 hover:bg-blue-600 hover:text-white text-white transition-all ease-in-out duration-200 px-2 cursor-pointer">
                 <div className="grid table__header--bonos sm:justify-start container mx-auto py-5">
                     <p className="flex items-center uppercase" >{ name }</p>
                     <p className="flex items-center">{ days }</p>

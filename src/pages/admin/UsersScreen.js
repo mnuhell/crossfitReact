@@ -28,12 +28,12 @@ export const UsersScreen = () => {
         ( active ) ? <LoadingApp /> :
         <>
         <section className="w-full px-3 pt-32 font-body pb-32 ">
-            <h1 className="text-2xl font-bold w-full flex justify-center uppercase mb-5">Usuarios</h1>
+            <h1 className="text-2xl font-bold w-full flex justify-center uppercase mb-5 text-white">Usuarios</h1>
             <div className="search container mx-auto xl:min-h-full focus:outline-none focus:shadow-none mb-5">
-                <input className="h-10 text-xl w-full" type="text" placeholder="Buscar..." />
+                <input className="h-10 px-5 text-xl w-full bg-blue-700 text-white" type="text" placeholder="Buscar..." />
             </div>
             <div className="container mx-auto flex-col items-center table-container py-3">
-                <div className="grid shadow-2xl table__header justify-between bg-blue-500 text-white uppercase rounded px-5 py-5">
+                <div className="grid shadow-2xl table__header justify-between bg-blue-700 text-white uppercase rounded px-5 py-5">
                     <span>Imagen</span>
                     <span>Nombre</span>
                     <span>Email</span>

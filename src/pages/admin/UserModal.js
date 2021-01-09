@@ -73,7 +73,7 @@ export const UserModal = () => {
         const bono = target.value
 
         const now = moment();
-        //const endDate = now.clone().endOf('month').add('1', 'day');
+
         const userHistory = {
             bono: bono,
             user: userActive._id,

@@ -16,7 +16,7 @@ import {loading} from "../../actions/loading";
 import {LoadingApp} from "../LoadingApp";
 
 
-moment().locale('es');
+moment.locale('es');
 const localizer = momentLocalizer(moment);
 
 

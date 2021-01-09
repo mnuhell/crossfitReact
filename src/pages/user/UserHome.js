@@ -31,8 +31,8 @@ export const UserHome = () => {
                         <Link to="/user/reserva">
                             <button
                             onClick={ handleLoading }
-                            className="font-body transition-all duration-1000 ease-in-out bg-transparent hover:text-blue-300 text-blue-500
-                            hover:text-white py-2 px-4 border-blue-500 hover:border-transparent
+                            className="font-body transition-all duration-1000 ease-in-out bg-transparent hover:text-blue-300 text-blue-200
+                            hover:text-white py-2 px-4 border-blue-200 hover:border-transparent
                             ">
                                 <div className="w-6 mx-auto rounded-full">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -17,6 +17,10 @@ export const clasesReducer = (state = initialState, action) => {
 				...state,
 				totales: action.payload
 			}
+		case types.classesReset:
+			return {
+				totales: state
+			}
 
 		default: {
 			return state

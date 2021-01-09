@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import Logo from './header/logo/Logo';
 import {MenuButton} from './user/MenuButton'
 import { Link } from 'react-router-dom';
 import {MenuDrop} from "../helpers/MenuDrop";
+
+
+
 const Header = () => {
 
     const user = useSelector(state => state.auth)
@@ -12,9 +15,20 @@ const Header = () => {
     const value  = useSelector( state => state.ui.showMenu);
 
 
-    const showMessageInfo = (message) => {
-        if(totales <= 0) {
-            return (
+    const showMessageInfo = () => {
+
+        if( totales  === 0) {
+            return "Tu bono esta agotado, renuevalo cuanto antes para pdoer seguir reservando tús clases"
+        }
+        if( totales === 1) {
+            return "Tu bono esta próximo a agotarse. No olvides renovarlo en tu próxima visita al box";
+        }
+
+    }
+
+    return (
+        <>
+            <header className="bg-blue-700 pt-3 pb-5 fixed w-full z-40">
 
                 <div className="alert-header font-body py-1 px-3 -mt-3 xs:py-4 xl:px-0 flex items-center uppercase font-bold justify-center mb-4 bg-yellow-500 text-blue-900">
                     <div>
@@ -24,21 +38,13 @@ const Header = () => {
                             </svg>
                         </div>
                         <div className="flex items-center xs:h-12 lg:h-6">
-                            {message}
+                             { showMessageInfo() }
                         </div>
 
                     </div>
 
                 </div>
 
-            )
-        }
-    }
-
-    return (
-        <>
-            <header className="bg-blue-700 pt-3 pb-5 fixed px-5 w-full z-40">
-                { showMessageInfo("Tu bono esta agotado. tienes una clase más que se descontará del siguiente bono. No olvides renovar tu bono en el box") }
                 <div className="container mx-auto flex justify-between items-center px-3 -z-50 relative">
 
                     <div className="header__right flex justify-items-start">

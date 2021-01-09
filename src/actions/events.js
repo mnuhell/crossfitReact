@@ -124,6 +124,12 @@ export const getClasesPendingUser = () => {
 	}
 }
 
+export const resetClassesNewBono = () => ({
+
+    type: types.classesReset
+
+})
+
 const classesPending = (totales) => ({
 
 	type: types.bonoGetAll,

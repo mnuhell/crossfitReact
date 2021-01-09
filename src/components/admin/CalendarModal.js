@@ -5,7 +5,7 @@ import moment from 'moment';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
 import {eventSetActive, eventStartLoading, eventStartUpdated, savedNewEvent} from "../../actions/events";
-moment().locale('es');
+moment.locale('es');
 const customStyles = {
     content : {
         top                   : '50%',

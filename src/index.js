@@ -5,7 +5,7 @@ import './index.css';
 import './tailwind.output.css';
 import moment from "moment";
 
-moment().locale('es');
+moment.locale('es');
 
 ReactDOM.render(
     <CrossfitApp  />,

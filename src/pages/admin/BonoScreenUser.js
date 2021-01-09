@@ -4,6 +4,7 @@ import {deleteBonoUserModal, getAllUsers, setUserActive} from "../../actions/use
 import {uiCloseModal } from "../../actions/ui";
 import { deleteHistoryBono } from '../../actions/history'
 import {LoadingApp} from "../../components/LoadingApp";
+import {bonoReset} from "../../actions/bonos";
 
 
 
@@ -19,13 +20,9 @@ export const BonoScreenUser = (bono) => {
 
     const handleDeleteBono = () => {
 
-        const data = {
-            user,
-            bonoId: bono._id
-        }
-
-        dispatch( deleteBonoUserModal( data ))
-        dispatch( deleteHistoryBono(data))
+        /*dispatch( deleteBonoUserModal( data ))
+        dispatch( deleteHistoryBono(data))*/
+        dispatch( bonoReset(user))
         dispatch( uiCloseModal())
     }
 

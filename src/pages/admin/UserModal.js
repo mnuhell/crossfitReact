@@ -68,9 +68,9 @@ export const UserModal = () => {
 
     }
 
-    const handleChangeSelect = ( { target } ) => {
-
-        const bono = target.value
+    const handleChangeSelect = ( e ) => {
+        e.preventDefault()
+        const bono = e.target.value
 
         const now = moment();
 
@@ -178,15 +178,17 @@ export const UserModal = () => {
 
                     </div>
                 </div>
-            <div className="flex flex-col mb-4">
-                <label className="font-bold text-gray-800 mb-1 block">Bonos disponibles</label>
+            <div className="flex mb-4 flex-col">
 
-                <select onChange={handleChangeSelect} className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none" name="bono" id="bonos-select">
-                    <option value="">Elija un bono</option>
-                    {
-                        bonosState.map( bono => <option value={ bono._id } key={ bono._id } id="bono__id"> {bono.name} </option>)
-                    }
-                </select>
+                    <label className="font-bold text-gray-800 mb-1 block">Bonos disponibles</label>
+
+                    <select onChange={handleChangeSelect} className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none" name="bono" id="bonos-select">
+                        <option value="">Elija un bono</option>
+                        {
+                            bonosState.map( bono => <option value={ bono._id } key={ bono._id } id="bono__id"> {bono.name} </option>)
+                        }
+                    </select>
+
 
             </div>
             </div>

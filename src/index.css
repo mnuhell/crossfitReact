@@ -127,7 +127,7 @@ code {
 
 .table__header{
   display: grid;
-  grid-template-columns: 10% 15% 20% 15% 35% 5%;
+  grid-template-columns: 10% 20% 20% 15% 30% 5%;
 }
 
 .table__header--bonos {

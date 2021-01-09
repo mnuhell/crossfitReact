@@ -1,6 +1,7 @@
 import {fetchWithToken} from "../helpers/fetch";
 import {types} from "../types/types";
 import Swal from "sweetalert2";
+import {getAllUsers} from "./user";
 
 
 export const getBonos = () => {
@@ -121,10 +122,36 @@ export const bonoEdited = ( bono ) => {
     }
 }
 
-export const bonoReset = () => ({
+export const bonoReset = ( user ) => {
 
-    type: types.bonoReset
-})
+    return async( dispatch ) => {
+
+        const resp = await fetchWithToken(`bonos/reset-bono/${user._id}`, user, 'PUT')
+        const body = await resp.json();
+
+        if( !body.ok ) {
+            await Swal.fire({
+                icon: 'error',
+                text: body.msg,
+            })
+        }
+
+        if( body.ok ) {
+            await Swal.fire({
+                icon: 'success',
+                text: body.msg,
+            })
+
+            dispatch( getAllUsers())
+        }
+
+
+
+    }
+
+
+
+}
 
 export const bonoActive = ( bono ) => ({
 

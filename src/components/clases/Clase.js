@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment'
-import { DateTime } from 'luxon';
 import {
     addUserClass,
     deleteUserClass,
@@ -9,17 +8,12 @@ import {
     getClasesPendingUser
 } from '../../actions/events';
 
-
-const localDate = moment().localeData()
-
 export const Clase = (clase) => {
 
     const dispatch = useDispatch();
-    const [ close, setClose ] = useState( false )
     const { uid } = useSelector(state => state.auth);
-    const { totales } = useSelector( state => state.clases)
+    const {totales} = useSelector( state => state.clases)
     const usuario =  clase.users.filter( user => user._id === uid );
-    const [ messageClass, setMessageClass] = useState("Sé el primero en registrarte!")
 
     const timeCloseClass = () => {
         const now = moment();
@@ -69,10 +63,9 @@ export const Clase = (clase) => {
 
     const showButton = () => {
 
-        if(totales === -1 && !usuario.length  ) {
-            setMessageClass("Renueva tu bono")
+        if(totales === 0 && !usuario.length  ) {
             return(
-                <button className="bg-blue-100 py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button className="bg-yellow-500 font-bold py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
                     renueva tu bono
                 </button>
             )
@@ -80,25 +73,17 @@ export const Clase = (clase) => {
 
         if( usuario.length ) {
             return(
-                <button className="bg-green-500 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button className="bg-green-500 py-2 font-bold text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Registrado
                 </button>
             )
         }
 
         if( clase.userclase === clase.users.length) {
-            setMessageClass("Clase completa")
-            return(
-                <button title="Debes de esperar a que algún usuario deje su plaza" className="bg-red-400 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
-                    Completa
-                </button>
-            )
-        }
 
-        if(totales === -1 && !usuario.length  ) {
             return(
-                <button className="bg-blue-100 py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
-                    renueva tu bono
+                <button title="Debes de esperar a que algún usuario deje su plaza" className="bg-red-400 py-2 font-bold text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                    Completa
                 </button>
             )
         }
@@ -106,7 +91,7 @@ export const Clase = (clase) => {
         return(
             <button
                 onClick={ handleReserva }
-                className="bg-blue-900 py-2 text-blue-100 float-left focus:ring-2 focus:none uppercase"> Regístrate
+                className="bg-blue-900 py-2 text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase"> Regístrate
             </button>
 
             )
@@ -119,24 +104,34 @@ export const Clase = (clase) => {
         if( clase.userclase === clase.users.length && !usuario.length  ) {
             return (
                 <button
-                    className="bg-red-400 py-2 text-blue-100 float-right uppercase cursor-not-allowed"
+                    className="bg-red-400 py-2 text-blue-100 font-bold float-right uppercase cursor-not-allowed"
                     disabled> Completa
                 </button>
             )
         }
+
+        if(totales === 0 && !usuario.length  ) {
+            return(
+                <button className="bg-yellow-500 font-bold py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
+                    renueva tu bono
+                </button>
+            )
+        }
+
+        if( !usuario.length ) {
+            return (
+                <button
+                    className="bg-blue-900 py-2 text-blue-100 font-bold float-right uppercase cursor-not-allowed font-bold"> Dejar hueco
+                </button>
+            )
+        }
+
         return (
             <button
                 onClick={ handleDelete }
-                className="bg-red-600 py-2 text-blue-100 float-right uppercase"> No puedo ir
+                className="bg-red-600 py-2 text-blue-100 font-bold float-right uppercase"> Dejar hueco
             </button>
         )
-    }
-
-
-    const userRegister = () => {
-
-        return usuario.length >= 0 || clase.userclase === clase.users.length || totales === 0
-
     }
 
         return (
@@ -167,10 +162,13 @@ export const Clase = (clase) => {
 
                 {
                     clase.users.length > 0 ?
-                    <div className="clase__usuarios-registrados py-5 px-3 grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-1 gap-y-1">
-                        {   clase.users.map(user => (
-                                <div className="text-center flex flex-col items-start w-full"  key={user._id}>
-                                <img className="object-cover rounded-full h-6" title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+                    <div className="clase__usuarios-registrados py-3 px-3 grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12">
+                        {   clase.users.map((user, index) =>  (
+                                <div title={user.name} className="text-center flex flex-col items-start w-full text-md"  key={user._id}>
+                                <span>{ index + 1 }
+                                    😁
+                                </span>
+                                {/*<img className="object-cover rounded-full h-6" title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />*/}
                                      {/*<span className="name-class text-xs uppercase text-white">{user.name}</span>*/}
                                 </div>
                             ))
@@ -178,8 +176,8 @@ export const Clase = (clase) => {
 
                     </div>
                     :
-                    <div className="clase__usuarios-registrados text-blue-100 py-5 px-3 grid">
-                        <h1 className="uppercase text-sm">{ messageClass }</h1>
+                    <div className="clase__usuarios-registrados text-blue-100 py-3 px-3 grid">
+                        <h1 className="uppercase text-md">Consigue la pole!! 🤪</h1>
                     </div>
                 }
 
@@ -188,7 +186,7 @@ export const Clase = (clase) => {
                             timeCloseClass()
                                     ?
                                 <button
-                                    className="bg-red-600 py-2 font-bold text-blue-100 float-right uppercase cursor-not-allowed"> Clase cerrada
+                                    className="bg-red-600 py-2 font-bold font-bold text-blue-100 float-right uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
                                 showButtonleft()
@@ -199,7 +197,7 @@ export const Clase = (clase) => {
                         {
                             timeCloseClass() ?
                                 <button
-                                    className="bg-red-600 py-2 font-bold text-blue-100 float-left focus:ring-2 focus:none uppercase cursor-not-allowed"> Clase cerrada
+                                    className="bg-red-600 py-2 font-bold text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
                                 showButton()

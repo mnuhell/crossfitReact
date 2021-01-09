@@ -191,7 +191,7 @@ export const UserModal = () => {
             </div>
             </div>
 
-            <button className="btn block text-center bg-blue-500 w-full py-3 text-white uppercase mt-10">Guardar</button>
+            <button className="btn block text-center bg-green-500 w-full py-3 text-white uppercase font-bold mt-10">Guardar</button>
 
         </form>
 

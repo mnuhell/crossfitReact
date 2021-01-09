@@ -34,8 +34,9 @@ export const types = {
     userActiveReset: '[ USERS ] User reset',
     userRefreshUserActive: ' [ USERS ] User refresh User active',
     userAddActiveBono: '[ USER  ] User add bono',
-    userDeleteBono: '[ USER  ] User delete bono',
-    userResetBonos: '[ USER  ] User reset bonos',
+    userDeleteBono: '[ USER ] User delete bono',
+    userResetBonos: '[ USER ] User reset bonos',
+    userResetBono: '[ USER ] User reset bono',
 
 	classesMonth: '[ Classes ] Classes month',
     classesSubtractDay: '[ classes ] Classes Subtract Day ',

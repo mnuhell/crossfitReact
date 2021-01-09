@@ -11,9 +11,6 @@ const initialState = {
         }],
 
         bonoActive: null
-
-
-
 }
 
 

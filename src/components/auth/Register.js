@@ -33,15 +33,15 @@ export const Register = () => {
             return;
         }
 
-        if (name.trim() === "" || email.trim() === "" || password.trim() === "" || telefono.trim() === "") {
+        if ( name.trim() === "" || email.trim() === "" || password.trim() === "" || telefono.trim() === "") {
             setError(true)
             setTextError('Por favor, los campos no pueden estar vacios');
             return;
         }
 
         dispatch(startRegister({
-            name: name,
-            email: email,
+            name: name.toLowerCase(),
+            email: email.toLowerCase(),
             telefono: telefono,
 			bonos: bonos,
             password: password,

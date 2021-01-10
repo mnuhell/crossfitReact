@@ -25,6 +25,11 @@ export const uiReducer = ( state = initialState, action ) => {
                 ...state,
                 showMenu: action.payload
             }
+        case types.uiCloseMenu:
+            return {
+                ...state,
+                showMenu: false
+            }
         
         default:
             return state;

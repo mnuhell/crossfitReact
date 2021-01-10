@@ -2,7 +2,8 @@ export const types = {
 
     uiOpenModal: '[ui] Open modal',
     uiCloseModal: '[ui] Close modal',
-    uiShowMenu: ' [ui] Close Menu',
+    uiShowMenu: ' [ui] Show Menu',
+    uiCloseMenu: ' [ui] Close Menu',
     loading: '[ui] Loading',
 
 

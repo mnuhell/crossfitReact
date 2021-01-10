@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ClasesPending} from "./ClasesPending";
-import {uiShowMenu} from "../../actions/ui";
+import {uiCloseModal, uiShowMenu} from "../../actions/ui";
 import {MenuDrop} from "../../helpers/MenuDrop";
 
 export const MenuButton = ( { name, uid } ) => {
@@ -31,6 +31,7 @@ export const MenuButton = ( { name, uid } ) => {
             </div>
                <MenuDrop
                    value={ value }
+
                />
 
         </>

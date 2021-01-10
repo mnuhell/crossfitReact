@@ -3,6 +3,7 @@ import {startLogout} from "../actions/auth";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {loading} from "../actions/loading";
+import {uiCloseMenu} from "../actions/ui";
 
 
 
@@ -27,7 +28,7 @@ export const MenuDrop = ({value} ) => {
         <>
             {(value && role.name === 'admin') ?
 
-                <nav className="nav-menu dropdown-menu absolute bg-blue-700 text-blue-50 text-left right-0 -mt-3">
+                <nav className="nav-menu dropdown-menu absolute bg-blue-700 text-blue-50 text-left right-0 -mt-3" >
                     <ul>
 
                         <li className="py-2 pb-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
@@ -67,8 +68,8 @@ export const MenuDrop = ({value} ) => {
             }
             {
                 ( value && role.name === 'user' ) ?
-                <nav className="nav-menu dropdown-menu absolute bg-blue-700 text-blue-50 text-left right-0 -mt-3">
-                    <ul>
+                <nav className="nav-menu dropdown-menu absolute bg-blue-700 text-blue-50 text-left right-0 -mt-3" >
+                    <ul >
                         <li className="py-2 pb-2 pr-8 pl-2 transition-all duration-200 hover:bg-blue-400">
 
                             <Link to="">

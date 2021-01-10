@@ -38,6 +38,7 @@ const routes = [
                 exact: true
 
             },
+
             {
                 path: "/user/settings",
                 component: UserSettings,
@@ -134,7 +135,7 @@ const routes = [
 
             },
             {
-                path: "/register",
+                path: "/registrar",
                 component: Register,
                 exact: true,
                 role: 'guest',

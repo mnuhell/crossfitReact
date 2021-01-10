@@ -1,15 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Footer from '../components/Footer';
 import HeaderUser from '../components/HeaderUser';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Login } from '../components/auth/Login';
 import {LoadingApp} from "../components/LoadingApp";
 import {UserHome} from "../pages/user/UserHome";
+import {uiCloseMenu} from "../actions/ui";
 
 
 
 const UserLayout = ( props ) => {
+
+    const dispatch = useDispatch();
 
     const { routes } = props;
 

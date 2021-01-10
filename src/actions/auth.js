@@ -68,9 +68,22 @@ export const startRegister = ( user ) => {
 		const resp = await fetchWithoutToken('auth/new', user, 'POST');
 		const body = await resp.json();
 
+		if( !body.ok ) {
+			return await Swal.fire({
+				icon: 'error',
+				text: body.msg,
+			})
+		}
+
 		if (body.ok) {
 			localStorage.setItem('token', body.token);
 			localStorage.setItem('token-init-date', new Date().getTime());
+			localStorage.setItem('login', 'ok');
+
+			await Swal.fire({
+				icon: 'success',
+				text: body.msg,
+			})
 
 			dispatch(login({
 				uid: body.uid,
@@ -78,6 +91,9 @@ export const startRegister = ( user ) => {
 				role: body.role,
 				bonos: body.bonos
 			}))
+
+			dispatch( getClasesPendingUser() )
+			dispatch( loading( true))
 
 		}
 

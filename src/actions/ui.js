@@ -12,3 +12,9 @@ export const uiShowMenu   = ( value ) => ( {
     type: types.uiShowMenu,
     payload: value
 })
+
+export const uiCloseMenu = () => ({
+
+    type: types.uiCloseMenu
+
+})

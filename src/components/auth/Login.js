@@ -36,7 +36,7 @@ export const Login = () => {
 
         <>
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
-            <div className="login__content sm:w-1/3">
+            <div className="login__content sm:w-1/2 md:w-1/4">
                 <div className="logo flex mb-5 justify-center">
                     <Logo width="200" altTitle="Airfit App" />
                 </div>
@@ -62,13 +62,13 @@ export const Login = () => {
                         value={password}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
                     </div>
-                    <div className="flex items-right justify-between">
-                    <button className="bg-blue-50 hover:bg-blue-100 text-blue-500  py-1 px-6 border rounded shadow items-end" type="submit">
-                        entrar
-                    </button>
-                    <Link to="/register" className="bg-blue-50 hover:bg-blue-100 text-blue-500 py-1 px-6 border rounded shadow items-end" type="submit">
-                        nuevo usuario
-                    </Link>
+                    <div className="grid grid-cols-2 gap-6 items-right justify-between uppercase">
+                        <button className="bg-blue-50 hover:bg-blue-100 text-sm text-blue-500 py-2 px-6 border rounded shadow items-end uppercase" type="submit">
+                            entrar
+                        </button>
+                        <Link to="/register" className="flex items-center text-sm justify-center bg-blue-50 hover:bg-blue-100 text-blue-500 py-2 px-6 border rounded shadow items-end" type="submit">
+                            regístrate
+                        </Link>
                     </div>
                 </form>
             </div>

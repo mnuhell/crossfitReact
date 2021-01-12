@@ -154,21 +154,21 @@ export const Clase = (clase) => {
 
                 <div className="mx-auto w-full text-blue-100 pt-10">
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
-					<h1 className="title uppercase text-center text-2xl font-bold tracking-wide">{clase.type}</h1>
-					{/*<h1 className="title uppercase text-center text-xs -mt-1 mb-1">{ moment(clase.start).format('LL')}</h1>*/}
+					<h1 className="title uppercase text-center text-3xl font-bold tracking-wide">{clase.type}</h1>
+                    <h1 className="title uppercase text-center text-xs -mt-3 mb-3">{ moment(clase.start).format('LL')}</h1>
                     <h1 className="hours uppercase grid text-center text-md mb-1 text-2xl font-bold text-white mx-2 -mt-2">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
 
                  </div>
 
                 {
                     clase.users.length > 0 ?
-                    <div className="clase__usuarios-registrados py-3 px-3 grid grid-cols-8 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10">
+                    <div className="clase__usuarios-registrados py-3 px-3 grid grid-cols-8 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 h-32">
                         {   clase.users.map((user, index) =>  (
-                                <div title={user.name} className="text-center flex flex-col items-start w-full text-md"  key={user._id}>
+                                <div title={user.name} className="text-center flex flex-col items-start w-full text-md mb-2"  key={user._id}>
                                 {/*<span className="text-4xl">
                                     😁
                                 </span>*/}
-                                <img className="object-cover rounded-full h-8" title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+                                <img className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
                                      {/*<span className="name-class text-xs uppercase text-white">{user.name}</span>*/}
                                 </div>
                             ))
@@ -176,8 +176,8 @@ export const Clase = (clase) => {
 
                     </div>
                     :
-                    <div className="clase__usuarios-registrados text-blue-100 py-3 px-3">
-                        <span className="flex items-center uppercase h-8">Consigue la pole!! 🤪</span>
+                    <div className="flex items-center  clase__usuarios-registrados text-blue-100 py-3 px-3 h-32">
+                        <span className="flex items-center uppercase h-10 font-bold">Consigue la pole!! 🤪</span>
                     </div>
                 }
 

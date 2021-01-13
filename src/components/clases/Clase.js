@@ -155,8 +155,8 @@ export const Clase = (clase) => {
                 <div className="mx-auto w-full text-blue-100 pt-10">
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
 					<h1 className="title uppercase text-center text-3xl font-bold tracking-wide">{clase.type}</h1>
-                    <h1 className="title uppercase text-center text-xs -mt-3 mb-3 font-bold">{ moment(clase.start).format('LL')}</h1>
-                    <h1 className="hours uppercase grid text-center text-md mb-1 text-2xl font-bold text-white mx-2 -mt-2">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
+                    <h1 className="title uppercase text-center text-lg -mt-3 mb-3 font-bold">{ moment(clase.start).format('LL')}</h1>
+                    <h1 className="shadow-2xl bg-blue-600 py-1 px-3 hours uppercase grid text-center text-md mb-1 text-3xl font-bold text-white -mt-2">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
 
                  </div>
 

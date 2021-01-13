@@ -31,8 +31,8 @@ const UserReserva = () => {
             <>
                 { (events.length !== 0)
                     ? <>
-                        <div className="reservas pt-40 text-white px-3 container mx-auto ">
-                            <h2 className="uppercase text-2xl font-extrabold pb-6">
+                        <div className="reservas pt-32 text-white px-3 container mx-auto font-body">
+                            <h2 className="uppercase text-3xl font-extrabold pb-6">
                                 Clases disponibles
                                 {/*<p className="-mt-2 text-sm">{ moment().format('LL') }</p>*/}
                             </h2>

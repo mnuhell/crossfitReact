@@ -162,7 +162,7 @@ export const Clase = (clase) => {
 
                 {
                     clase.users.length > 0 ?
-                    <div className="clase__usuarios-registrados py-3 px-3 grid grid-cols-8 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 h-32">
+                    <div className="clase__usuarios-registrados py-3 px-3 grid grid-cols-8 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
                         {   clase.users.map((user, index) =>  (
                                 <div title={user.name} className="text-center flex flex-col items-start w-full text-md mb-2"  key={user._id}>
                                 {/*<span className="text-4xl">
@@ -176,7 +176,7 @@ export const Clase = (clase) => {
 
                     </div>
                     :
-                    <div className="flex items-center  clase__usuarios-registrados text-blue-100 py-3 px-3 h-32">
+                    <div className="flex items-center  clase__usuarios-registrados text-blue-100 py-3 px-3">
                         <span className="flex items-center uppercase h-10 font-bold">Consigue la pole!! 🤪</span>
                     </div>
                 }

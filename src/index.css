@@ -169,3 +169,18 @@ button:focus {outline:0 !important;}
 
 }
 
+
+
+  @media( min-width: 320px ) {
+
+    .clase__usuarios-registrados{
+      height: 180px;
+    }
+}
+
+@media( min-width: 620px ) {
+  .clase__usuarios-registrados{
+    height: 120px;
+  }
+}
+

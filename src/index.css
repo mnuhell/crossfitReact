@@ -166,16 +166,6 @@ button:focus {outline:0 !important;}
 
   font-size: .8em;
 
-
-}
-
-
-
-  @media( min-width: 320px ) {
-
-    .clase__usuarios-registrados{
-      height: 180px;
-    }
 }
 
 @media( min-width: 620px ) {

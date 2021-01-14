@@ -162,7 +162,7 @@ export const Clase = (clase) => {
 
                 {
                     clase.users.length > 0 ?
-                    <div className="clase__usuarios-registrados bg-blue-400 py-3 px-3 grid grid-cols-8 gap-y-2 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
+                    <div className="clase__usuarios-registrados bg-blue-700 shadow-2xl py-3 px-3 grid grid-cols-8 gap-y-2 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
                         {   clase.users.map((user, index) =>  (
                                 <div title={user.name} className="text-center flex flex-col items-center w-full text-md"  key={user._id}>
                                     {/*<span className="text-4xl">

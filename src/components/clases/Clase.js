@@ -162,14 +162,14 @@ export const Clase = (clase) => {
 
                 {
                     clase.users.length > 0 ?
-                    <div className="clase__usuarios-registrados py-3 px-3 grid grid-cols-8 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
+                    <div className="clase__usuarios-registrados bg-blue-400 py-3 px-3 grid grid-cols-8 gap-y-2 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
                         {   clase.users.map((user, index) =>  (
-                                <div title={user.name} className="text-center flex flex-col items-start w-full text-md mb-2"  key={user._id}>
-                                {/*<span className="text-4xl">
-                                    😁
-                                </span>*/}
-                                <img className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
-                                     {/*<span className="name-class text-xs uppercase text-white">{user.name}</span>*/}
+                                <div title={user.name} className="text-center flex flex-col items-center w-full text-md"  key={user._id}>
+                                    {/*<span className="text-4xl">
+                                        😁
+                                    </span>*/}
+                                    <img className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+                                         {/*<span className="name-class text-xs uppercase text-white">{user.name}</span>*/}
                                 </div>
                             ))
                         }

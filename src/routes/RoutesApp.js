@@ -5,11 +5,12 @@ import { startCheking } from '../actions/auth';
 
 import routes from '../routes/config';
 import {getBonos} from "../actions/bonos";
+import {LoadingApp} from "../components/LoadingApp";
 
 const RoutesApp = () => {
 
     const dispatch = useDispatch();
-    const { checking } = useSelector( state => state.auth)
+
 
     useEffect(() => {
         dispatch( getBonos())
@@ -17,7 +18,10 @@ const RoutesApp = () => {
 
     }, [dispatch])
 
+    const { checking } = useSelector( state => state.auth)
+
     return (
+
         <>
             <Router>
             {

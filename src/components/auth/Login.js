@@ -36,7 +36,7 @@ export const Login = () => {
 
         <>
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
-            <div className="login__content sm:w-1/2 lg:w-1/5">
+            <div className="login__content sm:w-1/1 lg:w-1/4">
                 <div className="logo flex mb-5 justify-center">
                     <Logo width="200" altTitle="Airfit App" />
                 </div>

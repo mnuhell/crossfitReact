@@ -2,11 +2,9 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { startLogin } from '../../actions/auth';
-import { loading } from '../../actions/loading';
 import {getBonosState} from "../../actions/bonos";
-import {LoadingApp} from "../LoadingApp";
 
 export const Login = () => {
 
@@ -66,10 +64,13 @@ export const Login = () => {
                         <button className="bg-blue-50 hover:bg-blue-100 text-sm text-blue-500 py-2 px-6 border rounded shadow items-end uppercase" type="submit">
                             entrar
                         </button>
-                        <Link to="/register" className="flex items-center text-sm justify-center bg-blue-50 hover:bg-blue-100 text-blue-500 py-2 px-6 border rounded shadow items-end" type="submit">
+                        <Link to="/register" className="flex items-center text-sm justify-center bg-blue-50 hover:bg-blue-100 text-blue-500 py-2 px-6 border rounded shadow " type="submit">
                             regístrate
                         </Link>
-                    </div>
+						</div>
+						<div className="text-right mt-3 block">
+							<Link to="/forgot" className="text-right text-white text-sm ">Recuperar contraseña</Link>
+						</div>items-end
                 </form>
             </div>
         </div>

@@ -139,6 +139,25 @@ export const startCheking = () => {
 
 }
 
+export const authForgotPassword = (email) => {
+
+	return async( dispatch ) => {
+
+		try {
+
+			const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
+			const body = await resp.json();
+
+		} catch ( error ) {
+
+			console.log( error )
+		}
+
+	}
+
+
+}
+
 const checkingFinish = () => ({
 	type: types.authCheckingFinish
 })

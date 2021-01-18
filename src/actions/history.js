@@ -46,20 +46,3 @@ export const deleteHistoryBono = ( data ) => {
     }
 
 }
-
-export const resetHistoryBono = () => {
-
-    return async( dispatch ) => {
-
-        try {
-
-
-
-
-
-        } catch (e) {
-            console.log( e )
-        }
-    }
-
-}

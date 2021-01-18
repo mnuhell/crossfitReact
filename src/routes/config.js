@@ -15,7 +15,8 @@ import UserReserva from '../pages/user/UserReserva';
 import UserSettings from '../pages/user/UserSettings';
 import { CalendarScreen } from "../components/admin/CalendarScreen";
 import {UsersScreen} from "../pages/admin/UsersScreen";
-import {BonosScreen} from "../pages/admin/BonosScreen";
+import { BonosScreen } from "../pages/admin/BonosScreen";
+import { ForgotPassword } from "../components/auth/ForgotPassword";
 
 const routes = [
 
@@ -139,6 +140,12 @@ const routes = [
                 component: Register,
                 exact: true,
                 role: 'guest',
+			},
+			{
+                path: "/forgot",
+                component: ForgotPassword,
+                exact: true,
+                role: 'guest',
             },
             {
                 component: Error404
@@ -149,5 +156,3 @@ const routes = [
 ]
 
 export default routes
-
-

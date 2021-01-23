@@ -4,6 +4,8 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import AdminHome from '../pages/admin/AdminHome';
 import { UserHome } from '../pages/user/UserHome';
 import {LoadingApp} from "../components/LoadingApp";
+import HeaderLayout from "../components/HeaderLayout";
+import Footer from "../components/Footer";
 
 
 
@@ -58,9 +60,11 @@ const GuestLayout = (props) => {
     if( logged === 'null'){
         return (
             <>
-                <div className="guest-layout">
+                <HeaderLayout />
+                <div className="guest-layout bg-blue-500">
                     <LoadRoutes routes={ routes } />
                 </div>
+                <Footer />
             </>
         )
     }

@@ -34,11 +34,11 @@ export const Login = () => {
 
         <>
         <div className="flex justify-center flex-wrap content-center h-screen login bg-blue-500">
-            <div className="login__content sm:w-1/2 md:w-1/4">
-                <div className="logo flex mb-5 justify-center">
+            <div className="login__content sm:w-1/2 md:w-1/4 flex flex-col justify-center">
+                {/*<div className="logo flex mb-8 justify-center">
                     <Logo width="200" altTitle="Airfit App" />
-                </div>
-                <form onSubmit={ handleSubmitLogin } className="bg-blue-600 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                </div>*/}
+                <form onSubmit={ handleSubmitLogin } className="bg-blue-600 shadow-md rounded">
 
                     <div className="mb-4">
                         <label className="block text-blue-50 text-sm font-bold mb-2" htmlFor="email">
@@ -70,7 +70,7 @@ export const Login = () => {
 						</div>
 						<div className="text-right mt-3 block">
 							<Link to="/forgot" className="text-right text-white text-sm ">Recuperar contraseña</Link>
-						</div>items-end
+						</div>
                 </form>
             </div>
         </div>

@@ -17,6 +17,7 @@ import { CalendarScreen } from "../components/admin/CalendarScreen";
 import {UsersScreen} from "../pages/admin/UsersScreen";
 import { BonosScreen } from "../pages/admin/BonosScreen";
 import { ForgotPassword } from "../components/auth/ForgotPassword";
+import {ResetPassword} from "../components/auth/ResetPassword";
 
 const routes = [
 
@@ -144,6 +145,18 @@ const routes = [
 			{
                 path: "/forgot",
                 component: ForgotPassword,
+                exact: true,
+                role: 'guest',
+            },
+            {
+                path: "/insert-code",
+                component: ResetPassword,
+                exact: true,
+                role: 'guest',
+            },
+            {
+                path: "/change-password",
+                component: ResetPassword,
                 exact: true,
                 role: 'guest',
             },

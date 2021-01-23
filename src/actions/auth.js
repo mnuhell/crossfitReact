@@ -145,8 +145,10 @@ export const authForgotPassword = (email) => {
 
 		try {
 
-			const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
-			const body = await resp.json();
+			/*const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
+			const body = await resp.json();*/
+
+			console.log( "click email" )
 
 		} catch ( error ) {
 
@@ -155,7 +157,27 @@ export const authForgotPassword = (email) => {
 
 	}
 
+}
 
+
+
+
+export const resetPassord = ( ) => {
+
+	return async(dispatch ) => {
+
+		try {
+
+			const resp = await fetchWithoutToken(`auth/reset/`);
+			const body = await resp.json();
+
+			console.log( body )
+``
+		} catch ( error ) {
+			console.log( error )
+		}
+
+	}
 }
 
 const checkingFinish = () => ({

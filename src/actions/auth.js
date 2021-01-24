@@ -145,10 +145,8 @@ export const authForgotPassword = (email) => {
 
 		try {
 
-			/*const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
-			const body = await resp.json();*/
-
-			console.log( "click email" )
+			const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
+			const body = await resp.json();
 
 		} catch ( error ) {
 
@@ -160,25 +158,42 @@ export const authForgotPassword = (email) => {
 }
 
 
+export const authCodeValid = ( code ) => {
 
-
-export const resetPassord = ( ) => {
-
-	return async(dispatch ) => {
+	return async(dispatch) => {
 
 		try {
 
-			const resp = await fetchWithoutToken(`auth/reset/`);
+			const resp = await fetchWithoutToken(`auth/valid-code`, {code}, 'POST');
 			const body = await resp.json();
 
-			console.log( body )
-``
+			const message = {
+				ok: body.ok,
+				msg: body.msg,
+				userId: body.userId
+			}
+
+			if( !body.ok ) {
+				dispatch( messageValidCode( message ))
+				Swal.fire({
+					icon: 'error',
+					text: body.msg,
+				})
+			}
+
+			dispatch( messageValidCode( message ))
+
 		} catch ( error ) {
 			console.log( error )
 		}
 
 	}
 }
+
+const messageValidCode = ( message ) => ({
+	type: types.validCodeMessage,
+	payload: message
+})
 
 const checkingFinish = () => ({
 	type: types.authCheckingFinish

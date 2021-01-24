@@ -6,7 +6,8 @@ import { loadingReducer } from './loadingReducer';
 import { userReducer } from './userReducer';
 import { clasesReducer } from './clasesReducer';
 import { bonosReducer } from './bonosReducer';
-import { historyReducer } from './historyReducer'
+import { historyReducer } from './historyReducer';
+import { messageReducer } from './messageReducer';
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
@@ -17,5 +18,6 @@ export const rootReducer = combineReducers({
 	clases: clasesReducer,
     bonos: bonosReducer,
     history: historyReducer,
+    messages: messageReducer,
 
 })

@@ -55,15 +55,16 @@ export const ForgotPassword = () => {
 		setShowCodeValidForm( true )
 	}
 
-	const handleCodeValid = async(e) => {
+	const handleCodeValid = (e) => {
 		e.preventDefault();
 		dispatch( authCodeValid( code ))
+	}
 
-		if( codeValid.ok === true ) {
-
+	useEffect(() => {
+		if (codeValid.ok) {
 			history.push("/change-password");
 		}
-	}
+	}, [codeValid, history]);
 
 	return (
 		<>

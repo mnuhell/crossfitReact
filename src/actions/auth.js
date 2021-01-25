@@ -175,7 +175,7 @@ export const authCodeValid = ( code ) => {
 
 			if( !body.ok ) {
 				dispatch( messageValidCode( message ))
-				Swal.fire({
+				return Swal.fire({
 					icon: 'error',
 					text: body.msg,
 				})
@@ -198,3 +198,35 @@ const messageValidCode = ( message ) => ({
 const checkingFinish = () => ({
 	type: types.authCheckingFinish
 })
+
+const resetCodeValidMessage = () => ({
+	type: types.resetCodeValidMessage
+})
+
+
+export const changePassword = (data) => {
+
+	return async( dispatch ) => {
+
+		try {
+
+			const resp = await fetchWithoutToken('auth/change-password', data, 'PUT');
+			const body = await resp.json();
+
+			if( body.ok ) {
+				dispatch( resetCodeValidMessage() )
+				return Swal.fire({
+					icon: 'success',
+					text: body.msg,
+				})
+			}
+
+		} catch (error ) {
+
+			console.log( error)
+		}
+
+
+	}
+
+}

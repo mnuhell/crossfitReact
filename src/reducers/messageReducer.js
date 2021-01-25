@@ -4,7 +4,8 @@ import {types} from "../types/types";
 const initialState = {
     ok: false,
     msg: null,
-    userId: null
+    userId: null,
+    change: false,
 }
 
 
@@ -17,7 +18,12 @@ export const messageReducer = ( state = initialState, action) => {
                 ...state,
                 ok: action.payload.ok,
                 msg: action.payload.msg,
-                userId: action.payload.user
+                userId: action.payload.userId
+            }
+        case types.resetCodeValidMessage:
+            return {
+                ...state,
+                change: true
             }
 
         default:

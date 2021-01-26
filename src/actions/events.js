@@ -69,10 +69,7 @@ export const addUserClass = (event) => {
     return async(dispatch) => {
 
         try {
-            const resp = await fetchWithToken(`events/add-user/${event.id}`, event, 'PUT');
-            const body = await resp.json();
-
-
+            await fetchWithToken(`events/add-user/${event.id}`, event, 'PUT');
         } catch (error) {
             console.log(error)
         }
@@ -85,9 +82,7 @@ export const deleteUserClass = (event) => {
     return async (dispatch) => {
 
         try {
-            const resp = await fetchWithToken(`events/delete-user/${event.id}`, event, 'PUT');
-            const body = await resp.json();
-
+            await fetchWithToken(`events/delete-user/${event.id}`, event, 'PUT');
         } catch(error) {
             console.log(error)
         }

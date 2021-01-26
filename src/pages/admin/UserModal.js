@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import moment from 'moment';
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
-import {addBonoToUser, getAllUsers, setUserActive, updateUser} from "../../actions/user";
+import { updateUser } from "../../actions/user";
 import { savedHistoryBono } from "../../actions/history";
 import {totalBonosPagar} from "../../helpers/totalBonosPagar";
 

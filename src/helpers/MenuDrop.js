@@ -3,7 +3,6 @@ import {startLogout} from "../actions/auth";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {loading} from "../actions/loading";
-import {uiCloseMenu} from "../actions/ui";
 
 
 

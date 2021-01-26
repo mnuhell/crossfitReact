@@ -1,23 +1,17 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loading } from '../../actions/loading';
-import { LoadingApp } from '../../components/LoadingApp';
 
 
 export const UserHome = () => {
 
     const dispatch = useDispatch();
-    const active = useSelector(state => state.loading.active);
 
     const handleLoading = () => {
 
         dispatch( loading( true ) )
     }
-
-    /*setTimeout(function () {
-        dispatch(loading(false))
-    }, 1000)*/
 
     return (
 

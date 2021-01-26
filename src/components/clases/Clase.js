@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment'
 import {
@@ -168,7 +168,7 @@ export const Clase = (clase) => {
                                 {/*<span className="text-4xl">
                                     😁
                                 </span>*/}
-                                <img className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+                                <img alt={user.name} className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
                                      {/*<span className="name-class text-xs uppercase text-white">{user.name}</span>*/}
                                 </div>
                             ))

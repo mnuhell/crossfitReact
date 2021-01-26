@@ -1,4 +1,3 @@
-import React from 'react';
 import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
@@ -144,10 +143,7 @@ export const authForgotPassword = (email) => {
 	return async( dispatch ) => {
 
 		try {
-
-			const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
-			const body = await resp.json();
-
+			await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
 		} catch ( error ) {
 
 			console.log( error )

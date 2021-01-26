@@ -14,7 +14,7 @@ const GuestLayout = (props) => {
 
     const { routes } = props;
 
-    const { role, uid } = useSelector(state => state.auth);
+    const { role } = useSelector(state => state.auth);
     const logged = JSON.stringify(localStorage.getItem('login'))
 
         if( logged !== 'null' ) {

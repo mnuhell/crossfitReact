@@ -1,6 +1,5 @@
 import React from 'react';
 import useForm from '../hooks/useForm';
-import Logo from '../header/logo/Logo';
 import { Link } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { startLogin } from '../../actions/auth';

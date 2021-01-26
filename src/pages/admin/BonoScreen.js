@@ -1,7 +1,6 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
-import {bonoActive, bonoDeleted, bonoEdited} from "../../actions/bonos";
-import {BonoModal} from "./BonoModal";
+import { bonoActive, bonoDeleted } from "../../actions/bonos";
 import {uiCloseModal, uiOpenModal} from "../../actions/ui";
 
 

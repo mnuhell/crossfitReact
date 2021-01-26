@@ -51,6 +51,11 @@ export const types = {
     authStartRegister: '[auth] start register',
     authStartTokenRenew: '[auth] start register',
     authLogout: '[auth] Logout',
+    authForgotPassword: '[ auth ] ForgotPassword ',
+    authCodeValid: ' [ auth ] Valid Code Password  ',
+    authChangePassword: ' [ auth ] Change Password ',
+    resetCodeValidMessage: ' [ auth ] reset Data after change password',
+    validCodeMessage: ' [ message ] Code valid password '
 
 
 

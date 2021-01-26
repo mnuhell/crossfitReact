@@ -1,9 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import {deleteBonoUserModal, getAllUsers, setUserActive} from "../../actions/user";
 import {uiCloseModal } from "../../actions/ui";
-import { deleteHistoryBono } from '../../actions/history'
-import {LoadingApp} from "../../components/LoadingApp";
 import {bonoReset} from "../../actions/bonos";
 
 
@@ -16,12 +13,8 @@ export const BonoScreenUser = (bono) => {
     const bonosState = useSelector( state => state.bonos.bonos)
     const dispatch = useDispatch();
 
-    const { bono:name } = bono;
-
     const handleDeleteBono = () => {
 
-        /*dispatch( deleteBonoUserModal( data ))
-        dispatch( deleteHistoryBono(data))*/
         dispatch( bonoReset(user))
         dispatch( uiCloseModal())
     }

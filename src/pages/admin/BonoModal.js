@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Modal from 'react-modal';
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal} from "../../actions/ui";
-import {bonoEdited, bonoReset, bonoSaved, getBonos} from "../../actions/bonos";
+import { bonoEdited, bonoReset, bonoSaved } from "../../actions/bonos";
 
 const customStyles = {
     content : {

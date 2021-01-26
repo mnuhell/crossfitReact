@@ -10,7 +10,8 @@ const initialState = {
 			username: 'manufit',
 			telefono: '6502690000',
 			email: 'm.villagordovera@gmail.com',
-			avatar: 'default_avatar.jpg'
+			avatar: 'default_avatar.jpg',
+			token: null
 		}
 	],
 	userActive: {
@@ -20,7 +21,8 @@ const initialState = {
 		username: 'manufit',
 		telefono: '6502690000',
 		email: 'm.villagordovera@gmail.com',
-		avatar: 'default_avatar.jpg'
+		avatar: 'default_avatar.jpg',
+		token: null
 	}
 
 }

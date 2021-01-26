@@ -1,4 +1,3 @@
-import React from 'react';
 import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
@@ -139,6 +138,91 @@ export const startCheking = () => {
 
 }
 
+export const authForgotPassword = (email) => {
+
+	return async( dispatch ) => {
+
+		try {
+			await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
+		} catch ( error ) {
+
+			console.log( error )
+		}
+
+	}
+
+}
+
+
+export const authCodeValid = ( code ) => {
+
+	return async(dispatch) => {
+
+		try {
+
+			const resp = await fetchWithoutToken(`auth/valid-code`, {code}, 'POST');
+			const body = await resp.json();
+
+			const message = {
+				ok: body.ok,
+				msg: body.msg,
+				userId: body.userId
+			}
+
+			if( !body.ok ) {
+				dispatch( messageValidCode( message ))
+				return Swal.fire({
+					icon: 'error',
+					text: body.msg,
+				})
+			}
+
+			dispatch( messageValidCode( message ))
+
+		} catch ( error ) {
+			console.log( error )
+		}
+
+	}
+}
+
+const messageValidCode = ( message ) => ({
+	type: types.validCodeMessage,
+	payload: message
+})
+
 const checkingFinish = () => ({
 	type: types.authCheckingFinish
 })
+
+const resetCodeValidMessage = () => ({
+	type: types.resetCodeValidMessage
+})
+
+
+export const changePassword = (data) => {
+
+	return async( dispatch ) => {
+
+		try {
+
+			const resp = await fetchWithoutToken('auth/change-password', data, 'PUT');
+			const body = await resp.json();
+
+			if( body.ok ) {
+				dispatch( resetCodeValidMessage() )
+				return Swal.fire({
+					icon: 'success',
+					text: body.msg,
+				})
+			}
+
+		} catch (error ) {
+
+			console.log( error)
+		}
+
+
+	}
+
+}

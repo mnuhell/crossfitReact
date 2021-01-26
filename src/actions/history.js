@@ -35,31 +35,13 @@ export const deleteHistoryBono = ( data ) => {
 
         try {
 
-            const resp = await fetchWithToken( `history/bono/${data.bonoId}`, data , 'DELETE');
-            const body = await resp.json();
+            await fetchWithToken( `history/bono/${data.bonoId}`, data , 'DELETE');
 
         } catch (e) {
             console.log(e)
         }
 
 
-    }
-
-}
-
-export const resetHistoryBono = () => {
-
-    return async( dispatch ) => {
-
-        try {
-
-
-
-
-
-        } catch (e) {
-            console.log( e )
-        }
     }
 
 }

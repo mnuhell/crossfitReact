@@ -12,7 +12,7 @@ const AdminLayout = ( props ) => {
 
     const { routes } = props;
 
-    const { checking, checkingFinish, role, uid } = useSelector(state => state.auth);
+    const { checking, checkingFinish, role } = useSelector(state => state.auth);
 
     if( checkingFinish ) {
 

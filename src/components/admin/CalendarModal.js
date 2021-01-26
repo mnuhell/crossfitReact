@@ -42,7 +42,7 @@ export const CalendarModal = () => {
     }
     const [ formValues, setFormValues ] = useState(initialState);
 
-    const { type, userclase, start, end } = formValues;
+    const { type, userclase } = formValues;
 
     useEffect(() => {
 
@@ -52,7 +52,7 @@ export const CalendarModal = () => {
             setFormValues( initialState )
         }
 
-    }, [activeEvent]);
+    }, [activeEvent, dispatch]);
 
 
     const handleInputChange = ({ target }) => {

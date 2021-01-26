@@ -85,7 +85,7 @@ export const ForgotPassword = () => {
 								</div>
 							</form>
 						</div>
-						<button onClick={ InserCodeValid  } className="text-white my-4 text-right text-xs mb-10"> ya tienes un código válido</button>
+						<button onClick={ InserCodeValid  } className="text-white my-4 text-right text-xs mb-10 hover:text-blue-300 transition-all duration-300"> ¿Tienes un código válido?</button>
 					</div>
 				</div>
 			:
@@ -102,7 +102,7 @@ export const ForgotPassword = () => {
 						</form>
 
 					</div>
-					<button onClick={ returnEmailView } className="text-white my-4 text-right text-xs mb-10"> Volver a recibir el código</button>
+					<button onClick={ returnEmailView } className="text-white my-4 text-right text-xs mb-10 hover:text-blue-300 transition-all duration-300">Volver a recibir el código</button>
 				</div>`
 			</div>
 			}

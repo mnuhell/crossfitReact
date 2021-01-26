@@ -22,7 +22,7 @@ export const messageReducer = ( state = initialState, action) => {
             }
         case types.resetCodeValidMessage:
             return {
-                ...state,
+                ...initialState,
                 change: true
             }
 

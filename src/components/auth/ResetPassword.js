@@ -28,16 +28,22 @@ export const ResetPassword = () => {
         id
     }
 
-    if( !id || change ) {
+    if( !id ) {
         history.push("/login");
     }
 
     const onSubmitPassordReset = (e) => {
         e.preventDefault();
 
+        if( password.trim() === "") {
+            setError( true );
+            setMessage("La contraseña no puede estar vacia")
+            return;
+        }
+
         if( password.length <= 5 ) {
             setError( true );
-            setMessage("la contraseña que tenga al menos 6 caracteres")
+            setMessage("La contraseña que tenga al menos 6 caracteres")
             return;
         }
 

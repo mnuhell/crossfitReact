@@ -143,7 +143,26 @@ export const authForgotPassword = (email) => {
 	return async( dispatch ) => {
 
 		try {
-			await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
+			const resp = await fetchWithoutToken('auth/forgot-password', {email}, 'POST');
+			const body = await resp.json();
+
+			if( !body.ok) {
+				return await Swal.fire({
+					icon: 'error',
+					text: body.msg,
+				})
+			}
+
+			const message = {
+				ok: body.ok,
+				msg: body.msg,
+				userId: body.userId,
+				change: body.change,
+				emailCorrect: true
+			}
+
+			dispatch( messageValidCode( message ) )
+
 		} catch ( error ) {
 
 			console.log( error )
@@ -166,6 +185,7 @@ export const authCodeValid = ( code ) => {
 			const message = {
 				ok: body.ok,
 				msg: body.msg,
+				change: body.change,
 				userId: body.userId
 			}
 

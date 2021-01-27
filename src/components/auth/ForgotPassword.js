@@ -10,7 +10,7 @@ export const ForgotPassword = () => {
 	const dispatch = useDispatch()
 
 	const [formValues, setFormValues] = useState({
-		email: 'manufit78@gmail.com',
+		email: 'email@valido.com',
 		code: ''
 	});
 
@@ -18,6 +18,7 @@ export const ForgotPassword = () => {
 	const [error, setError] = useState(false);
 	const [showCodeValidForm, setShowCodeValidForm] = useState(false);
 	const codeValid = useSelector( state => state.messages)
+	const emailCorrect = useSelector( state => state.messages.emailCorrect)
 
 	const { email, code } = formValues;
 
@@ -41,8 +42,9 @@ export const ForgotPassword = () => {
 			setError(true)
 			return;
 		}
-		setShowCodeValidForm( true )
+
 		dispatch( authForgotPassword(email))
+		setShowCodeValidForm( emailCorrect)
 
 	}
 
@@ -61,7 +63,7 @@ export const ForgotPassword = () => {
 	}
 
 	useEffect(() => {
-		if (codeValid.ok) {
+		if (codeValid.change) {
 			history.push("/change-password");
 		}
 	}, [codeValid, history]);
@@ -103,7 +105,7 @@ export const ForgotPassword = () => {
 
 					</div>
 					<button onClick={ returnEmailView } className="text-white my-4 text-right text-xs mb-10 hover:text-blue-300 transition-all duration-300">Volver a recibir el código</button>
-				</div>`
+				</div>
 			</div>
 			}
 			</>

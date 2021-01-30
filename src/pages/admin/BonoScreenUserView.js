@@ -1,13 +1,9 @@
 import React from 'react'
 import {useSelector} from "react-redux";
 
-
-
-
 export const BonoScreenUserView = (bono) => {
 
     const bonosState = useSelector( state => state.bonos.bonos)
-
     const bonos = bonosState.find( bonoState => bonoState._id === bono.bono);
 
     return (

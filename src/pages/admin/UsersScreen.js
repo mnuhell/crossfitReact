@@ -6,12 +6,14 @@ import {LoadingApp} from "../../components/LoadingApp";
 
 import {UserScreen} from "./UserScreen";
 import {UserModal} from "./UserModal";
+import {HeaderTable} from "../../components/admin/table/HeaderTable";
+import {BodyTable} from "../../components/admin/table/BodyTable";
+import {UsersTable} from "../../components/admin/table/UsersTable";
 
 export const UsersScreen = () => {
 
     const dispatch = useDispatch();
     const active = useSelector(state => state.loading.active);
-    const users = useSelector( state => state.user.users );
 
     setTimeout(() => {
         dispatch(loading(false))
@@ -33,17 +35,9 @@ export const UsersScreen = () => {
                 <input className="h-10 px-5 text-xl w-full bg-blue-700 text-white" type="text" placeholder="Buscar..." />
             </div>
             <div className="container mx-auto flex-col items-center table-container py-3">
-                <div className="grid shadow-2xl table__header justify-between bg-blue-700 text-white uppercase rounded px-5 py-5">
-                    <span>Imagen</span>
-                    <span>Nombre</span>
-                    <span>Email</span>
-                    <span>Telefono</span>
-                    <span className="px-2"> Bonos activos</span>
-                    <span className="px-2 items-center"> Precios</span>
-                </div>
-                    {
-                        users.map( user => <UserScreen key={user._id} { ...user } />)
-                    }
+
+                <UsersTable />
+
             </div>
 
         <UserModal />

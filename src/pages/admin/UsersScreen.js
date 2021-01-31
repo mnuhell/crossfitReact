@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getAllUsers} from "../../actions/user";
 import {useDispatch, useSelector} from "react-redux";
 import {loading} from "../../actions/loading";
@@ -12,6 +12,41 @@ export const UsersScreen = () => {
     const dispatch = useDispatch();
     const active = useSelector(state => state.loading.active);
     const users = useSelector( state => state.user.users );
+    const [sortConfig, setSortConfig] = useState({
+        key: '',
+        direction: ''
+    });
+
+    let sortedUsers = [ ...users]
+
+
+    if( sortConfig !== null) {
+
+        sortedUsers.sort((a, b) => {
+            if( a[sortConfig.key.toLocaleLowerCase()] < b[sortConfig.key.toLocaleLowerCase()]) {
+                return sortConfig.direction === 'ascending' ? -1 : 1;
+            }
+            if( a[sortConfig.key.toLocaleLowerCase()] > b[sortConfig.key.toLocaleLowerCase()] ) {
+                return sortConfig.direction === 'ascending' ? 1 : -1 ;
+            }
+
+            return 0;
+        })
+    }
+
+    const requesSort = key => {
+        let direction = 'ascending';
+
+        if( sortConfig.key === key && sortConfig.direction === 'ascending')
+        {
+            direction = 'descending'
+        }
+
+        setSortConfig( { key, direction })
+    }
+
+    console.log(sortedUsers)
+
 
     setTimeout(() => {
         dispatch(loading(false))
@@ -21,7 +56,6 @@ export const UsersScreen = () => {
         dispatch( getAllUsers() )
 
     },[ dispatch])
-
 
     return (
 
@@ -36,17 +70,17 @@ export const UsersScreen = () => {
                 <thead className="text-white border ">
                     <tr>
                         <th className="py-2 px-3 border border-white-600">Imagen</th>
-                        <th className="border border-white-600">Nombre</th>
-                        <th className="border border-white-600">Email</th>
-                        <th className="border border-white-600">Telefono</th>
-                        <th className="border border-white-600"> Bonos activos</th>
-                        <th className="border border-white-600"> Precios</th>
+                        <th className="border border-white-600" onClick={() => requesSort('name')}>Nombre</th>
+                        <th className="border border-white-600" onClick={() => requesSort('email')}>Email</th>
+                        <th className="border border-white-600" onClick={() => requesSort('telefono')}>Telefono</th>
+                        <th className="border border-white-600" onClick={() => requesSort('bonos')}> Bonos activos</th>
+                        <th className="border border-white-600" onClick={() => requesSort('precio')}> Precios</th>
                     </tr>
 
                 </thead>
                 <tbody>
                     {
-                        users.map( user => <UserScreen key={user._id} { ...user } />)
+                        sortedUsers.map( user => <UserScreen key={user._id} { ...user } />)
                     }
                 </tbody>
 

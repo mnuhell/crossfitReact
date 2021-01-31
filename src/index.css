@@ -174,3 +174,12 @@ button:focus {outline:0 !important;}
   }
 }
 
+
+.user-modal__bonos{
+  grid-template-columns: 70% 30%;
+  display: inline-grid;
+  gap: 1em;
+ justify-content: space-between;
+  width: 100%;
+}
+

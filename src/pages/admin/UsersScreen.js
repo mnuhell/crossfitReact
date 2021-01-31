@@ -32,19 +32,25 @@ export const UsersScreen = () => {
             <div className="search container mx-auto xl:min-h-full focus:outline-none focus:shadow-none mb-5">
                 <input className="h-10 px-5 text-xl w-full bg-blue-700 text-white" type="text" placeholder="Buscar..." />
             </div>
-            <div className="container mx-auto flex-col items-center table-container py-3">
-                <div className="grid shadow-2xl table__header justify-between bg-blue-700 text-white uppercase rounded px-5 py-5">
-                    <span>Imagen</span>
-                    <span>Nombre</span>
-                    <span>Email</span>
-                    <span>Telefono</span>
-                    <span className="px-2"> Bonos activos</span>
-                    <span className="px-2 items-center"> Precios</span>
-                </div>
+            <table className="table-auto border border-collapse border-blue-400 container mx-auto">
+                <thead className="text-white border ">
+                    <tr>
+                        <th className="py-2 px-3 border border-white-600">Imagen</th>
+                        <th className="border border-white-600">Nombre</th>
+                        <th className="border border-white-600">Email</th>
+                        <th className="border border-white-600">Telefono</th>
+                        <th className="border border-white-600"> Bonos activos</th>
+                        <th className="border border-white-600"> Precios</th>
+                    </tr>
+
+                </thead>
+                <tbody>
                     {
                         users.map( user => <UserScreen key={user._id} { ...user } />)
                     }
-            </div>
+                </tbody>
+
+            </table>
 
         <UserModal />
 

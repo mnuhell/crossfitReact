@@ -12,9 +12,9 @@ export const BonoScreenUserView = (bono) => {
 
     return (
         <>
-            <span className="bookmark flex bg-green-500 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
-                <span className="bono-name mr-3 text-sm flex items-center"> {  bonos.name } </span>
-                <span className="delete-bono cursor-pointer flex items-center" >
+            <span className="bookmark uppercase bg-green-500 inline-flex items-center justify-items-center pl-3 pr-2 py-2 mb-1 text-white rounded-lg mr-3 shadow">
+               {  bonos.name }
+                <span className="delete-bono cursor-pointer inline-flex items-center justify-items-center ml-1" >
 
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">

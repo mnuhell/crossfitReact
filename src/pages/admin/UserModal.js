@@ -155,8 +155,8 @@ export const UserModal = () => {
                     />
 
                 </div>
-                <div className="form-control grid lg:grid-cols-2 gap-4">
-                    <div className="flex flex-col mb-4">
+                <div className="user-modal__bonos form-control">
+                    <div className="mb-4">
                         <label className="font-bold text-gray-800 mb-1 block">Bonos Activos</label>
                         {
                             ( bonos.length > 0 ) ?
@@ -166,8 +166,8 @@ export const UserModal = () => {
 
 
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label className="font-bold text-gray-800 mb-1 block">Precio de los bonos</label>
+                    <div className="mb-4">
+                        <label className="font-bold text-gray-800 mb-1 block">Precio</label>
                         <span className="text-xl font-bold">
 
                             {

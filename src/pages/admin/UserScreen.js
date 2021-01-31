@@ -23,32 +23,25 @@ export const UserScreen = ( user ) => {
 
     return (
         <>
-        <div onClick={handleSelectUser} className="text-white border-blue-50 border-b-2 table-flex min-h-full hover:bg-blue-600 hover:text-white transition-all ease-in-out duration-200 px-2 cursor-pointer">
-            <div className="grid table__header sm:justify-start container mx-auto py-5">
-                <p><img className="object-cover rounded-full h-12" alt={name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" /></p>
-                <p className="flex items-center uppercase" >{ name }</p>
-                <p className="flex items-center">{ email }</p>
-                <p className="flex items-center">{ telefono }</p>
-                <div className="flex items-center">
+            <tr onClick={handleSelectUser} className="text-white border-blue-50 border-b-2 hover:bg-blue-600 hover:text-white transition-all ease-in-out duration-200 px-2 cursor-pointer">
+                <td className="py-4 px-8 border border-white-600">
+                        <img className="object-cover rounded-3xl w-16 overflow-hidden" alt={name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+                </td>
+                <td className="py-4 px-8 border border-white-600">{ name }</td>
+                <td className="py-4 px-8 border border-white-600">{ email }</td>
+                <td className="py-4 px-8 border border-white-600">{ telefono }</td>
+                <td className="py-4 px-8 border border-white-600">
                     {
                         ( bonos.length > 0) ? bonos.map(bono => <BonoScreenUserView
                             key={bono._id} {...user} {...bono} />) : "Sin bonos activos"
                     }
-                </div>
-                <div className="flex flex-col mb-4 items-center">
-                    <span className="text-xl font-bold">
-
+                </td>
+                <td className="py-4 px-8 border border-white-600">
                         {
                             total
                         }
-
-                    </span>
-
-                </div>
-            </div>
-
-        </div>
-
+                </td>
+            </tr>
         </>
     )
 

@@ -29,18 +29,11 @@ export const UsersScreen = () => {
             [target.name]: target.value
         })
     }
-    /**
-     * palabra por la que buscar retorno lo que me devuelva.
-     */
-    console.log( userSearch )
 
 
 
-        const f =  users.find( element => element = userSearch)
 
-
-    console.log( f )
-
+    const searched =  users.filter( user => user.name.includes(userSearch.toLowerCase()))
 
 
     const data = useMemo( () => {
@@ -100,10 +93,10 @@ export const UsersScreen = () => {
                     onChange={handleInputChange}
                 />
             </div>
-            <table className="table-auto border border-collapse border-blue-400 container mx-auto">
+            <table className="table-fixed border border-collapse border-blue-400 container mx-auto">
                 <thead className="text-white border ">
                     <tr>
-                        <th className="py-2 px-3 border border-white-600">Imagen</th>
+                        <th className="py-2 px-3 border border-white-600 w-1/12">Imagen</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('name')}>Nombre</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('email')}>Email</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('telefono')}>Telefono</th>
@@ -113,8 +106,13 @@ export const UsersScreen = () => {
 
                 </thead>
                 <tbody>
+
                     {
+                        ( userSearch !== '') ?
+                        searched.map( user => <UserScreen key={user._id} { ...user } />)
+                            :
                         data.map( user => <UserScreen key={user._id} { ...user } />)
+
                     }
                 </tbody>
 

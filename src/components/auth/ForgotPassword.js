@@ -76,7 +76,7 @@ export const ForgotPassword = () => {
 			(!showCodeValidForm) ?
 				<div className="h-screen login bg-blue-500 flex flex-col items-center justify-center font-body container mx-auto px-3">
 					<div className="md:w-1/2 lg:w-1/3">
-						<h2 className="text-white mb-2 text-2xl flex block mb-8">Recupera tu cuenta de Airfit</h2>
+						<h2 className="text-white text-2xl mb-8">Recupera tu cuenta de Airfit</h2>
 						<div className="forgot-password flex items-center justify-start ">
 							<form onSubmit={handleSendEmail} className="w-full">
 								<p className="text-white mb-2 text-md block">Correo electrónico</p>
@@ -93,7 +93,7 @@ export const ForgotPassword = () => {
 			:
 			<div className="h-screen login bg-blue-500 flex flex-col items-center justify-center font-body container mx-auto px-3 pt-12">
 				<div className="md:w-1/2 lg:w-1/3">
-					<h2 className="text-white mb-2 text-xl flex block mb-8">Introduce el código que has recibido por correo para cambiar la contraseña</h2>
+					<h2 className="text-white text-xl flex mb-8">Introduce el código que has recibido por correo para cambiar la contraseña</h2>
 					<div className="forgot-password flex items-center justify-start ">
 						<form onSubmit={handleCodeValid} className="w-full">
 							<p className="text-white mb-2 text-md block">Código</p>

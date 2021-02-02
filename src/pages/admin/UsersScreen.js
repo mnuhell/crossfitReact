@@ -93,7 +93,7 @@ export const UsersScreen = () => {
                     onChange={handleInputChange}
                 />
             </div>
-            <table className="table-fixed border border-collapse border-blue-400 container mx-auto">
+            <table className="table-auto border border-collapse border-blue-400 container mx-auto">
                 <thead className="text-white border ">
                     <tr>
                         <th className="py-2 px-3 border border-white-600 w-1/12">Imagen</th>
@@ -101,7 +101,7 @@ export const UsersScreen = () => {
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('email')}>Email</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('telefono')}>Telefono</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('bonos')}> Bonos activos</th>
-                        <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('total')}> Precios</th>
+                        <th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precios</th>
                     </tr>
 
                 </thead>

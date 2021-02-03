@@ -102,8 +102,7 @@ export const UsersScreen = () => {
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('telefono')}>Telefono</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('bonos')}> Bonos activos</th>
                         <th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precios</th>
-                    </tr>
-
+                    </tr>π
                 </thead>
                 <tbody>
 

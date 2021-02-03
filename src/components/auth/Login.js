@@ -31,8 +31,7 @@ export const Login = () => {
     return (
 
         <>
-
-			<div className="grid items-center mx-auto h-screen login sm:w-1/3 lg:w-1/2 px-3">
+			<div className="grid items-center mx-auto h-screen login sm:w-1/3 md:w-1/3 lg:w-1/1 px-3">
 				<form onSubmit={ handleSubmitLogin }>
 					<div className="mb-4">
 						<label className="block text-blue-50 text-sm font-bold mb-2" htmlFor="email">

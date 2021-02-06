@@ -51,7 +51,7 @@ export const Register = () => {
     }
 
     return (
-        <div className="grid items-center mx-auto h-screen login sm:w-1/3 lg:w-1/2 px-3">
+        <div className="grid items-center mx-auto h-screen login w-1/1 md:w-1/2 lg:w-1/3 px-6">
 
                 <form onSubmit={handleSubmitregister} className="pt-6 pb-8 mb-4">
                     {

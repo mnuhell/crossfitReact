@@ -40,6 +40,9 @@ export const UserScreen = ( user ) => {
                         {
                             total
                         }
+				</td>
+				<td className="py-4 px-8 border border-white-600">
+                        5
                 </td>
             </tr>
         </>

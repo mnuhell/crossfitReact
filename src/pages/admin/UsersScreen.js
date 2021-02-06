@@ -30,11 +30,7 @@ export const UsersScreen = () => {
         })
     }
 
-
-
-
-    const searched =  users.filter( user => user.name.includes(userSearch.toLowerCase()))
-
+	const searched = users.filter(user => user.name >= userSearch.toLowerCase())
 
     const data = useMemo( () => {
 
@@ -107,7 +103,7 @@ export const UsersScreen = () => {
                 <tbody>
 
                     {
-                        ( userSearch !== '') ?
+                        ( userSearch !== '' && searched.length !== 0) ?
                         searched.map( user => <UserScreen key={user._id} { ...user } />)
                             :
                         data.map( user => <UserScreen key={user._id} { ...user } />)

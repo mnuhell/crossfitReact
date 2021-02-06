@@ -37,7 +37,8 @@ export const types = {
     userAddActiveBono: '[ USER  ] User add bono',
     userDeleteBono: '[ USER ] User delete bono',
     userResetBonos: '[ USER ] User reset bonos',
-    userResetBono: '[ USER ] User reset bono',
+	userResetBono: '[ USER ] User reset bono',
+	userGetClassPendingAdmin: '[ USER ] User Class pending admin',
 
 	classesMonth: '[ Classes ] Classes month',
     classesSubtractDay: '[ classes ] Classes Subtract Day ',

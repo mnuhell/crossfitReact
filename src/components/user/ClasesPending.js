@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 export const ClasesPending = () => {
 
+
 	const clases = useSelector(state => state.clases);
 
 	const withBono = () => {

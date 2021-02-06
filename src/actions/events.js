@@ -112,7 +112,6 @@ export const getClasesPendingUser = () => {
 
             dispatch( classesPending(totales) )
 
-
 		} catch (error) {
 			console.log(error)
 		}
@@ -198,9 +197,3 @@ export const eventStartDeleted = () => {
 const eventDeleted = () => ({
     type: types.eventDeleted
 })
-
-
-
-
-
-

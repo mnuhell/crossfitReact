@@ -28,9 +28,9 @@ export const UsersScreen = () => {
             ...formValues,
             [target.name]: target.value
         })
-    }
+	}
 
-	const searched = users.filter(user => user.name >= userSearch.toLowerCase())
+		const searched = users.filter(user => user.name?.includes(userSearch.toLowerCase()))
 
     const data = useMemo( () => {
 
@@ -97,13 +97,14 @@ export const UsersScreen = () => {
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('email')}>Email</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('telefono')}>Telefono</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('bonos')}> Bonos activos</th>
-                        <th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precios</th>
-                    </tr>
+						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precios</th>
+						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Estado</th>
+				</tr>
                 </thead>
                 <tbody>
 
                     {
-                        ( userSearch !== '' && searched.length !== 0) ?
+                        ( userSearch !== '' && searched.length > 0) ?
                         searched.map( user => <UserScreen key={user._id} { ...user } />)
                             :
                         data.map( user => <UserScreen key={user._id} { ...user } />)

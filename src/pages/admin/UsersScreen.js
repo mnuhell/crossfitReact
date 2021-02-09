@@ -33,7 +33,7 @@ export const UsersScreen = () => {
 
 
 
-    const searched =  users.filter( user => user.name.includes(userSearch.toLowerCase()))
+    const searched =  users.filter( user => user.name?.includes(userSearch.toLowerCase()))
 
 
     const data = useMemo( () => {

@@ -25,6 +25,7 @@ export const Clase = (clase) => {
 
         dispatch(addUserClass(clase));
         dispatch( getClasesPendingUser() )
+
         setTimeout(function () {
             dispatch( eventStartLoading() )
             dispatch( getClasesPendingUser() )

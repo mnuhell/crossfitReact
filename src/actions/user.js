@@ -157,3 +157,23 @@ const deleteBonoUserModalState = ( user ) => ({
     type: types.userDeleteBono,
     payload: user
 })
+
+
+export const getCountClassesPendingMonthAdmin = ( id ) => {
+
+	return async (dispatch) => {
+
+		try {
+			console.log( id )
+			const resp = await fetchWithToken(`bonos/count-classes/${id}`, id, 'PUT');
+			const body = await resp.json();
+
+
+		} catch (error) {
+
+			console.log( error )
+		}
+
+
+	}
+}

@@ -24,7 +24,8 @@ export const types = {
     bonoActive: '[ bono ] Bono Active',
     bonoDelete: ' [ bono ] Bono Delete ',
     bonoEdit: ' [ bono ] Bono Edit',
-    bonoReset: ' [ bono ] Bono Reset',
+	bonoReset: ' [ bono ] Bono Reset',
+	classPendingUserAdmin: ' [ bono ] Classes pendientes user Admin',
 
     historySaved: ' [ history ] history saved bonos',
     historyDelete: ' [ history ] history deleted bonos',

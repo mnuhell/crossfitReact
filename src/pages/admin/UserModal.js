@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import moment from 'moment';
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
-import { updateUser } from "../../actions/user";
+import { getCountClassesPendingMonthAdmin, updateUser } from "../../actions/user";
 import { savedHistoryBono } from "../../actions/history";
 import {totalBonosPagar} from "../../helpers/totalBonosPagar";
 
@@ -81,8 +81,10 @@ export const UserModal = () => {
             end: null
         }
 
-        dispatch( savedHistoryBono( userHistory ))
-
+		dispatch(savedHistoryBono(userHistory))
+		setTimeout(() => {
+			dispatch( getCountClassesPendingMonthAdmin(userHistory.user))
+		}, 2000);
         closeModal()
 
     }

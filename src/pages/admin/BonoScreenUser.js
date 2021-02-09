@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal } from "../../actions/ui";
-import {bonoReset} from "../../actions/bonos";
+import { bonoReset } from "../../actions/bonos";
+import { getCountClassesPendingMonthAdmin } from '../../actions/user'
 
 
 
@@ -15,7 +16,10 @@ export const BonoScreenUser = (bono) => {
 
     const handleDeleteBono = () => {
 
-        dispatch( bonoReset(user))
+		dispatch(bonoReset(user))
+		setTimeout(() => {
+			dispatch( getCountClassesPendingMonthAdmin(user._id))
+		}, 2000);
         dispatch( uiCloseModal())
     }
 

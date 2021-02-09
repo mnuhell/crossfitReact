@@ -10,7 +10,7 @@ export const UserScreen = ( user ) => {
 
     const dispatch = useDispatch();
 
-    const { name, email, telefono, bonos } = user;
+    const { name, email, telefono, bonos, bonoState } = user;
     const bonosState = useSelector( state => state.bonos.bonos)
 
     let total = totalBonosPagar(bonosState, bonos)
@@ -42,7 +42,7 @@ export const UserScreen = ( user ) => {
                         }
 				</td>
 				<td className="py-4 px-8 border border-white-600">
-                        5
+                        { bonoState }
                 </td>
             </tr>
         </>

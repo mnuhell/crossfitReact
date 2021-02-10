@@ -70,9 +70,9 @@ export const userReducer = (state = initialState, action) => {
 		case types.classPendingUserAdmin:
 			return {
 				...state,
-				users: [
+
 					...action.payload
-				]
+
 			}
 
 		default:

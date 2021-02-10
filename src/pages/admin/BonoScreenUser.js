@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {uiCloseModal } from "../../actions/ui";
 import { bonoReset } from "../../actions/bonos";
-import { getCountClassesPendingMonthAdmin } from '../../actions/user'
+import { getActionsCountClassesPendingMonthAdmin, getAllUsers } from '../../actions/user'
 
 
 
@@ -12,15 +12,18 @@ export const BonoScreenUser = (bono) => {
     const [showButtonDelete, setShowButtonDelete] = useState( false);
     const user = useSelector( state => state.user.userActive);
     const bonosState = useSelector( state => state.bonos.bonos)
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+
+		dispatch(getAllUsers())
+
+	}, [user, dispatch])
 
     const handleDeleteBono = () => {
 
-		dispatch(bonoReset(user))
-		setTimeout(() => {
-			dispatch( getCountClassesPendingMonthAdmin(user._id))
-		}, 2000);
-        dispatch( uiCloseModal())
+			dispatch(bonoReset(user))
+        	dispatch( uiCloseModal())
     }
 
     const hiddenButtonDeleteFunc = () => {
@@ -34,13 +37,13 @@ export const BonoScreenUser = (bono) => {
     }
 
 
-    const bonoCorrect = bonosState.find( bonoState => bonoState._id === bono.bono);
+	const bonoCorrect = bonosState.find(bonoState => bonoState._id === bono.bono);
 
     return (
 
         <>
-            <span onClick={handleDeleteBono} onMouseEnter={ showButtonDeleteFunc }  onMouseLeave={ hiddenButtonDeleteFunc } className="bookmark flex bg-green-500  hover:bg-red-600 transition-all duration-500 ease-in-out hover:-z10 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
-                <span className="bono-name mr-3 text-sm flex items-center"> {  bonoCorrect.name } </span>
+            <span key={bonoCorrect._id} onClick={handleDeleteBono} onMouseEnter={ showButtonDeleteFunc }  onMouseLeave={ hiddenButtonDeleteFunc } className="bookmark flex bg-green-500  hover:bg-red-600 transition-all duration-500 ease-in-out hover:-z10 pl-3 pr-2 py-2 text-white rounded-2xl mr-3 shadow">
+                <span className="bono-name mr-3 text-sm flex items-center"> {  bonoCorrect?.name } </span>
                 <span className="delete-bono cursor-pointer flex items-center" >
                     { (!showButtonDelete) ?
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"

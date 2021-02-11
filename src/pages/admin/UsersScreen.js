@@ -72,7 +72,7 @@ export const UsersScreen = () => {
     useEffect( () => {
         dispatch( getAllUsers() )
 
-    },[ dispatch])
+	}, [dispatch])
 
     return (
 
@@ -96,15 +96,16 @@ export const UsersScreen = () => {
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('name')}>Nombre</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('email')}>Email</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('telefono')}>Telefono</th>
-                        <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('bonos')}> Bonos activos</th>
+						<th className="border border-white-600 cursor-pointer" onClick={() => requesSort('bonos')}> Bonos activos</th>
+						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('estado')}> Estado</th>
 						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precios</th>
-						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Estado</th>
+
 				</tr>
                 </thead>
                 <tbody>
 
                     {
-                        ( userSearch !== '' && searched.length > 0) ?
+                        ( userSearch !== '') ?
                         searched.map( user => <UserScreen key={user._id} { ...user } />)
                             :
                         data.map( user => <UserScreen key={user._id} { ...user } />)

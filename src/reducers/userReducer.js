@@ -2,6 +2,7 @@ import { types } from "../types/types";
 
 
 const initialState = {
+
 	users: [
 		{
 			bonos: [],
@@ -11,9 +12,11 @@ const initialState = {
 			telefono: '6502690000',
 			email: 'm.villagordovera@gmail.com',
 			avatar: 'default_avatar.jpg',
-			token: null
+			token: null,
+			bonoState: 0
 		}
 	],
+
 	userActive: {
 		bonos: [],
 		name: 'Manuel',
@@ -22,7 +25,8 @@ const initialState = {
 		telefono: '6502690000',
 		email: 'm.villagordovera@gmail.com',
 		avatar: 'default_avatar.jpg',
-		token: null
+		token: null,
+		bonoState: 0
 	}
 
 }
@@ -33,8 +37,8 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
 
 	switch (action.type) {
-		
-		case types.eventAddUser: 
+
+		case types.eventAddUser:
 			return {
 				...state
 			}
@@ -62,6 +66,13 @@ export const userReducer = (state = initialState, action) => {
 				userActive: {
 					...action.payload
 				}
+			}
+		case types.classPendingUserAdmin:
+			return {
+				...state,
+
+					...action.payload
+
 			}
 
 		default:

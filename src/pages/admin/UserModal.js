@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import moment from 'moment';
 import {uiCloseModal} from "../../actions/ui";
 import {BonoScreenUser} from "./BonoScreenUser";
-import { updateUser } from "../../actions/user";
+import { getAllUsers, getActionsCountClassesPendingMonthAdmin, updateUser } from "../../actions/user";
 import { savedHistoryBono } from "../../actions/history";
 import {totalBonosPagar} from "../../helpers/totalBonosPagar";
 
@@ -30,9 +30,12 @@ export const UserModal = () => {
     const bonosState = useSelector( state => state.bonos.bonos) || [];
     const { name, username, telefono, email, bonos } = formValues;
 
+
     const closeModal = () => {
         dispatch( uiCloseModal() )
     }
+
+	const { bonos:userActiveBono } = userActive;
 
     useEffect(() => {
 
@@ -40,7 +43,7 @@ export const UserModal = () => {
             setFormValues(userActive)
         }
 
-    }, [dispatch, userActive]);
+    }, [userActive]);
 
     const handleInputChange = ({ target }) =>{
 
@@ -50,8 +53,6 @@ export const UserModal = () => {
         })
 
     }
-
-    const total = totalBonosPagar(bonosState, bonos)
 
     const handleSubmitForm = ( e ) => {
 
@@ -81,11 +82,21 @@ export const UserModal = () => {
             end: null
         }
 
-        dispatch( savedHistoryBono( userHistory ))
+		dispatch(savedHistoryBono(userHistory))
 
-        closeModal()
+		dispatch( getAllUsers())
+		dispatch( uiCloseModal())
 
-    }
+	}
+
+
+	useEffect(() => {
+
+		dispatch(getActionsCountClassesPendingMonthAdmin(userActive._id))
+
+	}, [userActive])
+
+	console.log(userActiveBono)
 
     return (
         <>
@@ -108,7 +119,7 @@ export const UserModal = () => {
                     <label className="font-bold text-gray-800 mb-1 block">Nombre</label>
                     <input
                         type="text"
-                        className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
+          				className="border-2 border-grey-100 rounded h-10 px-3 focus:ring-1 focus:border-blue-300 focus:border-transparent focus:outline-none"
                         name="name"
                         value={ name }
                         onChange={ handleInputChange }
@@ -159,8 +170,8 @@ export const UserModal = () => {
                     <div className="mb-4">
                         <label className="font-bold text-gray-800 mb-1 block">Bonos Activos</label>
                         {
-                            ( bonos.length > 0 ) ?
-                                <div className="flex items-center z-30">{ bonos.map( bono => <BonoScreenUser key={ bono._id} { ...bono } />) }</div>
+                            ( userActiveBono.length > 0 ) ?
+                                <div className="flex items-center z-30">{ userActiveBono.map( bono => <BonoScreenUser key={ bono._id} { ...bono } />) }</div>
                                 : <small>no tiene bonos activos</small>
                         }
 
@@ -171,7 +182,7 @@ export const UserModal = () => {
                         <span className="text-xl font-bold">
 
                             {
-                                total
+                                totalBonosPagar(bonosState, bonos)
                             }
 
                         </span>

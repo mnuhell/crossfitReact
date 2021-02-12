@@ -111,8 +111,7 @@ export const getClasesPendingUser = () => {
 			const { totales } = clases
 
             dispatch( classesPending(totales) )
-
-
+			// dispatch( classesPendingAdminPage(users) )
 		} catch (error) {
 			console.log(error)
 		}
@@ -128,6 +127,13 @@ export const resetClassesNewBono = () => ({
 const classesPending = (totales) => ({
 
 	type: types.bonoGetAll,
+	payload: totales
+
+});
+
+const classesPendingAdminPage = (totales) => ({
+
+	type: types.classPendingUserAdmin,
 	payload: totales
 
 });
@@ -198,9 +204,3 @@ export const eventStartDeleted = () => {
 const eventDeleted = () => ({
     type: types.eventDeleted
 })
-
-
-
-
-
-

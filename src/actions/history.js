@@ -1,5 +1,5 @@
 import {fetchWithToken} from "../helpers/fetch";
-import {addBonoToUser} from "./user";
+import {addBonoToUser, getCountClassesPendingMonthAdmin} from "./user";
 
 
 export const savedHistoryBono = ( data ) => {
@@ -17,7 +17,7 @@ export const savedHistoryBono = ( data ) => {
                 userId: body.bonoSavedHistory.user
             }
 
-         dispatch( addBonoToUser( data ))
+			dispatch(addBonoToUser(data))
         }
 
         } catch ( error ) {

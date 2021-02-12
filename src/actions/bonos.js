@@ -1,7 +1,8 @@
 import {fetchWithToken} from "../helpers/fetch";
 import {types} from "../types/types";
 import Swal from "sweetalert2";
-import {getAllUsers} from "./user";
+import { getActionsCountClassesPendingMonthAdmin } from '../actions/user'
+
 
 
 export const getBonos = () => {
@@ -142,7 +143,8 @@ export const bonoReset = ( user ) => {
                 text: body.msg,
             })
 
-            dispatch( getAllUsers())
+			dispatch(getActionsCountClassesPendingMonthAdmin(user._id))
+
         }
 
 

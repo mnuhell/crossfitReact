@@ -25,6 +25,7 @@ export const Clase = (clase) => {
 
         dispatch(addUserClass(clase));
         dispatch( getClasesPendingUser() )
+
         setTimeout(function () {
             dispatch( eventStartLoading() )
             dispatch( getClasesPendingUser() )
@@ -73,7 +74,7 @@ export const Clase = (clase) => {
 
         if( usuario.length ) {
             return(
-                <button className="bg-green-500 py-2 font-bold text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button className="bg-green-500 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Registrado
                 </button>
             )
@@ -121,7 +122,7 @@ export const Clase = (clase) => {
         if( !usuario.length ) {
             return (
                 <button
-                    className="bg-blue-900 py-2 text-blue-100 font-bold float-right uppercase cursor-not-allowed font-bold"> Dejar hueco
+                    className="bg-blue-900 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Dejar hueco
                 </button>
             )
         }
@@ -163,7 +164,7 @@ export const Clase = (clase) => {
                 {
                     clase.users.length > 0 ?
                     <div className="clase__usuarios-registrados bg-blue-700 shadow-2xl py-3 px-3 grid grid-cols-8 gap-y-2 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
-                        {   clase.users.map((user, index) =>  (
+                        {   clase.users.map((user) =>  (
                                 <div title={user.name} className="text-center flex flex-col items-center w-full text-md"  key={user._id}>
 
                                     <img className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
@@ -183,7 +184,7 @@ export const Clase = (clase) => {
                             timeCloseClass()
                                     ?
                                 <button
-                                    className="bg-red-600 py-2 font-bold font-bold text-blue-100 float-right uppercase cursor-not-allowed"> Clase cerrada
+                                    className="bg-red-600 py-2 font-bold text-blue-100 float-right uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
                                 showButtonleft()
@@ -194,7 +195,7 @@ export const Clase = (clase) => {
                         {
                             timeCloseClass() ?
                                 <button
-                                    className="bg-red-600 py-2 font-bold text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase cursor-not-allowed"> Clase cerrada
+                                    className="bg-red-600 py-2 font text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase cursor-not-allowed"> Clase cerrada
                                 </button>
                                     :
                                 showButton()

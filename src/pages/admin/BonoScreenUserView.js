@@ -12,7 +12,7 @@ export const BonoScreenUserView = (bono) => {
 
     return (
         <>
-            <span className="bookmark uppercase bg-green-500 text-md grid items-center text-center align-baseline justify-items-center pl-2 pr-2 py-2 mb-1 text-white rounded-lg mr-3 shadow">
+            <span className="bookmark uppercase leading-5 bg-green-500 text-md grid items-center text-center justify-items-center pl-2 pr-2 py-1 mb-1 text-white rounded-lg mr-3 shadow">
                {  bonos.name }
                 {/* <span className="delete-bono cursor-pointer inline-flex items-center justify-items-center ml-1" >
 

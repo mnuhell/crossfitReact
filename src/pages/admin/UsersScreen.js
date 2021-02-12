@@ -92,13 +92,13 @@ export const UsersScreen = () => {
             <table className="table-auto border border-collapse border-blue-400 container mx-auto">
                 <thead className="text-white border ">
                     <tr>
-                        <th className="py-2 px-3 border border-white-600 w-1/12">Imagen</th>
+                        <th className="py-1 px-3 border border-white-600 w-1/12">Imagen</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('name')}>Nombre</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('email')}>Email</th>
                         <th className="border border-white-600 cursor-pointer" onClick={() => requesSort('telefono')}>Telefono</th>
 						<th className="border border-white-600 cursor-pointer" onClick={() => requesSort('bonos')}> Bonos activos</th>
-						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('estado')}> Estado</th>
-						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precios</th>
+						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('estado')}>Clases</th>
+						<th className="border border-white-600 cursor-pointer w-1/12" onClick={() => requesSort('total')}> Precio</th>
 
 				</tr>
                 </thead>

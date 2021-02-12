@@ -179,6 +179,26 @@ export const getActionsCountClassesPendingMonthAdmin = ( id ) => {
 	}
 }
 
+export const getActionsCountClassesPendingMonthAdminAll = () => {
+
+	return async (dispatch) => {
+
+		try {
+
+			const resp = await fetchWithToken(`bonos/count-classes`);
+			const body = await resp.json();
+
+			dispatch( getAllUsers())
+
+		} catch (error) {
+
+			console.log( error )
+		}
+
+
+	}
+}
+
 const pendingClassAdmin = (user) => ({
 
 	type: types.classPendingUserAdmin,

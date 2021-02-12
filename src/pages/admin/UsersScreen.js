@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {getAllUsers} from "../../actions/user";
+import {getActionsCountClassesPendingMonthAdmin, getAllUsers} from "../../actions/user";
 import {useDispatch, useSelector} from "react-redux";
 import {loading} from "../../actions/loading";
 import {LoadingApp} from "../../components/LoadingApp";
@@ -22,6 +22,12 @@ export const UsersScreen = () => {
         key: '',
         direction: ''
     });
+
+	useEffect(() => {
+
+		 dispatch(getAllUsers())
+
+	}, [dispatch])
 
     const handleInputChange = ( { target } ) => {
         setFormValues({
@@ -48,7 +54,7 @@ export const UsersScreen = () => {
 
                 return 0;
             })
-        }
+		}
 
         return sortedUsers;
 
@@ -68,11 +74,6 @@ export const UsersScreen = () => {
     setTimeout(() => {
         dispatch(loading(false))
     }, 1000)
-
-    useEffect( () => {
-        dispatch( getAllUsers() )
-
-	}, [dispatch])
 
     return (
 

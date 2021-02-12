@@ -15,8 +15,8 @@ export const UserScreen = ( user ) => {
 
 	let total = totalBonosPagar(bonosState, bonos)
 
-	let bonoStateColors = 'bg-green-500 grid items-center text-center justify-items-center rounded-full h-10 w-10 relative';
-	let bonoStateColorsDanger = 'bg-red-500 grid items-center text-center rounded-full h-10 w-10 justify-items-center';
+	let bonoStateColors = 'bg-green-500 grid items-center text-center justify-items-center rounded-full h-8 w-8 relative';
+	let bonoStateColorsDanger = 'bg-red-500 grid items-center text-center rounded-full h-8 w-8 justify-items-center';
 
     const handleSelectUser = () => {
 
@@ -40,9 +40,9 @@ export const UserScreen = ( user ) => {
                     }
                 </td>
 
-				<td className="py-2 px-8 border border-white-600">
-					{
-						((bonoState !== 0)) ? <span className={(bonoState < 2) ? bonoStateColorsDanger : bonoStateColors}>{bonoState}</span>
+				<td className="grid items-center justify-items-center py-5 border-white-600">
+						{
+							((bonoState !== 0)) ? <span className={(bonoState < 2) ? bonoStateColorsDanger : bonoStateColors}>{bonoState}</span>
 							: <span> Sin clases </span>
 						}
 

@@ -7,6 +7,7 @@ import {
     eventStartLoading,
     getClasesPendingUser
 } from '../../actions/events';
+import { getActionsCountClassesPendingMonthAdmin } from '../../actions/user';
 
 export const Clase = (clase) => {
 
@@ -24,12 +25,13 @@ export const Clase = (clase) => {
     const handleReserva = () => {
 
         dispatch(addUserClass(clase));
-        dispatch( getClasesPendingUser() )
+		dispatch(getClasesPendingUser())
+		dispatch( getActionsCountClassesPendingMonthAdmin(uid))
 
         setTimeout(function () {
             dispatch( eventStartLoading() )
             dispatch( getClasesPendingUser() )
-        }, 200)
+        }, 100)
 
     }
 
@@ -37,10 +39,11 @@ export const Clase = (clase) => {
 
         dispatch(deleteUserClass(clase))
         dispatch( getClasesPendingUser() );
+		dispatch( getActionsCountClassesPendingMonthAdmin(uid))
         setTimeout(function () {
             dispatch( eventStartLoading() )
             dispatch( getClasesPendingUser() )
-        }, 200)
+        }, 100)
 
     }
 

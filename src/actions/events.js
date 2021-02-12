@@ -111,7 +111,7 @@ export const getClasesPendingUser = () => {
 			const { totales } = clases
 
             dispatch( classesPending(totales) )
-			// dispatch( classesPendingAdminPage(users) )
+
 		} catch (error) {
 			console.log(error)
 		}

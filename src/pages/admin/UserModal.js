@@ -89,14 +89,12 @@ export const UserModal = () => {
 
 	}
 
-
 	useEffect(() => {
 
 		dispatch(getActionsCountClassesPendingMonthAdmin(userActive._id))
 
 	}, [userActive])
 
-	console.log(userActiveBono)
 
     return (
         <>

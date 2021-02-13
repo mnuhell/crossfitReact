@@ -3,8 +3,8 @@ const { types } = require("../types/types")
 
 const initialState = {
 
-	totales: -1,
-
+	totales: 0,
+	inClass: false
 }
 
 
@@ -15,7 +15,9 @@ export const clasesReducer = (state = initialState, action) => {
 		case types.bonoGetAll:
 			return {
 				...state,
-				totales: action.payload
+				totales: action.payload.totales,
+				inClass: action.payload.inClass
+
 			}
 		case types.classesReset:
 			return {

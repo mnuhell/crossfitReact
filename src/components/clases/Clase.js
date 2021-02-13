@@ -5,6 +5,7 @@ import {
     addUserClass,
     deleteUserClass,
     eventStartLoading,
+	getClasesDeletePendingUser,
     getClasesPendingUser
 } from '../../actions/events';
 import { getActionsCountClassesPendingMonthAdmin } from '../../actions/user';
@@ -13,7 +14,7 @@ export const Clase = (clase) => {
 
     const dispatch = useDispatch();
     const { uid } = useSelector(state => state.auth);
-    const {totales} = useSelector( state => state.clases)
+    const {totales, inClass} = useSelector( state => state.clases)
     const usuario =  clase.users.filter( user => user._id === uid );
 
     const timeCloseClass = () => {
@@ -38,11 +39,11 @@ export const Clase = (clase) => {
     const handleDelete = () => {
 
         dispatch(deleteUserClass(clase))
-        dispatch( getClasesPendingUser() );
+        dispatch( getClasesDeletePendingUser() );
 		dispatch( getActionsCountClassesPendingMonthAdmin(uid))
         setTimeout(function () {
             dispatch( eventStartLoading() )
-            dispatch( getClasesPendingUser() )
+            dispatch( getClasesDeletePendingUser() );
         }, 100)
 
     }
@@ -79,6 +80,14 @@ export const Clase = (clase) => {
             return(
                 <button className="bg-green-500 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Registrado
+                </button>
+            )
+        }
+
+		if( inClass ) {
+            return(
+                <button className="bg-blue-300 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+					ya esta registrado
                 </button>
             )
         }
@@ -122,10 +131,10 @@ export const Clase = (clase) => {
             )
         }
 
-        if( !usuario.length ) {
+        if( !usuario.length && inClass ) {
             return (
                 <button
-                    className="bg-blue-900 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Dejar hueco
+                    className="bg-blue-300 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Ya esta registrado
                 </button>
             )
         }

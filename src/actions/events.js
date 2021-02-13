@@ -106,11 +106,44 @@ export const getClasesPendingUser = () => {
 		try {
 
 			const resp = await fetchWithToken('bonos/count-classes');
-			const clases = await resp.json();
+			const body = await resp.json();
 
-			const { totales } = clases
 
-            dispatch( classesPending(totales) )
+			const { totales, inClass } = body
+
+			const infoClassUser = {
+				totales: totales,
+				inClass: inClass
+			}
+
+			dispatch( classesPending(infoClassUser) )
+
+
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
+export const getClasesDeletePendingUser = () => {
+
+	return async(dispatch) => {
+
+		try {
+
+			const resp = await fetchWithToken('bonos/delete-classes');
+			const body = await resp.json();
+
+
+			const { totales, inClass } = body
+
+			const infoClassUser = {
+				totales: totales,
+				inClass: inClass
+			}
+
+			dispatch( classesPending(infoClassUser) )
+
 
 		} catch (error) {
 			console.log(error)
@@ -124,17 +157,10 @@ export const resetClassesNewBono = () => ({
 
 })
 
-const classesPending = (totales) => ({
+const classesPending = (classInfo) => ({
 
 	type: types.bonoGetAll,
-	payload: totales
-
-});
-
-const classesPendingAdminPage = (totales) => ({
-
-	type: types.classPendingUserAdmin,
-	payload: totales
+	payload: classInfo
 
 });
 

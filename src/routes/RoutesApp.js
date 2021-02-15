@@ -11,7 +11,8 @@ const RoutesApp = () => {
 
     const dispatch = useDispatch();
 
-	dispatch( resetClassDay() )
+	dispatch(resetClassDay())
+	
     useEffect(() => {
         dispatch( getBonos())
 		dispatch(startCheking());

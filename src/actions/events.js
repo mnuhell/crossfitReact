@@ -247,12 +247,11 @@ export const comprobarRegistro = () => {
 
 		const { date } = getState().clases
 
-		console.log( date)
-
+		const now = moment().format('DD MM YYYY')
 
 		try {
 
-			if (date !== moment()) {
+			if (moment(date).format('DD MM YYYY') < now) {
 
 				dispatch( resetClassDay())
 

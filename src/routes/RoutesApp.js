@@ -5,18 +5,21 @@ import { startCheking } from '../actions/auth';
 
 import routes from '../routes/config';
 import {getBonos} from "../actions/bonos";
-import {LoadingApp} from "../components/LoadingApp";
+import { resetClassDay } from '../actions/events';
 
 const RoutesApp = () => {
 
     const dispatch = useDispatch();
 
-
+	dispatch( resetClassDay() )
     useEffect(() => {
         dispatch( getBonos())
-        dispatch(startCheking());
+		dispatch(startCheking());
 
-    }, [dispatch])
+
+	}, [dispatch])
+
+
 
     const { checking } = useSelector( state => state.auth)
 
@@ -39,14 +42,14 @@ const RoutesApp = () => {
             </Router>
         </>
     )
-    
+
 }
 
 function RouteWithSubRoutes(route) {
-    
+
     return (
         <Route
-        path = {route.path} 
+        path = {route.path}
         exact = { route.exact}
         render = { props => <route.component routes={route.routes} {...props} />}
         />

@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Error } from '../../components/alerts/Alerts';
-import moment from 'moment';
 import { LoadingApp } from '../../components/LoadingApp';
 import { Clase } from '../../components/clases/Clase';
-import { eventStartLoading } from '../../actions/events';
+import { comprobarRegistro, eventStartLoading } from '../../actions/events';
 import { loading } from '../../actions/loading';
 
 const UserReserva = () => {
@@ -16,14 +15,15 @@ const UserReserva = () => {
 
     useEffect(() => {
 
-        dispatch(eventStartLoading());
+		dispatch(eventStartLoading());
+		dispatch( comprobarRegistro() )
 
     }, [dispatch]);
 
     setTimeout(() => {
         dispatch(loading(false))
 	}, 500)
-	
+
     return (
 
         active ? <LoadingApp /> :

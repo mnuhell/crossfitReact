@@ -2,6 +2,7 @@ import { fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import {prepareEvents} from "../helpers/prepareEvents";
 import Swal from "sweetalert2";
+import moment from 'moment'
 import {uiCloseModal} from "./ui";
 
 
@@ -109,10 +110,11 @@ export const getClasesPendingUser = () => {
 			const body = await resp.json();
 
 
-			const { totales, inClass } = body
+			const { totales, date, inClass } = body
 
 			const infoClassUser = {
 				totales: totales,
+				date: date,
 				inClass: inClass
 			}
 
@@ -135,10 +137,11 @@ export const getClasesDeletePendingUser = () => {
 			const body = await resp.json();
 
 
-			const { totales, inClass } = body
+			const { totales, date, inClass } = body
 
 			const infoClassUser = {
 				totales: totales,
+				date: date,
 				inClass: inClass
 			}
 
@@ -230,3 +233,37 @@ export const eventStartDeleted = () => {
 const eventDeleted = () => ({
     type: types.eventDeleted
 })
+
+export const resetClassDay = () => ({
+
+	type: types.classResetDay
+})
+
+
+export const comprobarRegistro = () => {
+
+
+	return async(dispatch, getState ) => {
+
+		const { date } = getState().clases
+
+		console.log( date)
+
+
+		try {
+
+			if (date !== moment()) {
+
+				dispatch( resetClassDay())
+
+			}
+
+
+		} catch( error ) {
+
+			console.log( error)
+		}
+
+	}
+
+}

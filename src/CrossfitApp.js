@@ -9,9 +9,9 @@ const CrossfitApp = () => {
 
     return (
         <Provider store={ store }>
-            <RoutesApp /> 
+            <RoutesApp />
         </Provider>
-              
+
     )
 }
 

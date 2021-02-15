@@ -45,7 +45,8 @@ export const types = {
     classesSubtractDay: '[ classes ] Classes Subtract Day ',
     classesAddDay: '[ classes ] Classes Add Day ',
     classesClose: '[ classes ] Classes Close ',
-    classesReset: ' [ classes ] clases reset ',
+	classesReset: ' [ classes ] clases reset ',
+	classResetDay: ' [ classes ] Class reset day ',
 
     authCheckingFinish: '[auth] Finish checking login state',
     authStartLogin: '[auth] Start Login',

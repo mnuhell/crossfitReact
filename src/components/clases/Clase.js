@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment'
 import {
@@ -6,29 +6,32 @@ import {
     deleteUserClass,
     eventStartLoading,
 	getClasesDeletePendingUser,
-    getClasesPendingUser
+    getClasesPendingUser,
 } from '../../actions/events';
-import { getActionsCountClassesPendingMonthAdmin } from '../../actions/user';
+import {addDateClassDay, getActionsCountClassesPendingMonthAdmin} from '../../actions/user';
 
 export const Clase = (clase) => {
 
     const dispatch = useDispatch();
     const { uid } = useSelector(state => state.auth);
-    const {totales, inClass} = useSelector( state => state.clases)
-    const usuario =  clase.users.filter( user => user._id === uid );
+    const {totales } = useSelector( state => state.clases)
+    const { events } = useSelector( state => state.calendar)
+	const usuario = clase.users.filter(user => user._id === uid);
+
+    const inClass = events.map( event => event.users.find( user => user._id === uid ));
+    const userInClass = inClass.map( user => user?._id)
 
     const timeCloseClass = () => {
         const now = moment();
         const classeTime = moment(clase.start).add('-45', "minutes");
         return now >= classeTime;
-    }
+	}
+
 
     const handleReserva = () => {
 
         dispatch(addUserClass(clase));
 		dispatch(getClasesPendingUser())
-		dispatch( getActionsCountClassesPendingMonthAdmin(uid))
-
         setTimeout(function () {
             dispatch( eventStartLoading() )
             dispatch( getClasesPendingUser() )
@@ -40,7 +43,6 @@ export const Clase = (clase) => {
 
         dispatch(deleteUserClass(clase))
         dispatch( getClasesDeletePendingUser() );
-		dispatch( getActionsCountClassesPendingMonthAdmin(uid))
         setTimeout(function () {
             dispatch( eventStartLoading() )
             dispatch( getClasesDeletePendingUser() );
@@ -84,16 +86,15 @@ export const Clase = (clase) => {
             )
         }
 
-		if( inClass ) {
+        if( userInClass.includes( uid ) ) {
             return(
                 <button className="bg-blue-300 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
-					ya esta registrado
+                    ya esta registrado
                 </button>
             )
         }
 
         if( clase.userclase === clase.users.length) {
-
             return(
                 <button title="Debes de esperar a que algún usuario deje su plaza" className="bg-red-400 py-2 font-bold text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Completa
@@ -131,7 +132,7 @@ export const Clase = (clase) => {
             )
         }
 
-        if( !usuario.length && inClass ) {
+        if( !userInClass.includes( uid ) || !usuario.length ) {
             return (
                 <button
                     className="bg-blue-300 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Ya esta registrado

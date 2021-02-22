@@ -114,7 +114,7 @@ export const getClasesPendingUser = () => {
 
 			const infoClassUser = {
 				totales: totales,
-				date: date,
+				date: moment(),
 				inClass: inClass
 			}
 

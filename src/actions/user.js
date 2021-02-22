@@ -174,10 +174,16 @@ export const getActionsCountClassesPendingMonthAdmin = ( id ) => {
 
 			console.log( error )
 		}
-
-
 	}
 }
+
+export const addDateClassDay = ( ) => ({
+    type: types.addDateClassDayUser,
+})
+
+export const deleteDateClassDayActions = ( ) => ({
+    type: types.deleteDateClass,
+})
 
 export const getActionsCountClassesPendingMonthAdminAll = () => {
 

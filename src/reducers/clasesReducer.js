@@ -1,4 +1,6 @@
+import moment from 'moment'
 const { types } = require("../types/types")
+
 
 
 const initialState = {
@@ -30,7 +32,16 @@ export const clasesReducer = (state = initialState, action) => {
 			return {
 				totales: state
 			}
-
+		case types.addDateClassDayUser:
+			return {
+				...state,
+				date: moment()
+			}
+		case types.deleteDateClass:
+			return {
+				...state,
+				date: moment()
+			}
 		default: {
 			return state
 		}

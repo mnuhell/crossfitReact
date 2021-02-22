@@ -10,8 +10,7 @@ const UserReserva = () => {
 
     const dispatch = useDispatch();
     const events = useSelector(state => state.calendar.events);
-
-    const active = useSelector(state => state.loading.active);
+	const active = useSelector(state => state.loading.active);
 
     useEffect(() => {
 

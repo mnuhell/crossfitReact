@@ -132,7 +132,7 @@ export const Clase = (clase) => {
             )
         }
 
-        if( !userInClass.includes( uid ) || !usuario.length ) {
+        if( userInClass.includes( uid ) && !usuario.length ) {
             return (
                 <button
                     className="bg-blue-300 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Ya esta registrado

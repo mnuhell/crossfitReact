@@ -52,20 +52,19 @@ export const Clase = (clase) => {
 
     const getColorsUsers = ( clase ) => {
 
-        let colors = 'bg-blue-400';
+        let colors = 'bg-green-500';
         const totalUsers = clase.userclase;
         const userRegistrados = clase.users;
 
         if ( userRegistrados <= ((totalUsers * 20) / 100)) {
-            colors = 'bg-green-500';
-        } else if(userRegistrados <= ((totalUsers * 50) / 100)) {
-            colors = 'bg-orange-500';
+             colors = 'bg-green-500';
+        } else if(userRegistrados >= ((totalUsers * 50) / 100)) {
+             colors = 'bg-orange-500';
         } else if(userRegistrados === ((totalUsers * 100) / 100)) {
-            colors = 'bg-red-600';
+             colors = 'bg-red-600';
         }
-
+        console.log( colors )
         return colors;
-
     }
 
     const showButton = () => {

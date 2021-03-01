@@ -2,10 +2,10 @@ import React  from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import AdminHome from '../pages/admin/AdminHome';
-import { UserHome } from '../pages/user/UserHome';
 import {LoadingApp} from "../components/LoadingApp";
 import HeaderLayout from "../components/HeaderLayout";
 import Footer from "../components/Footer";
+import UserReserva from "../pages/user/UserReserva";
 
 
 
@@ -22,8 +22,8 @@ const GuestLayout = (props) => {
                 if(role.name === 'user' ) {
                     return (
                         <>
-                            <Route path="/user" component={UserHome} role={ role.name } />
-                            <Redirect to="/user" />
+                            <Route path="/user/reserva" component={UserReserva} role={ role.name } />
+                            <Redirect to="/user/reserva" />
                         </>
                     )
                 }

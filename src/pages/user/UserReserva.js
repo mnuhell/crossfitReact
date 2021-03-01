@@ -14,10 +14,10 @@ const UserReserva = () => {
 
     useEffect(() => {
 
-		dispatch(eventStartLoading());
+		dispatch( eventStartLoading() );
 		dispatch( comprobarRegistro() )
 
-    }, [dispatch]);
+    }, [dispatch, events]);
 
     setTimeout(() => {
         dispatch(loading(false))

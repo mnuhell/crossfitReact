@@ -50,23 +50,6 @@ export const Clase = (clase) => {
 
     }
 
-    const getColorsUsers = ( clase ) => {
-
-        let colors = 'bg-green-500';
-        const totalUsers = clase.userclase;
-        const userRegistrados = clase.users;
-
-        if ( userRegistrados <= ((totalUsers * 20) / 100)) {
-             colors = 'bg-green-500';
-        } else if(userRegistrados >= ((totalUsers * 50) / 100)) {
-             colors = 'bg-orange-500';
-        } else if(userRegistrados === ((totalUsers * 100) / 100)) {
-             colors = 'bg-red-600';
-        }
-        console.log( colors )
-        return colors;
-    }
-
     const showButton = () => {
 
         if(totales === 0 && !usuario.length  ) {
@@ -150,15 +133,15 @@ export const Clase = (clase) => {
         return (
             <>
 			<div className="clase rounded bg-blue-700 h-80 relative font-body">
-                <div className="clase__usuarios block h-8">
+                <div className="clase__usuarios block h-8 shadow-2xl">
                         <h3 className="text-center px-6 text-blue-10" title="Máximos usuarios por clase">
-                            <span title="Numero máximo de alumnos por clase" className="absolute top-0 left-0 clase__usuarios-maximos py-1 px-5 bg-blue-400 text-md ">
+                            <span title="Numero máximo de alumnos por clase" className="absolute top-0 left-0 clase__usuarios-maximos py-1 px-5 bg-blue-400 text-xl">
                                 {clase.userclase}
                                 <small className="block text-sm -mt-1">max. clase</small>
                             </span>
                         </h3>
                         <h3 className="text-center rounded-full px-6 text-blue-100" title="Usuarios para esta clase">
-                            <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count ${ getColorsUsers(clase)} py-1 px-5 text-md`}>
+                            <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count bg-blue-400 py-1 px-5 text-xl`}>
                                 {clase.users.length > 0 ? clase.users.length : 0}
                                 <small className="block text-sm -mt-1">en clase</small>
                             </span>
@@ -169,7 +152,7 @@ export const Clase = (clase) => {
                     <span className="text-4xl text-center grid">🏋️‍♀️</span>
 					<h1 className="title uppercase text-center text-3xl font-bold tracking-wide">{clase.type}</h1>
                     <h1 className="title uppercase text-center text-lg -mt-3 mb-3 font-bold">{ moment(clase.start).format('LL')}</h1>
-                    <h1 className="shadow-2xl bg-blue-600 py-1 px-3 hours uppercase grid text-center text-md mb-1 text-3xl font-bold text-white -mt-2">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
+                    <h1 className="shadow-2xl bg-blue-400 py-1 px-3 hours uppercase grid text-center text-md mb-1 text-3xl font-bold text-white -mt-2">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
 
                  </div>
 

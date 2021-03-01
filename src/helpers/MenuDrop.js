@@ -14,12 +14,9 @@ export const MenuDrop = ({value} ) => {
 
     const handleLogout = () => {
         dispatch( startLogout() );
-
     }
     const handleLoading = () => {
-
         dispatch( loading( true ) )
-
     }
 
 

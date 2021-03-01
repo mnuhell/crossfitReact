@@ -12,7 +12,6 @@ export const MenuButton = ( { name, uid } ) => {
     const showMenu = () => {
         ( value ) ? dispatch( uiShowMenu( false ) ) : dispatch( uiShowMenu( true ));
     }
-
     return (
 
        <>
@@ -31,7 +30,6 @@ export const MenuButton = ( { name, uid } ) => {
             </div>
                <MenuDrop
                    value={ value }
-
                />
 
         </>

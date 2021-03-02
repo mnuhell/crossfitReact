@@ -71,15 +71,6 @@ export const Clase = (clase) => {
             )
         }
 
-        if( !userInClassAfter.includes( uid ) ) {
-            return(
-                <button
-                    onClick={ handleReserva }
-                    className="bg-blue-900 py-2 text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase"> Regístrate
-                </button>
-            )
-        }
-
         if( userInClass.includes( uid ) || userInClassAfter.includes( uid ) ) {
             return(
                 <button className="bg-blue-300 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
@@ -92,6 +83,15 @@ export const Clase = (clase) => {
             return(
                 <button title="Debes de esperar a que algún usuario deje su plaza" className="bg-red-400 py-2 font-bold text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Completa
+                </button>
+            )
+        }
+
+        if( !userInClassAfter.includes( uid ) ) {
+            return(
+                <button
+                    onClick={ handleReserva }
+                    className="bg-blue-900 py-2 text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase"> Regístrate
                 </button>
             )
         }

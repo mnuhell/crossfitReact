@@ -27,6 +27,9 @@ export const Clase = (clase) => {
         return now >= classeTime;
 	}
 
+	const classAfter =  events.filter( event => moment(event.start).isAfter(moment(), 'day') )
+    const inA = classAfter.map( event => event.users.find( user => user._id === uid ));
+    const userInClassAfter = inA.map( user => user?._id  )
 
     const handleReserva = () => {
 
@@ -68,7 +71,16 @@ export const Clase = (clase) => {
             )
         }
 
-        if( userInClass.includes( uid ) ) {
+        if( !userInClassAfter.includes( uid ) ) {
+            return(
+                <button
+                    onClick={ handleReserva }
+                    className="bg-blue-900 py-2 text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase"> Regístrate
+                </button>
+            )
+        }
+
+        if( userInClass.includes( uid ) || userInClassAfter.includes( uid ) ) {
             return(
                 <button className="bg-blue-300 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     ya esta registrado
@@ -183,7 +195,6 @@ export const Clase = (clase) => {
                                 </button>
                                     :
                                 showButtonleft()
-
 
                         }
 

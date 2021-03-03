@@ -10,22 +10,21 @@ import {
 } from '../../actions/events';
 import {addDateClassDay, getActionsCountClassesPendingMonthAdmin} from '../../actions/user';
 
-export const Clase = (clase) => {
+export const NextClase = (clase) => {
 
     const dispatch = useDispatch();
     const { uid } = useSelector(state => state.auth);
-    const {totales } = useSelector( state => state.clases)
-    const { events } = useSelector( state => state.calendar)
-	const usuario = clase.users.filter(user => user._id === uid);
-
-    const inClass = events.map( event => event.users.find( user => user._id === uid ));
-    const userInClass = inClass.map( user => user?._id)
+    const { totales } = useSelector( state => state.clases)
 
     const timeCloseClass = () => {
         const now = moment();
         const classeTime = moment(clase.start).add('-45', "minutes");
         return now >= classeTime;
 	}
+
+	const userInClass = clase.users.find( user => user._id === uid )
+
+    console.log( userInClass)
 
     const handleReserva = () => {
 
@@ -51,7 +50,7 @@ export const Clase = (clase) => {
 
     const showButton = () => {
 
-        if(totales === 0 && !usuario.length  ) {
+        if(totales === 0 && !userInClass  ) {
             return(
                 <button className="bg-yellow-500 font-bold py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
                     renueva tu bono
@@ -59,7 +58,7 @@ export const Clase = (clase) => {
             )
         }
 
-        if( usuario.length ) {
+        if( userInClass ) {
             return(
                 <button className="bg-green-500 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Registrado
@@ -67,9 +66,9 @@ export const Clase = (clase) => {
             )
         }
 
-        if( userInClass.includes( uid ) ) {
+        if( !userInClass ) {
             return(
-                <button className="bg-blue-300 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
+                <button className="bg-green-800 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     ya esta registrado
                 </button>
             )
@@ -90,13 +89,11 @@ export const Clase = (clase) => {
             </button>
 
             )
-
-
     }
 
     const showButtonleft = () => {
 
-        if( clase.userclase === clase.users.length && !usuario.length  ) {
+        if( clase.userclase === clase.users.length && userInClass  ) {
             return (
                 <button
                     className="bg-red-400 py-2 text-blue-100 font-bold float-right uppercase cursor-not-allowed"
@@ -105,7 +102,7 @@ export const Clase = (clase) => {
             )
         }
 
-        if(totales === 0 && !usuario.length  ) {
+        if(totales === 0 && !userInClass  ) {
             return(
                 <button className="bg-yellow-500 font-bold py-2 text-blue-500 float-left focus:ring-2 focus:none uppercase cursor-not-allowed">
                     renueva tu bono
@@ -113,10 +110,10 @@ export const Clase = (clase) => {
             )
         }
 
-        if( userInClass.includes( uid ) && !usuario.length ) {
+        if( userInClass?.length === 1 ) {
             return (
                 <button
-                    className="bg-blue-300 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Ya esta registrado
+                    className="bg-green-800 py-2 text-blue-100 float-right uppercase cursor-not-allowed font-bold"> Ya esta registrado
                 </button>
             )
         }

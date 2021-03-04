@@ -233,13 +233,12 @@ const eventDeleted = () => ({
     type: types.eventDeleted
 })
 
-export const resetClassDay = () => ({
-
+/*export const resetClassDay = () => ({
 	type: types.classResetDay
-})
+})*/
 
 
-export const comprobarRegistro = () => {
+/*export const comprobarRegistro = () => {
 
 
 	return async(dispatch, getState ) => {
@@ -264,4 +263,4 @@ export const comprobarRegistro = () => {
 
 	}
 
-}
+}*/

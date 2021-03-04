@@ -15,7 +15,7 @@ const UserReserva = () => {
     useEffect(() => {
 
 		dispatch( eventStartLoading() );
-		dispatch( comprobarRegistro() )
+		//dispatch( comprobarRegistro() )
 
     }, [dispatch]);
 

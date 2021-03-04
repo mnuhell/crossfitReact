@@ -110,7 +110,7 @@ export const getClasesPendingUser = () => {
 			const body = await resp.json();
 
 
-			const { totales, date, inClass } = body
+			const { totales, inClass } = body
 
 			const infoClassUser = {
 				totales: totales,

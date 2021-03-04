@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment'
+import defaultuser from "../../assets/default-user.jpg";
 import {
     addUserClass,
     deleteUserClass,
@@ -174,7 +175,7 @@ export const Clase = (clase) => {
                         {   clase.users.map((user) =>  (
                                 <div title={user.name} className="text-center flex flex-col items-center w-full text-md"  key={user._id}>
 
-                                    <img className="object-cover rounded-full h-10 " title={user.name} src="http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg" />
+                                    <img className="object-cover rounded-full h-10 " title={user.name} src={defaultuser} />
                                 </div>
                             ))
                         }

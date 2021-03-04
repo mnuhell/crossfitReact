@@ -15,7 +15,7 @@ export const Clase = (clase) => {
 
     const dispatch = useDispatch();
     const { uid } = useSelector(state => state.auth);
-    const {totales } = useSelector( state => state.clases)
+    const { totales } = useSelector( state => state.clases)
     const { events } = useSelector( state => state.calendar)
 	const usuario = clase.users.filter(user => user._id === uid);
 

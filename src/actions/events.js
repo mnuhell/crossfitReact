@@ -109,7 +109,6 @@ export const getClasesPendingUser = () => {
 			const resp = await fetchWithToken('bonos/count-classes');
 			const body = await resp.json();
 
-
 			const { totales, inClass } = body
 
 			const infoClassUser = {

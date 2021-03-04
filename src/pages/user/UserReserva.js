@@ -17,7 +17,7 @@ const UserReserva = () => {
 		dispatch( eventStartLoading() );
 		//dispatch( comprobarRegistro() )
 
-    }, [dispatch]);
+    }, []);
 
     setTimeout(() => {
         dispatch(loading(false))

@@ -13,6 +13,7 @@ export const startLogin = (email, password) => {
 		const body = await resp.json();
 
 		if (body.ok) {
+			localStorage.clear();
 			localStorage.setItem('token', body.token);
 			localStorage.setItem('initial-token', new Date().getTime());
 			localStorage.setItem('login', 'ok');

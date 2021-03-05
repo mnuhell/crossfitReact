@@ -72,7 +72,7 @@ export const Clase = (clase) => {
             )
         }
 
-        if( userInClass.includes( uid ) || userInClassAfter.includes( uid ) ) {
+        if( userInClass.includes( uid ) ) {
             return(
                 <button className="bg-blue-300 py-2 text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     ya esta registrado
@@ -84,15 +84,6 @@ export const Clase = (clase) => {
             return(
                 <button title="Debes de esperar a que algún usuario deje su plaza" className="bg-red-400 py-2 font-bold text-white float-left font-bold focus:ring-2 focus:none uppercase cursor-not-allowed">
                     Completa
-                </button>
-            )
-        }
-
-        if( !userInClassAfter.includes( uid ) ) {
-            return(
-                <button
-                    onClick={ handleReserva }
-                    className="bg-blue-900 py-2 text-blue-100 float-left focus:ring-2 focus:none font-bold uppercase"> Regístrate
                 </button>
             )
         }
@@ -145,27 +136,29 @@ export const Clase = (clase) => {
 
         return (
             <>
-			<div className="clase rounded bg-blue-700 h-80 relative font-body">
+			<div className="clase rounded bg-blue-700 h-80 relative">
                 <div className="clase__usuarios block h-8 shadow-2xl">
-                        <h3 className="text-center px-6 text-blue-10" title="Máximos usuarios por clase">
-                            <span title="Numero máximo de alumnos por clase" className="absolute top-0 left-0 clase__usuarios-maximos py-1 px-5 bg-blue-400 text-xl">
-                                {clase.userclase}
-                                <small className="block text-sm -mt-1">max. clase</small>
+                        <h3 className="text-center px-6 text-red-500 font-bold" title="Máximos usuarios por clase">
+                            <span title="Numero máximo de alumnos por clase" className="absolute top-0 left-0 clase__usuarios-maximos px-5 bg-blue-200 text-4xl">
+                                ️{clase.userclase}
+                                <span className="text-sm block -mt-4">max</span>
                             </span>
                         </h3>
-                        <h3 className="text-center rounded-full px-6 text-blue-100" title="Usuarios para esta clase">
-                            <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count bg-blue-400 py-1 px-5 text-xl`}>
+                        <h3 className="text-center rounded-full px-6 text-green-500 font-bold" title="Usuarios para esta clase">
+                            <span title="Usuarios " className={`absolute top-0 right-0 clase__usuarios-count bg-blue-400 px-5 text-4xl`}>
                                 {clase.users.length > 0 ? clase.users.length : 0}
-                                <small className="block text-sm -mt-1">en clase</small>
+                                <span className="text-sm block -mt-4">cls</span>
                             </span>
                         </h3>
                 </div>
 
                 <div className="mx-auto w-full text-blue-100 pt-10">
-                    <span className="text-4xl text-center grid">🏋️‍♀️</span>
+                    <span className="text-6xl text-center grid">🏋️‍♀️</span>
 					<h1 className="title uppercase text-center text-3xl font-bold tracking-wide">{clase.type}</h1>
-                    <h1 className="title uppercase text-center text-lg -mt-3 mb-3 font-bold">{ moment(clase.start).format('LL')}</h1>
-                    <h1 className="shadow-2xl bg-blue-400 py-1 px-3 hours uppercase grid text-center text-md mb-1 text-3xl font-bold text-white -mt-2">{ moment(clase.start).format('LT') } - { moment(clase.end).format('LT') }</h1>
+                    <h1 className="title uppercase text-center text-2xl mb-3 font-bold">{ moment(clase.start).format('LL')}</h1>
+                    <h1 className="shadow-2xl bg-blue-700 py-5 hours uppercase border-4 border-dotted flex items-stretch items-center justify-center text-3xl font-bold text-white -mt-3">
+                        { moment(clase.start).format('LT') } 🤟 { moment(clase.end).format('LT') }
+                    </h1>
 
                  </div>
 

@@ -30,7 +30,7 @@ const UserReserva = () => {
             <>
                 { (events.length !== 0)
                     ? <>
-                        <div className="reservas pt-32 text-white px-3 container mx-auto font-body">
+                        <div className="reservas pt-32 text-white px-3 mx-auto font-body">
                             <h2 className="uppercase text-3xl font-extrabold pb-6">
                                 Clases disponibles
                             </h2>

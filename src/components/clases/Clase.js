@@ -28,9 +28,7 @@ export const Clase = (clase) => {
         return now >= classeTime;
 	}
 
-	const classAfter =  events.filter( event => moment(event.start).isAfter(moment(), 'day') )
-    const inA = classAfter.map( event => event.users.find( user => user._id === uid ));
-    const userInClassAfter = inA.map( user => user?._id  )
+	const icons = ['🙋🏼‍♂️', '🙋🏼‍♀️']
 
     const handleReserva = () => {
 
@@ -163,11 +161,10 @@ export const Clase = (clase) => {
 
                 {
                     clase.users.length > 0 ?
-                    <div className="clase__usuarios-registrados bg-blue-700 shadow-2xl py-3 px-3 grid grid-cols-8 gap-y-2 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-10 xl:grid-cols-10">
+                    <div className="clase__usuarios-registrados bg-blue-700 shadow-2xl py-3 px-3 grid grid-cols-9 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-8 xl:grid-cols-10">
                         {   clase.users.map((user) =>  (
-                                <div title={user.name} className="text-center flex flex-col items-center w-full text-md"  key={user._id}>
-
-                                    <img className="object-cover rounded-full h-10 " title={user.name} src={defaultuser} />
+                                <div title={user.name} className="text-center flex flex-col justify-center gap-y-2 items-center w-full text-md"  key={user._id}>
+                                    <span className="object-cover rounded-full h-10 cursor-pointer text-4xl"> { icons[Math.floor(Math.random()*icons.length)]} </span>
                                 </div>
                             ))
                         }

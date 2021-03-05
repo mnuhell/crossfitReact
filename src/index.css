@@ -168,13 +168,6 @@ button:focus {outline:0 !important;}
 
 }
 
-@media( min-width: 620px ) {
-  .clase__usuarios-registrados{
-    height: 120px;
-  }
-}
-
-
 .user-modal__bonos{
   grid-template-columns: 70% 30%;
   display: inline-grid;

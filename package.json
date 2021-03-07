@@ -1,7 +1,7 @@
 {
   "name": "crossfit",
   "version": "0.1.0",
-  "proxy": "http://localhost:4502/api/v1/",
+  "proxy": "http://localhost:4502",
   "private": true,
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.13",

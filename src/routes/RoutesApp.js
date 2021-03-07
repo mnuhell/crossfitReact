@@ -20,7 +20,7 @@ const RoutesApp = () => {
     return (
 
         <>
-            <Router>
+            <Router forceRefresh={true}>
             {
 
             <Switch>
